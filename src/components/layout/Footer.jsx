@@ -6,8 +6,9 @@ import {
   FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaGithub,
   FaMapMarkerAlt, FaPhone, FaEnvelope, FaArrowRight
 } from 'react-icons/fa';
-import Logo from '../../assets/Projexino.png';
+import Logo from '../../assets/projexino.png';
 import BaseUrl from '../../API';
+
 
 const Footer = () => {
   const [email, setEmail] = useState('');

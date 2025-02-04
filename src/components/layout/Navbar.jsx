@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ServicesDropdown from './ServicesDropdown';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
-import Logo from '../../assets/Projexino.png';
+import Logo from '../../assets/projexino.png';
 import NavLinks from './NavLinks';
 
 const Navbar = () => {
