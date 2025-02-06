@@ -76,7 +76,7 @@ const NavLinks = ({ mobile }) => {
                     transition={{ duration: 0.2 }}
                     className={`${
                       mobile ? 'mt-2 ml-4' : 'absolute top-full left-0 mt-2 w-72'
-                    } bg-gradient-to-br from-gray-900/95 via-purple-900/95 to-gray-900/95 backdrop-blur-xl rounded-2xl shadow-xl p-4 space-y-2 border border-white/10`}
+                    } bg-[#080362] backdrop-blur-xl rounded-2xl shadow-xl p-4 space-y-2 border border-white/10`}
                   >
                     {services.map((service) => (
                       <motion.div

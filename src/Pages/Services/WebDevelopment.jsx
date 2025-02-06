@@ -62,56 +62,64 @@ const WebDevelopment = () => {
       icon: <FaReact className="text-[#61DAFB] group-hover:animate-spin-slow" />,
       level: 'Advanced',
       description: 'Frontend Development',
-      gradient: 'from-[#61DAFB]/20 to-[#61DAFB]/40'
+      gradient: 'from-[#61DAFB]/20 to-[#61DAFB]/40',
+      color: 'text-[#61DAFB]'
     },
     {
       name: 'Node.js',
       icon: <FaNodeJs className="text-[#339933]" />,
       level: 'Expert',
       description: 'Backend Development',
-      gradient: 'from-[#339933]/20 to-[#339933]/40'
+      gradient: 'from-[#339933]/20 to-[#339933]/40',
+      color: 'text-[#339933]'
     },
     {
       name: 'Python',
       icon: <FaPython className="text-[#3776AB]" />,
       level: 'Advanced',
       description: 'AI & Backend',
-      gradient: 'from-[#3776AB]/20 to-[#3776AB]/40'
+      gradient: 'from-[#3776AB]/20 to-[#3776AB]/40',
+      color: 'text-[#3776AB]'
     },
     {
       name: 'MongoDB',
       icon: <SiMongodb className="text-[#47A248]" />,
       level: 'Expert',
       description: 'Database',
-      gradient: 'from-[#47A248]/20 to-[#47A248]/40'
+      gradient: 'from-[#47A248]/20 to-[#47A248]/40',
+      color: 'text-[#47A248]'
     },
     {
       name: 'AWS',
       icon: <FaAws className="text-[#232F3E]" />,
       level: 'Advanced',
       description: 'Cloud Infrastructure',
-      gradient: 'from-[#232F3E]/20 to-[#232F3E]/40'
+      gradient: 'from-[#232F3E]/20 to-[#232F3E]/40',
+      color: 'text-[#232F3E]'
     },
     {
       name: 'Docker',
       icon: <FaDocker className="text-[#2496ED]" />,
       level: 'Advanced',
       description: 'Containerization',
-      gradient: 'from-[#2496ED]/20 to-[#2496ED]/40'
+      gradient: 'from-[#2496ED]/20 to-[#2496ED]/40',
+      color: 'text-[#2496ED]'
     },
     {
       name: 'Angular',
       icon: <FaAngular className="text-[#DD0031]" />,
       level: 'Advanced',
       description: 'Frontend Framework',
-      gradient: 'from-[#DD0031]/20 to-[#DD0031]/40'
+      gradient: 'from-[#DD0031]/20 to-[#DD0031]/40',
+      color: 'text-[#DD0031]'
     },
     {
       name: 'PHP',
       icon: <FaPhp className="text-[#777BB4]" />,
       level: 'Intermediate',
       description: 'Backend Scripting',
-      gradient: 'from-[#777BB4]/20 to-[#777BB4]/40'
+      gradient: 'from-[#777BB4]/20 to-[#777BB4]/40',
+      color: 'text-[#777BB4]'
     }
   ];
 
@@ -373,56 +381,52 @@ const WebDevelopment = () => {
 
       {/* Technology Stack Showcase */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-purple-50/50" />
-
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-300/20 to-purple-300/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple-300/20 to-pink-300/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-blue-900 to-purple-900">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+          </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <motion.span
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div className="text-center mb-16 relative z-20">
+            <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6 backdrop-blur-sm border border-blue-200/20"
+              className="inline-flex items-center space-x-2 px-6 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6"
             >
-              Cutting-Edge Stack
-            </motion.span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#19234d' }}>
-              Our Technology Stack
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d7764a] to-[#d9764a]">
-                Powering Your Success
+              <span className="animate-pulse-fast w-2 h-2 rounded-full bg-blue-400"></span>
+              <span className="text-white/80 text-sm font-medium">Development Stack</span>
+            </motion.div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-4">
+              <span className="text-white">Our Technology</span>
+              <span className="block mt-2 text-[#ffa07a]">
+                Stack & Tools
               </span>
             </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Leveraging cutting-edge technologies to build powerful web solutions
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {technologies.map((tech, index) => (
               <motion.div
                 key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative"
+                className={`group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${tech.gradient} rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300`} />
-                <div className="relative p-6 bg-white/80 backdrop-blur-xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {tech.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold" style={{ color: '#2b5a9e' }}>{tech.name}</h3>
-                  <p className="text-sm text-gray-600 mt-2">{tech.description}</p>
-                  <div className="mt-3">
-                    <span className="px-3 py-1 text-xs font-medium bg-gray-100 rounded-full text-gray-600">
-                      {tech.level}
-                    </span>
-                  </div>
+                <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
+                <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
+                <p className="text-gray-300 text-sm">{tech.description}</p>
+                <div className="mt-4">
+                  <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
+                    {tech.level}
+                  </span>
                 </div>
               </motion.div>
             ))}

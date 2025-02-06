@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import NetworkBackground from '../../components/NetworkBackground';
-import { 
-  FaApple, 
-  FaAndroid, 
-  FaReact, 
-  FaMobile, 
+import {
+  FaApple,
+  FaAndroid,
+  FaReact,
+  FaMobile,
   FaCode,
   FaRocket,
   FaDatabase,
   FaCloud
 } from 'react-icons/fa';
-import { 
-  SiFlutter, 
-  SiKotlin, 
-  SiSwift, 
-  SiFirebase, 
+import {
+  SiFlutter,
+  SiKotlin,
+  SiSwift,
+  SiFirebase,
   SiXcode,
   SiAndroidstudio,
   SiRedux,
-  SiGraphql 
+  SiGraphql
 } from 'react-icons/si';
 import CountUp from 'react-countup';
 import { useNavigate } from 'react-router-dom';
@@ -145,7 +145,7 @@ const AppDevelopment = () => {
       {/* Hero Section */}
       <section className="hero-section relative min-h-screen overflow-hidden">
         <NetworkBackground />
-        
+
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
           {/* Animated Mesh Gradient */}
@@ -353,8 +353,17 @@ const AppDevelopment = () => {
       </section>
 
       {/* Technology Stack Section */}
-      <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 to-blue-900">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-20 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-blue-900 to-purple-900">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+          </div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <motion.div className="text-center mb-16">
             <motion.span
               initial={{ scale: 0 }}
