@@ -8,9 +8,7 @@ import {
   FaPython,
   FaAws,
   FaDocker,
-  FaDatabase,
-  FaAngular,
-  FaPhp
+  FaDatabase
 } from 'react-icons/fa';
 import {
   SiMongodb,
@@ -20,7 +18,6 @@ import {
   SiRedux,
   SiNextdotjs
 } from 'react-icons/si';
-import CountUp from 'react-countup';
 
 const WebDevelopment = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -98,20 +95,6 @@ const WebDevelopment = () => {
       level: 'Advanced',
       description: 'Containerization',
       gradient: 'from-[#2496ED]/20 to-[#2496ED]/40'
-    },
-    {
-      name: 'Angular',
-      icon: <FaAngular className="text-[#DD0031]" />,
-      level: 'Advanced',
-      description: 'Frontend Framework',
-      gradient: 'from-[#DD0031]/20 to-[#DD0031]/40'
-    },
-    {
-      name: 'PHP',
-      icon: <FaPhp className="text-[#777BB4]" />,
-      level: 'Intermediate',
-      description: 'Backend Scripting',
-      gradient: 'from-[#777BB4]/20 to-[#777BB4]/40'
     }
   ];
 
@@ -430,46 +413,131 @@ const WebDevelopment = () => {
         </div>
       </section>
 
-      {/* Development Process Showcase */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2b5a9e]/5 via-purple-500/5 to-[#d9764a]/5" />
+
+      {/* Success Stories Section */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Creative Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/patterns/circuit-board.svg')] opacity-5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 via-purple-900/5 to-orange-900/5" />
+          <div className="absolute top-0 right-0 w-1/3 h-2/3 bg-gradient-conic from-blue-500/10 via-purple-500/10 to-orange-500/10 blur-3xl animate-spin-slower" />
+          <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-gradient-conic from-orange-500/10 via-blue-500/10 to-purple-500/10 blur-3xl animate-spin-slower" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div className="text-center mb-16">
-            <motion.span
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-24"
+          >
+            <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+              className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 backdrop-blur-sm border border-white/20 mb-6"
             >
-              Our Development Process
-            </motion.span>
-            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
-              Streamlined Development
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d9764a] to-[#d9764a]">
-                From Concept to Launch
+              <div className="relative flex h-3 w-3">
+                <span className="animate-ping absolute h-full w-full rounded-full bg-[#2b5a9e] opacity-75" />
+                <span className="relative rounded-full h-3 w-3 bg-[#2b5a9e]" />
+              </div>
+              <span className="text-[#2b5a9e] font-medium">Success Stories</span>
+            </motion.div>
+
+            <h2 className="text-6xl font-bold mb-6" style={{ color: '#19234d' }}>
+              Transforming Ideas Into
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#2b5a9e] to-[#d9764a]">
+                Remarkable Success Stories
               </span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { phase: 'Discovery', icon: '🔍', description: 'Requirements gathering and project planning' },
-              { phase: 'Design', icon: '🎨', description: 'UI/UX design and prototyping' },
-              { phase: 'Development', icon: '⚡', description: 'Agile development with regular updates' },
-              { phase: 'Deployment', icon: '🚀', description: 'Testing, optimization, and launch' }
-            ].map((step, index) => (
+          {/* Case Studies Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {caseStudies.map((study, index) => (
               <motion.div
-                key={step.phase}
+                key={study.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="relative group"
+                className="group relative"
               >
+                {/* Floating Effect Card */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
-                <div className="relative p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300">
-                  <div className="text-4xl mb-4">{step.icon}</div>
-                  <h3 className="text-xl font-bold mb-2" style={{ color: '#2b5a9e' }}>{step.phase}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                  <div className="absolute top-4 right-4 text-sm font-bold text-[#d9764a]">0{index + 1}</div>
+
+                {/* Main Card */}
+                <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+                  {/* Top Pattern */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a]" />
+
+                  {/* Image Container */}
+                  <div className="relative h-64 overflow-hidden">
+                    <motion.img
+                      src={study.image}
+                      alt={study.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+
+                    {/* Client Badge */}
+                    <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
+                      <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                        <span className="text-white text-sm font-medium">{study.client}</span>
+                      </div>
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center"
+                      >
+                        <span className="text-xl">🏆</span>
+                      </motion.div>
+                    </div>
+
+                    {/* Impact Stats */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-lg font-bold text-white">{study.title}</h3>
+                          <div className="flex items-center gap-2">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: '100%' }}
+                              className="h-1 w-20 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-full"
+                            />
+                          </div>
+                        </div>
+                        <p className="text-white/90 mt-2">{study.impact}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-6 space-y-6">
+                    {/* Tech Stack */}
+                    <div>
+                      <h4 className="text-sm font-medium text-gray-600 mb-3">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {study.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 text-sm bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] rounded-full font-medium hover:from-[#2b5a9e]/20 hover:to-[#d9764a]/20 transition-colors duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full py-3 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-white rounded-xl font-semibold relative overflow-hidden group"
+                    >
+                      <span className="relative z-10">Explore Case Study</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#d9764a] to-[#2b5a9e] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    </motion.button>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -477,91 +545,17 @@ const WebDevelopment = () => {
         </div>
       </section>
 
-      {/* Web Development Services Grid */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-16">
-            <motion.span
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
-            >
-              Specialized Services
-            </motion.span>
-            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
-              Web Development
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d9764a] to-[#d9764a]">
-                Solutions We Offer
-              </span>
-            </h2>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Custom Web Applications',
-                icon: '💻',
-                features: ['Scalable Architecture', 'Real-time Features', 'API Integration']
-              },
-              {
-                title: 'E-commerce Solutions',
-                icon: '🛍️',
-                features: ['Payment Gateway Integration', 'Inventory Management', 'Shopping Cart']
-              },
-              {
-                title: 'Progressive Web Apps',
-                icon: '📱',
-                features: ['Offline Functionality', 'Push Notifications', 'App-like Experience']
-              },
-              {
-                title: 'CMS Development',
-                icon: '📝',
-                features: ['Content Management', 'User Roles', 'Custom Plugins']
-              },
-              {
-                title: 'API Development',
-                icon: '🔌',
-                features: ['RESTful APIs', 'GraphQL', 'Microservices']
-              },
-              {
-                title: 'Web Optimization',
-                icon: '⚡',
-                features: ['Performance Tuning', 'SEO Optimization', 'Security Hardening']
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-4" style={{ color: '#2b5a9e' }}>{service.title}</h3>
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-gray-600">
-                      <span className="w-2 h-2 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-full mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section with Animation
+      {/* Stats Section with Animation */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/5 to-[#d9764a]/5" />
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: 500, suffix: '+', label: 'Projects Delivered', icon: '🚀' },
-              { value: 95, suffix: '%', label: 'Client Satisfaction', icon: '⭐' },
-              { value: 50, suffix: '+', label: 'Expert Developers', icon: '👨‍💻' },
-              { value: 24, suffix: '/7', label: 'Support Available', icon: '🔧' }
+              { value: '500+', label: 'Projects Delivered', icon: '🚀' },
+              { value: '95%', label: 'Client Satisfaction', icon: '⭐' },
+              { value: '50+', label: 'Expert Developers', icon: '👨‍💻' },
+              { value: '24/7', label: 'Support Available', icon: '🔧' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -572,25 +566,14 @@ const WebDevelopment = () => {
               >
                 <span className="text-4xl mb-4 block">{stat.icon}</span>
                 <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text">
-                  <CountUp
-                    end={stat.value}
-                    duration={2.5}
-                    suffix={stat.suffix}
-                    enableScrollSpy
-                    scrollSpyOnce
-                    delay={1}
-                  />
+                  {stat.value}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section> */}
-
-      
-
-     
+      </section>
     </main>
   );
 };

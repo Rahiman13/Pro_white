@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaHandshake } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
 
 const Contact = () => {
@@ -20,7 +20,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-semibold tracking-wider text-blue-600">
+          <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] text-sm font-semibold mb-6">
             LET'S CONNECT
           </span>
           <h1 className="text-5xl font-bold mt-4 mb-6">
@@ -34,6 +34,7 @@ const Contact = () => {
               ]}
               wrapper="span"
               repeat={Infinity}
+              style={{ color: '#d9764a' }}
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text"
             />
           </h1>
@@ -68,6 +69,12 @@ const Contact = () => {
                   title: 'Call Us',
                   content: ['+91 9601843090'],
                   color: 'from-orange-500 to-red-500'
+                },
+                {
+                  icon: <FaHandshake className="text-2xl" />, // Added handshake icon
+                  title: 'Let\'s Collaborate',
+                  content: ['Let\'s work together to achieve great things.'],
+                  color: 'from-green-500 to-blue-500'
                 }
               ].map((item, index) => (
                 <motion.div

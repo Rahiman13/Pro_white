@@ -1,185 +1,444 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaApple, FaAndroid, FaReact } from 'react-icons/fa';
-import { SiFlutter, SiKotlin, SiSwift } from 'react-icons/si';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import NetworkBackground from '../../components/NetworkBackground';
+import { 
+  FaApple, 
+  FaAndroid, 
+  FaReact, 
+  FaMobile, 
+  FaCode,
+  FaRocket,
+  FaDatabase,
+  FaCloud
+} from 'react-icons/fa';
+import { 
+  SiFlutter, 
+  SiKotlin, 
+  SiSwift, 
+  SiFirebase, 
+  SiXcode,
+  SiAndroidstudio,
+  SiRedux,
+  SiGraphql 
+} from 'react-icons/si';
+import CountUp from 'react-countup';
+import { useNavigate } from 'react-router-dom';
 
 const AppDevelopment = () => {
-  const services = [
+  const [activeTab, setActiveTab] = useState('overview');
+  const navigate = useNavigate();
+
+  const features = [
     {
       title: 'iOS Development',
       description: 'Native iOS applications with stunning UIs and smooth performance',
       icon: <FaApple className="text-5xl" />,
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      color: 'from-gray-900 to-black'
+      color: 'from-gray-900 to-black',
+      benefits: ['Swift & SwiftUI', 'Native Performance', 'App Store Optimization', 'iOS Design Guidelines']
     },
     {
       title: 'Android Development',
       description: 'Feature-rich Android apps that users love',
       icon: <FaAndroid className="text-5xl" />,
       image: 'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      color: 'from-green-800 to-green-900'
+      color: 'from-green-800 to-green-900',
+      benefits: ['Kotlin First', 'Material Design', 'Play Store Excellence', 'Android Jetpack']
     },
     {
       title: 'Cross-Platform Apps',
       description: 'Build once, deploy everywhere with React Native',
       icon: <FaReact className="text-5xl" />,
       image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      color: 'from-blue-800 to-blue-900'
+      color: 'from-blue-800 to-blue-900',
+      benefits: ['Code Reusability', 'Native Performance', 'Rapid Development', 'Cost Effective']
     },
     {
       title: 'Flutter Development',
       description: 'Beautiful native apps for all platforms',
       icon: <SiFlutter className="text-5xl" />,
       image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      color: 'from-sky-800 to-blue-900'
+      color: 'from-sky-800 to-blue-900',
+      benefits: ['Material & Cupertino', 'Hot Reload', 'Custom Animations', 'Widget Rich']
     }
   ];
 
   const technologies = [
-    { name: 'Swift', icon: <SiSwift />, color: 'bg-orange-500' },
-    { name: 'Kotlin', icon: <SiKotlin />, color: 'bg-purple-500' },
-    { name: 'React Native', icon: <FaReact />, color: 'bg-blue-500' },
-    { name: 'Flutter', icon: <SiFlutter />, color: 'bg-sky-500' }
+    {
+      name: 'Swift',
+      icon: <SiSwift />,
+      level: 'Expert',
+      description: 'iOS Native',
+      gradient: 'from-[#FA7343]/20 to-[#FA7343]/40',
+      color: 'text-[#FA7343]'
+    },
+    {
+      name: 'Kotlin',
+      icon: <SiKotlin />,
+      level: 'Expert',
+      description: 'Android Native',
+      gradient: 'from-[#7F52FF]/20 to-[#7F52FF]/40',
+      color: 'text-[#7F52FF]'
+    },
+    {
+      name: 'React Native',
+      icon: <FaReact className="group-hover:animate-spin-slow" />,
+      level: 'Advanced',
+      description: 'Cross Platform',
+      gradient: 'from-[#61DAFB]/20 to-[#61DAFB]/40',
+      color: 'text-[#61DAFB]'
+    },
+    {
+      name: 'Flutter',
+      icon: <SiFlutter />,
+      level: 'Advanced',
+      description: 'Cross Platform',
+      gradient: 'from-[#02569B]/20 to-[#02569B]/40',
+      color: 'text-[#02569B]'
+    },
+    {
+      name: 'Firebase',
+      icon: <SiFirebase />,
+      level: 'Expert',
+      description: 'Backend Services',
+      gradient: 'from-[#FFCA28]/20 to-[#FFCA28]/40',
+      color: 'text-[#FFCA28]'
+    },
+    {
+      name: 'Xcode',
+      icon: <SiXcode />,
+      level: 'Expert',
+      description: 'iOS IDE',
+      gradient: 'from-[#147EFB]/20 to-[#147EFB]/40',
+      color: 'text-[#147EFB]'
+    },
+    {
+      name: 'Android Studio',
+      icon: <SiAndroidstudio />,
+      level: 'Expert',
+      description: 'Android IDE',
+      gradient: 'from-[#3DDC84]/20 to-[#3DDC84]/40',
+      color: 'text-[#3DDC84]'
+    },
+    {
+      name: 'GraphQL',
+      icon: <SiGraphql />,
+      level: 'Advanced',
+      description: 'API Integration',
+      gradient: 'from-[#E535AB]/20 to-[#E535AB]/40',
+      color: 'text-[#E535AB]'
+    }
   ];
 
+
+  const handleStartProject = () => {
+    navigate('/contact'); // Navigate to contact/quote page
+  };
+
+  const handleViewPortfolio = () => {
+    navigate('/portfolio'); // Navigate to portfolio page
+  };
+
   return (
-    <main className="pt-20">
-      {/* Hero Section with 3D Phone Model */}
-      <div className="relative h-[80vh] overflow-hidden bg-gradient-to-b from-black to-blue-900">
+    <main className="min-h-screen bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50">
+      {/* Hero Section */}
+      <section className="hero-section relative min-h-screen overflow-hidden">
+        <NetworkBackground />
+        
+        {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/images/circuit-pattern.svg')] opacity-20 animate-pulse"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-        </div>
+          {/* Animated Mesh Gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,165,250,0.1),transparent_50%)]" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative z-10 h-full flex items-center justify-center"
-        >
-          <div className="text-center px-4">
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <div className="relative w-32 h-64 mx-auto mb-8">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl transform rotate-12 animate-float"></div>
-                <div className="absolute inset-0 bg-black rounded-3xl -rotate-12 animate-float delay-100"></div>
-              </div>
-            </motion.div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              App Development
-              <span className="block mt-2 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-                For The Future
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Transform your ideas into powerful mobile experiences
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-            >
-              Start Your App Journey
-            </motion.button>
+          {/* Geometric Patterns */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-spin-slower" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-conic from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-full blur-3xl animate-spin-reverse" />
           </div>
-        </motion.div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Services with Interactive Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -10 }}
-              transition={{ delay: index * 0.2 }}
-              className="group relative h-[400px] rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <div className="absolute inset-0">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-90`}></div>
-              </div>
-              <div className="relative h-full p-8 flex flex-col justify-end">
-                <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
-                  {service.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-gray-200">{service.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          {/* Decorative Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <motion.path
+                d="M0,50 Q25,45 50,50 T100,50"
+                stroke="url(#gradient-line)"
+                strokeWidth="0.1"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <defs>
+                <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgba(96,165,250,0.2)" />
+                  <stop offset="50%" stopColor="rgba(168,85,247,0.2)" />
+                  <stop offset="100%" stopColor="rgba(96,165,250,0.2)" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
         </div>
 
-        {/* Technology Stack with Floating Icons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="relative rounded-3xl overflow-hidden mb-20"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-black to-blue-900"></div>
-          <div className="relative p-12">
-            <h2 className="text-3xl font-bold text-white mb-12 text-center">Our Tech Stack</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {technologies.map((tech, index) => (
-                <motion.div
-                  key={tech.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -5 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex flex-col items-center"
-                >
-                  <div className={`${tech.color} p-6 rounded-full text-white text-4xl mb-4 shadow-lg`}>
-                    {tech.icon}
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-left pt-20"
+            >
+              {/* Innovation Badge */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.5 }}
+                className="inline-flex items-center space-x-3 mb-8 glass-morphism px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-conic from-blue-400 via-purple-400 to-pink-400 rounded-full animate-spin-slow group-hover:animate-spin" />
+                  <div className="relative bg-white rounded-full p-2">
+                    <span className="relative flex h-4 w-4">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-4 w-4 bg-gradient-to-r from-blue-500 to-purple-500" />
+                    </span>
                   </div>
-                  <span className="text-white font-medium">{tech.name}</span>
+                </div>
+                <span className="text-2xl">📱</span>
+                <span className="font-medium" style={{ color: '#2b5a9e' }}>Mobile Development Excellence</span>
+              </motion.div>
+
+              {/* Enhanced Heading */}
+              <h1 className="text-6xl lg:text-7xl font-bold mb-6" style={{ color: '#19234d' }}>
+                Building Amazing
+                <span className="block mt-4">
+                  <TypeAnimation
+                    sequence={[
+                      'Mobile Apps',
+                      2000,
+                      'iOS Solutions',
+                      2000,
+                      'Android Apps',
+                      2000,
+                      'Cross-Platform Apps',
+                      2000
+                    ]}
+                    wrapper="span"
+                    repeat={Infinity}
+                    style={{ color: '#d9764a' }}
+                    className="bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text"
+                  />
+                </span>
+              </h1>
+
+              <p className="text-xl md:text-2xl mb-8" style={{ color: '#19234d' }}>
+                Transform your ideas into powerful mobile experiences with cutting-edge technology
+              </p>
+
+              {/* Enhanced CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleStartProject}
+                  className="px-8 py-4 rounded-full font-semibold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Start Your Project
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  onClick={handleViewPortfolio}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text font-semibold text-lg hover:border-blue-500 rounded-full transition-all duration-300"
+                >
+                  View Portfolio
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Features Preview */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="hidden lg:grid grid-cols-2 gap-4"
+            >
+              {features.slice(0, 4).map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300"
+                >
+                  <span className="text-3xl mb-4 block">{feature.icon}</span>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#2b5a9e' }}>{feature.title}</h3>
+                  <p className="text-sm" style={{ color: '#19234d' }}>{feature.description}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Process Timeline */}
-        <div className="relative">
-          <div className="absolute left-1/2 h-full w-px bg-gradient-to-b from-blue-500 to-purple-500"></div>
-          <div className="space-y-16">
-            {[
-              { step: '01', title: 'Discovery', desc: 'Understanding your vision' },
-              { step: '02', title: 'Design', desc: 'Creating the perfect UX' },
-              { step: '03', title: 'Development', desc: 'Building with precision' },
-              { step: '04', title: 'Testing', desc: 'Ensuring perfection' },
-              { step: '05', title: 'Launch', desc: 'Taking flight' }
-            ].map((phase, index) => (
+      {/* App Development Services Grid */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+            >
+              Specialized Services
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
+              Mobile Development
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d9764a] to-[#d9764a]">
+                Solutions We Offer
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((service, index) => (
               <motion.div
-                key={phase.step}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl h-[400px]"
               >
-                <div className="relative w-1/2 bg-gradient-to-r from-blue-900 to-purple-900 p-8 rounded-2xl">
-                  <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 
-                    ${index % 2 === 0 ? '-right-8' : '-left-8'}"></div>
-                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4">
-                    {phase.step}
+                <div className="absolute inset-0">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Initial icon overlay (visible by default) */}
+                  <div className="absolute bottom-6 left-6">
+                    <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center transform transition-all duration-500 group-hover:scale-0">
+                      <div className="text-4xl text-white">{service.icon}</div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{phase.title}</h3>
-                  <p className="text-gray-300">{phase.desc}</p>
+                  {/* Content overlay (visible on hover) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <div className="absolute inset-x-0 bottom-0">
+                  <div className="p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="flex items-center space-x-4 mb-4">
+                      <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
+                        <span className="text-3xl text-white">{service.icon}</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                    </div>
+                    <p className="text-gray-200 mb-4">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {service.benefits.map((benefit) => (
+                        <li key={benefit} className="flex items-center text-gray-200">
+                          <span className="w-2 h-2 bg-white rounded-full mr-2" />
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Technology Stack Section */}
+      <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 to-blue-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-300 inline-block mb-6"
+            >
+              Our Technology Stack
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Cutting-Edge Mobile
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400" style={{ color: '#d9764a' }}>
+                Development Technologies
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {technologies.map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300`}
+              >
+                <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
+                <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
+                <p className="text-gray-300 text-sm">{tech.description}</p>
+                <div className="mt-4">
+                  <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
+                    {tech.level}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Development Process Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+            >
+              Development Process
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
+              How We Build
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500" style={{ color: '#d9764a' }}>
+                Your Mobile App
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { phase: 'Discovery', icon: '🔍', description: 'Requirements gathering and project planning' },
+              { phase: 'Design', icon: '🎨', description: 'UI/UX design and prototyping' },
+              { phase: 'Development', icon: '⚡', description: 'Agile development with regular updates' },
+              { phase: 'Deployment', icon: '🚀', description: 'Testing, optimization, and launch' }
+            ].map((step, index) => (
+              <motion.div
+                key={step.phase}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
+                <div className="relative p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300">
+                  <div className="text-4xl mb-4">{step.icon}</div>
+                  <h3 className="text-xl font-bold mb-2 text-blue-600">{step.phase}</h3>
+                  <p className="text-gray-600">{step.description}</p>
+                  <div className="absolute top-4 right-4 text-sm font-bold text-purple-500">0{index + 1}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

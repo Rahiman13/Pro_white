@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import CountUp from 'react-countup';
+import ReactConfetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 // import ScrollBackground from '../components/ScrollBackground';
 import NetworkBackground from '../components/NetworkBackground';
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaPython, 
+  FaAngular, 
+  FaVuejs, 
+  FaAws, 
+  FaDocker, 
+  FaDatabase,
+  FaJava,
+  FaPhp,
+  FaLaravel,
+  FaWordpress,
+  FaGithub,
+  FaFigma,
+  FaSass,
+  FaJs
+} from 'react-icons/fa';
+import { 
+  SiTypescript, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiMysql,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiFirebase,
+  SiRedux
+} from 'react-icons/si';
 
 const achievements = [
   {
@@ -57,14 +87,28 @@ const achievements = [
 ];
 
 const techStack = [
-  { name: 'React', icon: '⚛️' },
-  { name: 'Node.js', icon: '🟢' },
-  { name: 'Python', icon: '🐍' },
-  { name: 'AWS', icon: '☁️' },
-  { name: 'Docker', icon: '🐳' },
-  { name: 'MongoDB', icon: '🍃' },
-  { name: 'TypeScript', icon: '📘' },
-  { name: 'Flutter', icon: '📱' }
+  { icon: <FaReact />, name: 'React', color: 'text-[#61DAFB]' },
+  { icon: <SiNextdotjs />, name: 'Next.js', color: 'text-black' },
+  { icon: <FaNodeJs />, name: 'Node.js', color: 'text-[#339933]' },
+  { icon: <SiTypescript />, name: 'TypeScript', color: 'text-[#3178C6]' },
+  { icon: <FaJs />, name: 'JavaScript', color: 'text-[#F7DF1E]' },
+  { icon: <FaPython />, name: 'Python', color: 'text-[#3776AB]' },
+  { icon: <FaAngular />, name: 'Angular', color: 'text-[#DD0031]' },
+  { icon: <FaVuejs />, name: 'Vue.js', color: 'text-[#4FC08D]' },
+  { icon: <FaAws />, name: 'AWS', color: 'text-[#232F3E]' },
+  { icon: <FaDocker />, name: 'Docker', color: 'text-[#2496ED]' },
+  { icon: <SiMongodb />, name: 'MongoDB', color: 'text-[#47A248]' },
+  { icon: <SiPostgresql />, name: 'PostgreSQL', color: 'text-[#336791]' },
+  { icon: <SiMysql />, name: 'MySQL', color: 'text-[#4479A1]' },
+  { icon: <FaJava />, name: 'Java', color: 'text-[#007396]' },
+  { icon: <FaPhp />, name: 'PHP', color: 'text-[#777BB4]' },
+  { icon: <FaLaravel />, name: 'Laravel', color: 'text-[#FF2D20]' },
+  { icon: <SiTailwindcss />, name: 'Tailwind', color: 'text-[#06B6D4]' },
+  { icon: <FaSass />, name: 'Sass', color: 'text-[#CC6699]' },
+  { icon: <SiFirebase />, name: 'Firebase', color: 'text-[#FFCA28]' },
+  { icon: <SiRedux />, name: 'Redux', color: 'text-[#764ABC]' },
+  { icon: <FaGithub />, name: 'GitHub', color: 'text-[#181717]' },
+  { icon: <FaFigma />, name: 'Figma', color: 'text-[#F24E1E]' },
 ];
 
 const locations = [
@@ -83,6 +127,9 @@ const locations = [
 ];
 
 const About = () => {
+  const { width, height } = useWindowSize();
+  const [showCelebration, setShowCelebration] = useState(false);
+
   return (
     <main className="bg-white">
       {/* Enhanced Hero Section with Ultra-Modern Design */}
@@ -172,7 +219,7 @@ const About = () => {
                     ]}
                     wrapper="span"
                     repeat={Infinity}
-                    style={{ color: '#2b5a9e' }}
+                    style={{ color: '#d9764a' }}
                     className="block"
                   />
                   <motion.span
@@ -302,9 +349,9 @@ const About = () => {
             className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
           >
             <div>
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="text-4xl font-bold mb-6" style={{ color: '#19234d' }}>
                 Our Story of{' '}
-                <span style={{ color: '#2b5a9e' }}>
+                <span style={{ color: '#d9764a' }}>
                   Innovation
                 </span>
               </h2>
@@ -345,11 +392,11 @@ const About = () => {
             <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 text-sm font-semibold mb-4">
               OUR PRINCIPLES
             </span>
-            <h2 className="text-5xl font-bold mb-4">
+            <h2 className="text-5xl font-bold mb-4" style={{ color: '#19234d' }}>
               Our Core{' '}
               <span style={{ color: '#d9764a' }}>Values</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-6" />
+            {/* <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-6" /> */}
             <p style={{ color: '#19234d' }} className="text-xl max-w-2xl mx-auto">
               The principles that drive our success and shape our culture
             </p>
@@ -430,7 +477,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-5xl font-bold text-[#19234d] mb-4">
               Meet Our{' '}
               <span style={{ color: '#de7527' }}>
                 Team
@@ -503,14 +550,15 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
-            <span className="text-sm font-semibold tracking-wider" style={{ color: '#d9764a' }}>
+            <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 text-sm font-semibold mb-4">
               OUR JOURNEY OF EXCELLENCE
             </span>
-            <h2 className="text-5xl font-bold mt-4 mb-6">
+            <h2 className="text-5xl font-bold mt-4 mb-6" style={{ color: '#19234d' }}>
               Milestone{' '}
-              <span style={{ color: '#2b5a9e' }}>Achievements</span>
+              <span style={{ color: '#d9764a' }}>Achievements</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] mx-auto rounded-full" />
+
+            {/* <div className="w-24 h-1 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] mx-auto rounded-full" /> */}
           </motion.div>
 
           <div className="relative">
@@ -640,11 +688,147 @@ const About = () => {
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
-            className="w-20 h-20 mx-auto mt-8 relative"
+            viewport={{ once: true }}
+            onViewportEnter={() => setShowCelebration(true)}
+            className="w-32 h-32 mx-auto mt-16 mb-8 relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-full blur-xl opacity-50 animate-pulse" />
-            <div className="relative w-full h-full rounded-full border-4 border-[#2b5a9e] flex items-center justify-center">
-              <span className="text-2xl">🏆</span>
+            {/* Outer Decorative Ring */}
+            <motion.div
+              className="absolute -inset-4 rounded-full"
+              animate={{
+                rotate: 360,
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
+              <div className="w-full h-full border-4 border-dashed border-[#2b5a9e]/30 rounded-full" />
+            </motion.div>
+
+            {/* Confetti Effect */}
+            {showCelebration && (
+              <div className="absolute -inset-20">
+                <ReactConfetti
+                  width={300}
+                  height={300}
+                  numberOfPieces={100}
+                  recycle={false}
+                  run={true}
+                  gravity={0.2}
+                  tweenDuration={5000}
+                  initialVelocityX={5}
+                  initialVelocityY={-10}
+                  colors={['#2b5a9e', '#d9764a', '#FFD700', '#4CAF50', '#9C27B0']}
+                  onComplete={() => setShowCelebration(false)}
+                />
+              </div>
+            )}
+
+            {/* Glowing Background Orbs */}
+            <div className="absolute inset-0 -z-10">
+              <motion.div
+                className="absolute inset-0 bg-blue-500/30 rounded-full blur-2xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute inset-0 bg-orange-500/30 rounded-full blur-2xl"
+                animate={{
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+            </div>
+
+            {/* Trophy Container */}
+            <motion.div
+              className="relative w-full h-full rounded-full border-4 border-[#2b5a9e] bg-gradient-to-br from-white to-gray-50 flex items-center justify-center overflow-hidden shadow-2xl"
+              animate={showCelebration ? {
+                y: [-5, 5, -5],
+                rotate: [-5, 5, -5],
+                scale: [1, 1.1, 1]
+              } : {}}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              {/* Shimmering Effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0"
+                animate={{
+                  x: ['-100%', '100%'],
+                  opacity: [0, 0.5, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Trophy Icon */}
+              <motion.div
+                className="relative z-10"
+                animate={showCelebration ? {
+                  scale: [1, 1.2, 1],
+                  rotateY: [0, 360],
+                } : {}}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-5xl filter drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">🏆</span>
+                
+                {/* Sparkles */}
+                {showCelebration && (
+                  <>
+                    <motion.span
+                      className="absolute -top-4 -right-4 text-2xl"
+                      animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ✨
+                    </motion.span>
+                    <motion.span
+                      className="absolute -bottom-4 -left-4 text-2xl"
+                      animate={{ rotate: -360, scale: [1, 1.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ✨
+                    </motion.span>
+                  </>
+                )}
+              </motion.div>
+            </motion.div>
+
+            {/* Radiating Circles */}
+            <div className="absolute inset-0 -z-10">
+              {showCelebration && (
+                <>
+                  <motion.div
+                    className="absolute inset-0 border-2 border-[#2b5a9e]/20 rounded-full"
+                    initial={{ scale: 1, opacity: 0 }}
+                    animate={{ scale: 2, opacity: [0, 1, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 border-2 border-[#d9764a]/20 rounded-full"
+                    initial={{ scale: 1, opacity: 0 }}
+                    animate={{ scale: 2, opacity: [0, 1, 0] }}
+                    transition={{ duration: 2, delay: 0.5, repeat: Infinity }}
+                  />
+                </>
+              )}
             </div>
           </motion.div>
         </div>
@@ -658,7 +842,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-bold mb-4">
+            <h2 className="text-5xl font-bold mb-4" style={{ color: '#19234d' }}>
               Our{' '}
               <span style={{ color: '#d9764a' }}>Tech Stack</span>
             </h2>
@@ -678,7 +862,9 @@ const About = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/20 to-[#d9764a]/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
                 <div className="relative p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all">
-                  <div className="text-4xl mb-4">{tech.icon}</div>
+                  <div className={`text-4xl ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                    {tech.icon}
+                  </div>
                   <h3 className="text-lg font-semibold" style={{ color: '#19234d' }}>
                     {tech.name}
                   </h3>
@@ -697,9 +883,9 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-bold mb-4">
+            <h2 className="text-5xl font-bold mb-4" style={{ color: '#19234d' }}>
               Global{' '}
-              <span style={{ color: '#2b5a9e' }}>Presence</span>
+              <span style={{ color: '#d9764a' }}>Presence</span>
             </h2>
             <p style={{ color: '#19234d' }} className="text-xl">
               Serving clients worldwide from our strategic locations

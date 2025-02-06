@@ -38,7 +38,7 @@ const PageLoader = () => {
             <img 
               src={projexinoLogo} 
               alt="Projexino Logo" 
-              className="w-40 h-40 object-contain mix-blend-luminosity"
+              className="w-32 h-32 object-contain mix-blend-luminosity"
             />
           </motion.div>
           

@@ -22,7 +22,7 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full z-50 backdrop-blur-xl bg-gradient-to-b from-gray-900 via-gray-900 to-black"
+      className="fixed w-full z-50 backdrop-blur-xl bg-[#0A047D]"
       // style={{
       //   background: 'rgba(17, 25, 40, 0.75)',
       //   boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
