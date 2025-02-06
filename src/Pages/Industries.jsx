@@ -227,7 +227,12 @@ const Industries = () => {
                               end={parseInt(stat.value)}
                               duration={2.5}
                               suffix={stat.value.includes('+') ? '+' : '%'}
-                              enableScrollSpy
+                              delay={2.5}
+                              enableScrollSpy={false}
+                              start={0}
+                              useEasing={true}
+                              onStart={() => console.log(`Counter ${stat.label} started`)}
+                              onEnd={() => console.log(`Counter ${stat.label} finished`)}
                             />
                           </div>
                           <div className="text-gray-600 text-sm font-medium mt-1">{stat.label}</div>

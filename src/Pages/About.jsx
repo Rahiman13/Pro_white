@@ -238,39 +238,69 @@ const About = () => {
                 transition={{ delay: 0.8 }}
                 className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
               >
-                
                 {/* Projects Completed */}
-                <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300">
-                  <h3 className="text-4xl font-bold" style={{ color: '#19234d' }}>
-                    <CountUp start={0} end={500} duration={2.5} suffix="+" />
+                <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text mb-3">
+                  <h3 className="text-4xl font-bold" >
+                    <CountUp 
+                      start={0} 
+                      end={500} 
+                      duration={2.5} 
+                      suffix="+" 
+                      enableScrollSpy
+                      scrollSpyOnce
+                      delay={2.5}
+                    />
                   </h3>
-                  <p className="text-sm mt-2 text-gray-600">Projects Completed</p>
+                  <p className="text-sm mt-2 text-gray-600 font-medium">Projects Completed</p>
                 </div>
 
                 {/* Happy Clients */}
-                <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300">
-                  <h3 className="text-4xl font-bold" style={{ color: '#d9764a' }}>
-                    <CountUp start={0} end={200} duration={2.5} suffix="+" />
+                <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text mb-3">
+                  <h3 className="text-4xl font-bold" >
+                    <CountUp 
+                      start={0} 
+                      end={200} 
+                      duration={2.5} 
+                      suffix="+" 
+                      enableScrollSpy
+                      scrollSpyOnce
+                      delay={2.5}
+                    />
                   </h3>
-                  <p className="text-sm mt-2 text-gray-600">Happy Clients</p>
+                  <p className="text-sm mt-2 text-gray-600 font-medium">Happy Clients</p>
                 </div>
 
                 {/* Team Members */}
-                <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300">
-                  <h3 className="text-4xl font-bold" style={{ color: '#de7527' }}>
-                    <CountUp start={0} end={50} duration={2.5} suffix="+" />
+                <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text mb-3">
+                  <h3 className="text-4xl font-bold" >
+                    <CountUp 
+                      start={0} 
+                      end={50} 
+                      duration={2.5} 
+                      suffix="+" 
+                      enableScrollSpy
+                      scrollSpyOnce
+                      delay={2.5}
+                    />
                   </h3>
-                  <p className="text-sm mt-2 text-gray-600">Team Members</p>
+                  <p className="text-sm mt-2 text-gray-600 font-medium">Team Members</p>
                 </div>
 
                 {/* Years of Excellence */}
-                <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300">
-                  <h3 className="text-4xl font-bold" style={{ color: '#2b5a9e' }}>
-                    <CountUp start={0} end={10} duration={2.5} suffix="+" />
+                <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text mb-3">
+                  <h3 className="text-4xl font-bold" >
+                    <CountUp 
+                      start={0} 
+                      end={10} 
+                      duration={2.5} 
+                      suffix="+" 
+                      enableScrollSpy
+                      scrollSpyOnce
+                      delay={2.5}
+                    />
                   </h3>
-                  <p className="text-sm mt-2 text-gray-600">Years of Excellence</p>
+                  <p className="text-sm mt-2 text-gray-600 font-medium">Years of Excellence</p>
                 </div>
-
               </motion.div>
 
               {/* Enhanced Description with Glassmorphism */}
