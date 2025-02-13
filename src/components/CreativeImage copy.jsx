@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { FaCrown } from 'react-icons/fa';
-import Home from '../assets/HomeTab(400x600).jpg'
 
 const CreativeImage = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -74,7 +73,7 @@ const CreativeImage = () => {
           {/* Main Image with Royal Effects */}
           <motion.div className="relative w-full h-full overflow-hidden">
             <motion.img
-              src={Home}
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1000&auto=format&fit=crop&q=90"
               alt="Digital Excellence"
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
               style={{ 

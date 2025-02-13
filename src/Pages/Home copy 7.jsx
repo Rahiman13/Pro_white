@@ -8,26 +8,6 @@ import NetworkBackground from '../components/NetworkBackground';
 import CreativeImage from '../components/CreativeImage';
 import { useNavigate } from 'react-router-dom';
 import VideoModal from '../components/VideoModal';
-
-// imges
-import DesignAndArchitecture from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Design&Architecture.jpg';
-import Development from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Development&Testing.jpg';
-import Discovery from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Discovery&Planning.jpg';
-import Launch from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Launch&Support.jpg';
-
-import ECommercePlatform from '../assets/OurProjects_4Tabs(600x300)/E-CommercePlatform.jpg';
-import AI_PoweredAnalyticsPlatform from '../assets/OurProjects_4Tabs(600x300)/AI-PoweredAnalyticsPlatform.jpg';
-import MobileBankingApp from '../assets/OurProjects_4Tabs(600x300)/MobileBankingApp.jpg';
-import DeFiExchangePlatform from '../assets/OurProjects_4Tabs(600x300)/DeFiExchangePlatform.jpg';
-
-import Blockchain from '../assets/OurServices_6smallTabs(400x200)/Blockchain.jpg';
-import DigitalMarketing from '../assets/OurServices_6smallTabs(400x200)/DigitalMarketing.jpg';
-import AISolutions from '../assets/OurServices_6smallTabs(400x200)/AISolutions.jpg';
-import WebDevelopment from '../assets/OurServices_6smallTabs(400x200)/WebDevelopment.jpg';
-import MobileDevelopment from '../assets/OurServices_6smallTabs(400x200)/MobileDevelopment.jpg';
-import UIXDesign from '../assets/OurServices_6smallTabs(400x200)/UIUXDesign.jpg';
-
-
 // import ScrollBackground from '../components/ScrollBackground';
 
 const Home = () => {
@@ -139,7 +119,7 @@ const Home = () => {
     {
       title: 'Web Development',
       description: 'Custom websites and web applications built with modern technologies',
-      image: WebDevelopment,
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       icon: '💻',
       features: ['Custom Solutions', 'Responsive Design', 'Performance Optimization', 'SEO Integration'],
       color: 'from-blue-500 to-cyan-500',
@@ -149,7 +129,7 @@ const Home = () => {
     {
       title: 'Mobile Development',
       description: 'Native and cross-platform mobile applications',
-      image: MobileDevelopment,
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       icon: '📱',
       features: ['iOS & Android', 'Cross-Platform', 'UI/UX Design', 'App Store Optimization'],
       color: 'from-green-500 to-emerald-500',
@@ -159,7 +139,7 @@ const Home = () => {
     {
       title: 'UI/UX Design',
       description: 'User-centered design solutions that enhance engagement',
-      image: UIXDesign,
+      image: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       icon: '🎨',
       features: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing'],
       color: 'from-purple-500 to-pink-500',
@@ -169,7 +149,7 @@ const Home = () => {
     {
       title: 'Digital Marketing',
       description: 'Strategic digital marketing solutions for business growth',
-      image: DigitalMarketing,
+      image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       icon: '📈',
       features: ['SEO', 'Content Marketing', 'Social Media', 'Analytics'],
       color: 'from-orange-500 to-red-500',
@@ -179,7 +159,7 @@ const Home = () => {
     {
       title: 'AI Solutions',
       description: 'Implementing intelligent solutions to automate and enhance business processes',
-      image: AISolutions,
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       icon: '🤖',
       features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Predictive Analytics'],
       color: 'from-green-500 to-teal-500',
@@ -190,7 +170,7 @@ const Home = () => {
     {
       title: 'Blockchain',
       description: 'Building secure and transparent blockchain solutions for modern businesses',
-      image: Blockchain,
+      image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       icon: '⛓️',
       features: ['Smart Contracts', 'DeFi Solutions', 'NFT Platforms', 'Blockchain Integration'],
       color: 'from-yellow-500 to-orange-500',
@@ -206,7 +186,7 @@ const Home = () => {
       title: "AI-Powered Analytics Platform",
       category: "AI/ML",
       description: "Enterprise-level analytics platform with predictive insights",
-      image: AI_PoweredAnalyticsPlatform,
+      image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80",
       tech: ["Python", "TensorFlow", "React", "AWS"],
       link: "#"
     },
@@ -214,7 +194,7 @@ const Home = () => {
       title: "E-Commerce Platform",
       category: "Web Development",
       description: "Modern e-commerce solution with advanced features",
-      image: ECommercePlatform,
+      image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       tech: ["React", "Node.js", "MongoDB"],
       link: "#"
     },
@@ -222,7 +202,7 @@ const Home = () => {
       title: "DeFi Exchange Platform",
       category: "Blockchain",
       description: "Decentralized exchange with advanced trading features",
-      image: DeFiExchangePlatform,
+      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1350&q=80",
       tech: ["Solidity", "Web3.js", "React"],
       link: "#"
     },
@@ -230,7 +210,7 @@ const Home = () => {
       title: "Mobile Banking App",
       category: "Mobile Apps",
       description: "Next-gen banking experience for mobile users",
-      image: MobileBankingApp,
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1350&q=80",
       tech: ["React Native", "Firebase", "Node.js"],
       link: "#"
     }
@@ -391,7 +371,7 @@ const Home = () => {
                           <CountUp
                             end={stat.number}
                             duration={2.5}
-                            delay={2.5}
+                            delay={2}
                             enableScrollSpy={false}
                             start={0}
                             onEnd={() => console.log(`Counter ${stat.label} finished`)}
@@ -668,7 +648,7 @@ const Home = () => {
                     step: '01',
                     title: 'Discovery & Planning',
                     desc: 'We begin by understanding your vision, goals, and requirements. Our team conducts thorough research and analysis to create a strategic roadmap for your project.',
-                    image: Discovery,
+                    image: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
                     icon: '🎯',
                     details: [
                       'Requirements gathering',
@@ -681,7 +661,7 @@ const Home = () => {
                     step: '02',
                     title: 'Design & Architecture',
                     desc: 'Our design team creates intuitive and beautiful interfaces while our architects design robust and scalable systems to support your application.',
-                    image: DesignAndArchitecture,
+                    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
                     icon: '🎨',
                     details: [
                       'UI/UX design',
@@ -694,7 +674,7 @@ const Home = () => {
                     step: '03',
                     title: 'Development & Testing',
                     desc: 'We follow agile development practices, with regular testing and quality assurance throughout the development process.',
-                    image: Development,
+                    image: 'https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
                     icon: '⚙️',
                     details: [
                       'Agile development',
@@ -707,7 +687,7 @@ const Home = () => {
                     step: '04',
                     title: 'Launch & Support',
                     desc: 'We ensure a smooth deployment and provide ongoing support and maintenance to keep your application running perfectly.',
-                    image: Launch,
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
                     icon: '🚀',
                     details: [
                       'Deployment preparation',
@@ -1076,4 +1056,3 @@ const Home = () => {
 };
 
 export default Home;
-
