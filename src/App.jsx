@@ -20,6 +20,9 @@ import PageLoader from './components/PageLoader';
 import { Toaster } from 'react-hot-toast';
 import FloatingActionButton from './components/FloatingActionButton';
 import PrivacyPolicy from './Pages/privacypolicy';
+import BlogDetail from './Pages/BlogDetail';
+// import Unsubscriber from './Pages/Unsubscriber';
+import Unsubscribe from './Pages/Unsubscribe';
 
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
@@ -61,6 +64,7 @@ const App = () => {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:blogId" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/web-development" element={<WebDevelopment />} />
             <Route path="/services/app-development" element={<AppDevelopment />} />
@@ -68,6 +72,7 @@ const App = () => {
             <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
             <Route path="/services/staffing" element={<Staffing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
           </Routes>
           <Footer />
           <FloatingActionButton />

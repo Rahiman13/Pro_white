@@ -58,7 +58,13 @@ const Footer = () => {
                       Subscription Successful!
                     </p>
                     <p className="mt-1 text-sm text-gray-500">
-                      Welcome {name}! You're now subscribed to our newsletter.
+                      Welcome {name}! You're now subscribed to our newsletter. 
+                      <Link 
+                        to={`/unsubscribe?email=${email}`}
+                        className="text-blue-600 hover:text-blue-800 ml-1"
+                      >
+                        Manage subscription
+                      </Link>
                     </p>
                   </div>
                 </div>

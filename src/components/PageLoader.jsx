@@ -10,7 +10,7 @@ const PageLoader = () => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 bg-[#19234d]/40 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
+          className="fixed inset-0 bg-[#fff]/40 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
