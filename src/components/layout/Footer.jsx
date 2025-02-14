@@ -355,7 +355,7 @@ const Footer = () => {
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
                 <motion.a
                   key={item}
-                  href="#"
+                  href="/privacy-policy"
                   whileHover={{ scale: 1.05 }}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >

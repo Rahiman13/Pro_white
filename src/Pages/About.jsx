@@ -37,6 +37,7 @@ import {
   SiFirebase,
   SiRedux
 } from 'react-icons/si';
+import HeroImage from '../assets/AboutHero.jpg';
 
 const achievements = [
   {
@@ -294,7 +295,7 @@ const About = () => {
                   <h3 className="text-4xl font-bold" >
                     <CountUp 
                       start={0} 
-                      end={500} 
+                      end={99} 
                       duration={2.5} 
                       suffix="+" 
                       enableScrollSpy
@@ -310,7 +311,7 @@ const About = () => {
                   <h3 className="text-4xl font-bold" >
                     <CountUp 
                       start={0} 
-                      end={200} 
+                      end={110} 
                       duration={2.5} 
                       suffix="+" 
                       enableScrollSpy
@@ -326,7 +327,7 @@ const About = () => {
                   <h3 className="text-4xl font-bold" >
                     <CountUp 
                       start={0} 
-                      end={50} 
+                      end={30} 
                       duration={2.5} 
                       suffix="+" 
                       enableScrollSpy
@@ -342,7 +343,7 @@ const About = () => {
                   <h3 className="text-4xl font-bold" >
                     <CountUp 
                       start={0} 
-                      end={10} 
+                      end={5} 
                       duration={2.5} 
                       suffix="+" 
                       enableScrollSpy
@@ -390,7 +391,7 @@ const About = () => {
                 >
                   <div className="aspect-w-4 aspect-h-3 group">
                     <img
-                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                      src={HeroImage}
                       alt="Our Journey"
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
@@ -551,7 +552,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-gradient-to-br from-purple-50/80 via-white/80 to-blue-50/80 backdrop-blur-lg">
+      <section className="py-16 bg-gradient-to-br from-purple-50/80 via-white/80 to-blue-50/80 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -615,7 +616,7 @@ const About = () => {
       </section>
 
       {/* Enhanced Company Achievements Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-full">

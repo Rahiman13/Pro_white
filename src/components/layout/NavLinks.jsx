@@ -46,8 +46,8 @@ const NavLinks = ({ mobile }) => {
                 className={`flex items-center space-x-2 px-3 py-2 relative group`}
                 onClick={() => mobile && setHoveredService(!hoveredService)}
               >
-                <span className={`text-gray-300 group-hover:text-white transition-colors duration-300 ${
-                  location.pathname.includes(link.path) ? 'text-white font-semibold' : ''
+                <span className={`text-black group-hover:text-gray-800 transition-colors duration-300 ${
+                  location.pathname.includes(link.path) ? 'text-gray-900 font-bold' : ''
                 }`}>
                   {link.name}
                 </span>
@@ -55,13 +55,13 @@ const NavLinks = ({ mobile }) => {
                   animate={{ rotate: hoveredService ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <FaChevronDown className="text-sm text-gray-400 group-hover:text-white" />
+                  <FaChevronDown className="text-sm text-gray-600 group-hover:text-gray-800" />
                 </motion.div>
                 {location.pathname.includes(link.path) && (
                   <motion.div
-                    layoutId="activeIndicator"
+                    layoutId="navunderline"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
-                    initial={false}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
               </motion.button>
@@ -76,20 +76,20 @@ const NavLinks = ({ mobile }) => {
                     transition={{ duration: 0.2 }}
                     className={`${
                       mobile ? 'mt-2 ml-4' : 'absolute top-full left-0 mt-2 w-72'
-                    } bg-[#080362] backdrop-blur-xl rounded-2xl shadow-xl p-4 space-y-2 border border-white/10`}
+                    } bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 space-y-2 border border-gray-100`}
                   >
                     {services.map((service) => (
                       <motion.div
                         key={service.name}
-                        whileHover={{ x: 10, backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+                        whileHover={{ x: 10, backgroundColor: 'rgba(0, 0, 0, 0.02)' }}
                         className="group rounded-xl overflow-hidden"
                       >
                         <Link
                           to={service.path}
                           className={`block py-3 px-4 ${
                             location.pathname === service.path
-                              ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-white'
-                              : 'text-gray-300 hover:text-white'
+                              ? 'bg-gradient-to-r from-blue-600/10 to-purple-600/10 text-gray-900'
+                              : 'text-gray-600 hover:text-gray-900'
                           } transition-all duration-300`}
                         >
                           <div className="flex items-center space-x-3">
@@ -112,8 +112,8 @@ const NavLinks = ({ mobile }) => {
               to={link.path}
               className="relative group px-3 py-2 block"
             >
-              <span className={`text-gray-300 group-hover:text-white transition-colors duration-300 ${
-                location.pathname === link.path ? 'text-white font-semibold' : ''
+              <span className={`text-black group-hover:text-gray-800 transition-colors duration-300 ${
+                location.pathname === link.path ? 'text-gray-900 font-semibold' : ''
               }`}>
                 {link.name}
               </span>
@@ -124,9 +124,9 @@ const NavLinks = ({ mobile }) => {
               {/* Sliding underline indicator */}
               {location.pathname === link.path && (
                 <motion.div
-                  layoutId="activeIndicator"
+                  layoutId="navunderline"
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
-                  initial={false}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
               

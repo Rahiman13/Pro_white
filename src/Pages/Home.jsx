@@ -435,10 +435,10 @@ const Home = () => {
                   {/* Metrics Section */}
                   <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
                     {[
-                      { number: 500, suffix: '+', label: 'Projects Completed' },
-                      { number: 100, suffix: '%', label: 'Client Satisfaction' },
-                      { number: 50, suffix: '+', label: 'Team Experts' },
-                      { number: 10, suffix: '+', label: 'Years Experience' }
+                      { number: 99, suffix: '+', label: 'Projects Completed' },
+                      { number: 110, suffix: '+', label: 'Client Satisfaction' },
+                      { number: 30, suffix: '+', label: 'Team Experts' },
+                      { number: 5, suffix: '+', label: 'Years Experience' }
                     ].map((stat, index) => (
                       <motion.div
                         key={stat.label}

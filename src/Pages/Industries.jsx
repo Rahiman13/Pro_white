@@ -46,10 +46,10 @@ const Industries = () => {
   ];
 
   const stats = [
-    { value: '200+', label: 'Industry Projects' },
-    { value: '95%', label: 'Client Satisfaction' },
-    { value: '15+', label: 'Years Experience' },
-    { value: '50+', label: 'Industry Partners' }
+    { value: '99', suffix: '+', label: 'Industry Projects' },
+    { value: '110', suffix: '+', label: 'Happy Clients' },
+    { value: '30', suffix: '+', label: 'Team Experts' },
+    { value: '5', suffix: '+', label: 'Years Experience' }
   ];
 
   const solutions = [
@@ -226,7 +226,8 @@ const Industries = () => {
                             <CountUp
                               end={parseInt(stat.value)}
                               duration={2.5}
-                              suffix={stat.value.includes('+') ? '+' : '%'}
+                              suffix={stat.suffix}
+                              // suffix={stat.value.includes('+') ? '+' : '%'}
                               delay={2.5}
                               enableScrollSpy={false}
                               start={0}

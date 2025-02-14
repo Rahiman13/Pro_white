@@ -22,12 +22,11 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full z-50 backdrop-blur-xl bg-[#0A047D]"
-      // style={{
-      //   background: 'rgba(17, 25, 40, 0.75)',
-      //   boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-      //   borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
-      // }}
+      className="fixed w-full z-50 backdrop-blur-4xl bg-white/80"
+      style={{
+        background: 'rgba(255, 255, 255, 0.8)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
+      }}
     >
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -46,11 +45,11 @@ const Navbar = () => {
           >
             <Link to="/" className="flex items-center">
               <div className="relative w-28 h-16 rounded-xl overflow-hidden group">
-                <div className="absolute inset-0 bg-white/90 backdrop-blur-sm">
+                {/* <div className="absolute inset-0 bg-white/90 backdrop-blur-sm">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 animate-pulse"></div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-border-flow"></div>
-                <div className="absolute inset-[2px] bg-white flex items-center justify-center p-2 rounded-xl">
+                </div> */}
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-border-flow"></div> */}
+                <div className="absolute inset-[2px] bg-transparent flex items-center justify-center p-2 rounded-xl">
                   <div className="relative">
                     <img 
                       src={Logo} 

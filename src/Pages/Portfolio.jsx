@@ -173,10 +173,10 @@ const Portfolio = () => {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                 {[
-                  { number: 150, suffix: '+', label: 'Projects Completed' },
-                  { number: 50, suffix: '+', label: 'Happy Clients' },
-                  { number: 10, suffix: '+', label: 'Years Experience' },
-                  { number: 25, suffix: '+', label: 'Team Members' }
+                  { number: 99, suffix: '+', label: 'Projects Completed' },
+                  { number: 110, suffix: '+', label: 'Happy Clients' },
+                  { number: 30, suffix: '+', label: 'Years Experience' },
+                  { number: 5, suffix: '+', label: 'Team Members' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -185,7 +185,7 @@ const Portfolio = () => {
                     transition={{ delay: 1.5 + index * 0.1 }}
                     className="text-center p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300"
                   >
-                    <h3 className="text-3xl font-bold bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text">
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-[#2b5a9e] to-[#2b5a9e] text-transparent bg-clip-text">
                       <CountUp
                         end={stat.number}
                         duration={2.5}
@@ -227,24 +227,68 @@ const Portfolio = () => {
               transition={{ delay: 0.3 }}
               className="relative hidden lg:block"
             >
-              <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/20 to-[#d9764a]/20 mix-blend-overlay" />
-                <img
-                  src="/images/portfolio-hero.jpg"
-                  alt="Portfolio Showcase"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative w-full h-[600px] rounded-2xl overflow-hidden">
+                {/* Main Hero Image */}
+                <div className="relative w-full h-[500px] rounded-2xl overflow-hidden group">
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+                    alt="Portfolio Hero"
+                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#2b5a9e]/30 via-[#d9764a]/20 to-transparent mix-blend-overlay" />
+                </div>
+
+                {/* Floating Project Cards */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="absolute -bottom-20 -left-10 w-64 bg-white/80 backdrop-blur-lg rounded-xl p-4 shadow-lg"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa"
+                    alt="Real Estate Platform"
+                    className="w-full h-32 object-cover rounded-lg mb-3"
+                  />
+                  <h4 className="text-lg font-semibold text-gray-900">Real Estate Platform</h4>
+                  <p className="text-sm text-gray-600">Video marketing solution</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  className="absolute top-10 -right-10 w-64 bg-white/80 backdrop-blur-lg rounded-xl p-4 shadow-lg"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+                    alt="Healthcare App"
+                    className="w-full h-32 object-cover rounded-lg mb-3"
+                  />
+                  <h4 className="text-lg font-semibold text-gray-900">Healthcare App</h4>
+                  <p className="text-sm text-gray-600">Medical management solution</p>
+                </motion.div>
+
+                {/* Client Testimonials Section */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                   <div className="flex items-center gap-4">
                     <div className="flex -space-x-4">
-                      {[1, 2, 3].map((i) => (
-                        <img
-                          key={i}
-                          src={`/images/client-${i}.jpg`}
-                          alt={`Client ${i}`}
-                          className="w-12 h-12 rounded-full border-2 border-white"
-                        />
-                      ))}
+                      <img
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
+                        alt="Client 1"
+                        className="w-12 h-12 rounded-full border-2 border-white"
+                      />
+                      <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80"
+                        alt="Client 2"
+                        className="w-12 h-12 rounded-full border-2 border-white"
+                      />
+                      <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                        alt="Client 3"
+                        className="w-12 h-12 rounded-full border-2 border-white"
+                      />
                     </div>
                     <div className="text-white">
                       <p className="font-medium">Trusted by</p>

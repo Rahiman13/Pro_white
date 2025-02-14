@@ -19,6 +19,7 @@ import './styles/animations.css';
 import PageLoader from './components/PageLoader';
 import { Toaster } from 'react-hot-toast';
 import FloatingActionButton from './components/FloatingActionButton';
+import PrivacyPolicy from './Pages/privacypolicy';
 
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/services/web-design" element={<WebDesign />} />
             <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
             <Route path="/services/staffing" element={<Staffing />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Routes>
           <Footer />
           <FloatingActionButton />
