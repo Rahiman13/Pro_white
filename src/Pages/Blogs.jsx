@@ -55,7 +55,7 @@ const Blogs = () => {
     const matchesCategory = activeCategory === 'All' || blog.category === activeCategory;
     const matchesSearch = 
       blog.title.toLowerCase().includes(searchTerm) ||
-      blog.createdBy?.name.toLowerCase().includes(searchTerm) ||
+      blog.authorName.toLowerCase().includes(searchTerm) ||
       blog.category.toLowerCase().includes(searchTerm);
     
     return matchesCategory && matchesSearch;
@@ -184,11 +184,11 @@ const Blogs = () => {
                     <div className="flex items-center space-x-6">
                       <div className="flex items-center space-x-2">
                         <img
-                          src={featuredBlog.createdBy.imageUrl || 'https://ui-avatars.com/api/?name=' + featuredBlog.createdBy.name}
-                          alt={featuredBlog.createdBy.name}
+                          src={featuredBlog.authorImage || `https://ui-avatars.com/api/?name=${featuredBlog.authorName}`}
+                          alt={featuredBlog.authorName}
                           className="w-10 h-10 rounded-full border-2 border-white"
                         />
-                        <span>{featuredBlog.createdBy.name}</span>
+                        <span>{featuredBlog.authorName}</span>
                       </div>
                       <div className="flex items-center space-x-4 text-sm">
                         <span className="flex items-center"><FaCalendarAlt className="mr-2" />{formatDate(featuredBlog.createdAt)}</span>
@@ -282,14 +282,14 @@ const Blogs = () => {
                         <div className="flex items-center space-x-3">
                           <div className="relative">
                             <img
-                              src={blog.createdBy?.imageUrl || `https://ui-avatars.com/api/?name=${blog.createdBy?.name}`}
-                              alt={blog.createdBy?.name}
+                              src={blog.authorImage || `https://ui-avatars.com/api/?name=${blog.authorName}`}
+                              alt={blog.authorName}
                               className="w-10 h-10 rounded-full border-2 border-white shadow-lg"
                             />
                             <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900">{blog.createdBy?.name}</p>
+                            <p className="font-medium text-gray-900">{blog.authorName}</p>
                             <p className="text-sm text-gray-500">{formatDate(blog.createdAt)}</p>
                           </div>
                         </div>

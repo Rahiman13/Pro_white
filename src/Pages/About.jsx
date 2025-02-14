@@ -22,7 +22,10 @@ import {
   FaGithub,
   FaFigma,
   FaSass,
-  FaJs
+  FaJs,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaPhone
 } from 'react-icons/fa';
 import { 
   SiTypescript, 
@@ -37,51 +40,99 @@ import {
 
 const achievements = [
   {
-    year: '2023',
-    title: 'Global Excellence Award',
-    description: 'Recognized for outstanding innovation in digital transformation, serving over 100 enterprise clients worldwide.',
-    longDescription: 'Our commitment to excellence was acknowledged with the prestigious Global Excellence Award, highlighting our innovative approaches and successful digital transformation projects across multiple industries.',
-    image: 'https://images.unsplash.com/photo-1589561253898-768105ca91a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    year: '2017',
+    title: 'The Foundation',
+    description: 'Established Projexino Web Technologies LLP as a pioneering venture.',
+    longDescription: 'Started as a <span class="text-[#d9764a] font-semibold">one-person venture</span>, providing freelance web development services. Secured the <span class="text-[#2b5a9e] font-semibold">first major project</span>, a custom-built CMS. Focused on <span class="text-[#d9764a] font-semibold">PHP, WordPress, and custom web solutions</span> for early clients.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     stats: {
-      projectsDelivered: 150,
-      clientSatisfaction: '98%',
-      teamGrowth: '40%'
+      firstMilestone: 'Company Formation',
+      coreTechnologies: 3,
+      majorProjects: 1
     }
   },
   {
-    year: '2022',
-    title: 'Market Expansion',
-    description: 'Successfully expanded operations to 3 new international markets.',
-    longDescription: 'Strategic expansion into key markets across Asia and Europe, establishing strong partnerships and delivering innovative solutions to a diverse global client base.',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    year: '2018',
+    title: 'First Milestones',
+    description: 'Achieved ISO Recognition and Best MSME Award.',
+    longDescription: 'Received <span class="text-[#2b5a9e] font-semibold">ISO Recognition</span> and <span class="text-[#d9764a] font-semibold">Best MSME Award</span>. Team expanded with first full-time developer and designer. Diversified into <span class="text-[#2b5a9e] font-semibold">mobile app development</span>, completing over 15 successful projects.',
+    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     stats: {
-      newMarkets: 3,
-      newPartnerships: 12,
-      revenueGrowth: '60%'
+      awards: 2,
+      projectsDelivered: 15,
+      teamSize: '3+'
     }
   },
   {
-    year: '2021',
-    title: 'Innovation Milestone',
-    description: 'Launched groundbreaking AI-powered solutions platform.',
-    longDescription: 'Revolutionized the industry with our proprietary AI platform, enabling clients to achieve unprecedented levels of efficiency and innovation in their digital transformation journey.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    year: '2019',
+    title: 'Enterprise Solutions',
+    description: 'Expanded into enterprise-level solutions and international markets.',
+    longDescription: 'Developed first <span class="text-[#d9764a] font-semibold">enterprise-level SaaS product</span>. Expanded tech stack to include <span class="text-[#2b5a9e] font-semibold">ReactJS and Node.js</span>. Secured international clients while transitioning to <span class="text-[#d9764a] font-semibold">cloud-based deployments</span>.',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     stats: {
-      aiAccuracy: '99.9%',
-      processEfficiency: '75%',
-      clientAdoption: '85%'
+      globalExpansion: '3 Markets',
+      techStack: '2 New',
+      projectScale: '200%'
     }
   },
   {
     year: '2020',
-    title: 'Industry Recognition',
-    description: 'Named as one of the top 10 fastest-growing technology companies in the region.',
-    longDescription: 'Achieved remarkable growth and recognition in the technology sector, establishing ourselves as a leading innovator in digital solutions.',
+    title: 'Digital Transformation',
+    description: 'Pioneered remote-first model and AI solutions implementation.',
+    longDescription: 'Successfully shifted to <span class="text-[#2b5a9e] font-semibold">remote-first work model</span>. Developed <span class="text-[#d9764a] font-semibold">AI-powered chatbots</span> and automation solutions. Completed first <span class="text-[#2b5a9e] font-semibold">health-tech project</span> and strengthened DevOps capabilities.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    stats: {
+      projectsCompleted: '50+',
+      newTechnologies: 4,
+      clientRetention: '95%'
+    }
+  },
+  {
+    year: '2021',
+    title: 'Corporate Evolution',
+    description: 'Transformed into Projexino Solutions Pvt Ltd.',
+    longDescription: 'Registered as <span class="text-[#d9764a] font-semibold">Projexino Solutions Pvt Ltd</span>. Expanded into <span class="text-[#2b5a9e] font-semibold">AI analytics, cybersecurity, and blockchain</span> solutions. Secured first <span class="text-[#d9764a] font-semibold">government contract</span> and strengthened custom ERP offerings.',
     image: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     stats: {
-      ranking: 'Top 10',
-      growthRate: '200%',
-      recognition: '5 Awards'
+      newServices: 3,
+      teamGrowth: '100%',
+      majorContracts: 2
+    }
+  },
+  {
+    year: '2022',
+    title: 'Innovation Recognition',
+    description: 'Received Innovative Startup Award for AI solutions.',
+    longDescription: 'Launched <span class="text-[#2b5a9e] font-semibold">in-house SaaS platform</span> for small business workflow management. Expanded into <span class="text-[#d9764a] font-semibold">IoT and AI-powered automation</span>. Introduced <span class="text-[#2b5a9e] font-semibold">Progressive Web Apps (PWAs)</span> solutions.',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    stats: {
+      innovations: 'SaaS Platform',
+      newServices: 'IoT & PWA',
+      clientGrowth: '60%'
+    }
+  },
+  {
+    year: '2023',
+    title: 'Global Expansion',
+    description: 'Expanded presence in North America and Europe.',
+    longDescription: 'Partnered with <span class="text-[#d9764a] font-semibold">fintech and edtech startups</span>. Invested in <span class="text-[#2b5a9e] font-semibold">AI/ML R&D</span>. Enhanced security with <span class="text-[#d9764a] font-semibold">Zero Trust Architecture</span> and blockchain integration, surpassing 100+ successful deliveries.',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    stats: {
+      projectsDelivered: '100+',
+      newMarkets: 2,
+      techIntegrations: '5+'
+    }
+  },
+  {
+    year: '2024',
+    title: 'Innovation & Growth',
+    description: 'Awarded the ELEVATE Innovation Award.',
+    longDescription: 'Received <span class="text-[#2b5a9e] font-semibold">ELEVATE Innovation Award</span>. Strengthened <span class="text-[#d9764a] font-semibold">AI-driven tools</span> development. Expanded specialized team with <span class="text-[#2b5a9e] font-semibold">AI engineers and cloud architects</span>. Initiated training programs for new tech talent.',
+    image: 'https://images.unsplash.com/photo-1589561253898-768105ca91a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    stats: {
+      awards: 'ELEVATE Award',
+      newTools: 'AI Analysis',
+      teamGrowth: '40%'
     }
   }
 ];
@@ -630,8 +681,8 @@ const About = () => {
                               className="w-full h-40 object-cover rounded-xl mb-6"
                             />
                           )}
-                          <p className="text-gray-800 mb-4 text-left flex-grow">
-                            {achievement.longDescription || achievement.description}
+                          <p className="text-gray-800 mb-4 text-left flex-grow" 
+                             dangerouslySetInnerHTML={{ __html: achievement.longDescription || achievement.description }}>
                           </p>
                           {achievement.stats && (
                             <div className="grid grid-cols-3 gap-4 w-full mt-auto">
@@ -686,8 +737,8 @@ const About = () => {
                             className="w-full h-40 object-cover rounded-xl mb-6"
                           />
                         )}
-                        <p className="text-gray-800 mb-4 text-left flex-grow">
-                          {achievement.longDescription || achievement.description}
+                        <p className="text-gray-800 mb-4 text-left flex-grow" 
+                           dangerouslySetInnerHTML={{ __html: achievement.longDescription || achievement.description }}>
                         </p>
                         {achievement.stats && (
                           <div className="grid grid-cols-3 gap-4 w-full mt-auto">
@@ -865,19 +916,32 @@ const About = () => {
       </section>
 
       {/* Technology Stack Section */}
-      <section className="py-24 bg-gradient-to-br from-[#19234d]/5 via-white to-[#2b5a9e]/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl font-bold mb-4" style={{ color: '#19234d' }}>
-              Our{' '}
-              <span style={{ color: '#d9764a' }}>Tech Stack</span>
+      <section className="py-24 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-blue-900 to-purple-900">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div className="text-center mb-16">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="inline-flex items-center space-x-2 px-6 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6"
+            >
+              <span className="animate-pulse-fast w-2 h-2 rounded-full bg-blue-400"></span>
+              <span className="text-white/80 text-sm font-medium">Innovation Hub</span>
+            </motion.div>
+            
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+              Our Tech Stack
             </h2>
-            <p style={{ color: '#19234d' }} className="text-xl">
-              Cutting-edge technologies we work with
+            <p className="text-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text font-semibold">
+              Powering Your Digital Success
             </p>
           </motion.div>
 
@@ -885,19 +949,17 @@ const About = () => {
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative"
+                className={`group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300`}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/20 to-[#d9764a]/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <div className="relative p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all">
-                  <div className={`text-4xl ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
-                    {tech.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold" style={{ color: '#19234d' }}>
-                    {tech.name}
-                  </h3>
+                <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
+                <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
+                <div className="mt-4">
+                  <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
+                    Expert
+                  </span>
                 </div>
               </motion.div>
             ))}
@@ -907,6 +969,12 @@ const About = () => {
 
       {/* Global Presence Section */}
       <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute w-96 h-96 -left-12 -top-12 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute w-96 h-96 -right-12 -bottom-12 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -928,18 +996,47 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               className="space-y-6"
             >
-              {locations.map((location, index) => (
+              {[
+                {
+                  icon: <FaMapMarkerAlt className="text-2xl" />,
+                  title: 'Our Office',
+                  content: ['P No 305 Sa Society Khanamet', 'Kondapur, Hyderabad', 'Telangana 500084'],
+                  color: 'from-blue-500 to-cyan-500'
+                },
+                {
+                  icon: <FaEnvelope className="text-2xl" />,
+                  title: 'Email Us',
+                  content: ['contact@projexino.com'],
+                  color: 'from-purple-500 to-pink-500'
+                },
+                {
+                  icon: <FaPhone className="text-2xl" />,
+                  title: 'Call Us',
+                  content: ['+91 9601843090'],
+                  color: 'from-orange-500 to-red-500'
+                }
+              ].map((item, index) => (
                 <motion.div
-                  key={location.city}
+                  key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2 }}
-                  className="p-6 rounded-xl bg-gradient-to-r from-white to-gray-50 shadow-md hover:shadow-lg transition-all"
+                  className="group relative"
                 >
-                  <h3 className="text-xl font-bold mb-2" style={{ color: '#d9764a' }}>
-                    {location.city}
-                  </h3>
-                  <p className="text-gray-600">{location.address}</p>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300`} />
+                  <div className="relative p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 rounded-full bg-gradient-to-r ${item.color} text-white`}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                        {item.content.map((line, i) => (
+                          <p key={i} className="text-gray-600">{line}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -949,12 +1046,18 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/20 to-[#d9764a]/20 rounded-2xl transform rotate-3" />
-              <img
-                src="/images/world-map.svg"
-                alt="Global Presence"
-                className="relative z-10 w-full rounded-2xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-500"
-              />
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3027470973836!2d78.37669631487752!3d17.458982988030458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8f5d40e7%3A0x7f0c7b7c4dd42f39!2sKhanamet%2C%20Kondapur%2C%20Hyderabad%2C%20Telangana%20500084!5e0!3m2!1sen!2sin!4v1647850844221!5m2!1sen!2sin"
+                  width="100%"
+                  height="350"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  className="hover:opacity-90 transition-opacity duration-300"
+                ></iframe>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+              </div>
             </motion.div>
           </div>
         </div>

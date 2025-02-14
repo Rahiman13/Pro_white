@@ -14,36 +14,60 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: 'E-commerce Platform',
+      title: 'Real Estate Video Platform',
       category: 'Web Development',
-      image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      description: 'A full-featured online shopping platform',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      link: '#'
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Video marketing platform for real estate professionals (**BombBomb**)',
+      tech: ['Backend Development', 'UI Implementation', 'API Integration'],
+      link: 'https://bombbomb.com/'
     },
     {
-      title: 'Healthcare App',
+      title: 'Real Estate Management',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Property management and listing platform (**ExposioApp**)',
+      tech: ['Backend Architecture', 'Database Design', 'API Development'],
+      link: 'https://exposioapp.com/'
+    },
+    {
+      title: 'Online Education Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Educational platform for online learning (**Vidyakul**)',
+      tech: ['Business Analysis', 'Backend Development', 'System Architecture'],
+      link: 'https://vidyakul.com/'
+    },
+    {
+      title: 'Medical Application',
       category: 'App Development',
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      description: 'Mobile application for patient management',
-      tech: ['React Native', 'Firebase', 'Node.js'],
+      description: 'Healthcare management application (**IFEEILNCOLOR**)',
+      tech: ['Backend Development', 'Mobile App UI', 'Healthcare Integration'],
       link: '#'
     },
     {
-      title: 'Corporate Website',
-      category: 'Web Design',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      description: 'Modern website for a financial firm',
-      tech: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-      link: '#'
+      title: 'Manufacturing Portal',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Manufacturing management system (**Triveni**)',
+      tech: ['Full Stack Development', 'Process Automation', 'Reporting'],
+      link: 'https://thriveni.projexino.com/'
     },
     {
-      title: 'Social Media Campaign',
-      category: 'Digital Marketing',
-      image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      description: 'Successful marketing campaign for retail brand',
-      tech: ['Analytics', 'Social Media', 'Content Strategy'],
-      link: '#'
+      title: 'Printing Business Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Print business management system (**PG Printing**)',
+      tech: ['Web Development', 'Order Management', 'Customer Portal'],
+      link: 'https://pgprinting.projexino.com/'
+    },
+    {
+      title: 'Car Sales Application',
+      category: 'App Development',
+      image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Mobile app for car sales and management (**CTN Car**)',
+      tech: ['Backend Development', 'Database Design', 'API Integration'],
+      link: 'https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar'
     }
   ];
 
@@ -235,14 +259,14 @@ const Portfolio = () => {
       </section>
 
       {/* Rest of the content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4 py-12">
         {/* Category Filters */}
-        <div className="flex justify-center mb-12 gap-4 flex-wrap">
+        <div className="flex justify-center mb-8 sm:mb-12 gap-2 sm:gap-4 flex-wrap px-2 sm:px-0">
           {categories.map((category) => (
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300
+              className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-medium transition-all duration-300
                 ${activeCategory === category
                   ? 'bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-white shadow-lg'
                   : 'bg-white/80 backdrop-blur-sm text-gray-600 hover:bg-white'}`}
@@ -256,7 +280,7 @@ const Portfolio = () => {
 
         {/* Projects Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 projects-grid"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 projects-grid"
           layout
         >
           <AnimatePresence mode="wait">
@@ -270,28 +294,28 @@ const Portfolio = () => {
                 className="group w-full"
               >
                 {/* Windows-style Folder Container */}
-                <div className="relative w-full h-[420px] bg-white rounded-lg shadow-lg hover:shadow-xl 
+                <div className="relative w-full h-auto min-h-[455px] sm:h-[450px] bg-white rounded-lg shadow-lg hover:shadow-xl 
                   transition-all duration-300 border border-gray-200">
                   {/* Folder Header - Windows Style */}
-                  <div className="bg-[#f0f0f0] px-4 py-2 rounded-t-lg border-b border-gray-300 
+                  <div className="bg-[#f0f0f0] px-2 sm:px-4 py-2 rounded-t-lg border-b border-gray-300 
                     flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+                    <div className="flex items-center gap-1 sm:gap-2">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z" />
                       </svg>
-                      <span className="text-sm font-medium text-gray-700">{project.category}</span>
+                      <span className="text-xs sm:text-sm font-medium text-gray-700">{project.category}</span>
                     </div>
-                    <div className="flex gap-2">
-                      <button className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
-                      <button className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
-                      <button className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500" />
+                    <div className="flex gap-1 sm:gap-2">
+                      <button className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
+                      <button className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
+                      <button className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-400 hover:bg-red-500" />
                     </div>
                   </div>
 
                   {/* Folder Content */}
-                  <div className="p-4">
+                  <div className="p-2 sm:p-4">
                     {/* Project Image */}
-                    <div className="w-full h-48 mb-4 rounded overflow-hidden bg-gray-100 border border-gray-200">
+                    <div className="w-full h-32 sm:h-48 mb-2 sm:mb-4 rounded overflow-hidden bg-gray-100 border border-gray-200">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -301,16 +325,20 @@ const Portfolio = () => {
                     </div>
 
                     {/* Project Info */}
-                    <div className="space-y-3">
-                      <h3 className="text-xl font-semibold text-gray-900 line-clamp-1">{project.title}</h3>
-                      <p className="text-gray-600 text-sm line-clamp-2">{project.description}</p>
+                    <div className="space-y-2 sm:space-y-3">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 line-clamp-1">{project.title}</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                        {project.description.split('**').map((part, index) => 
+                          index % 2 === 0 ? part : <strong key={index}>{part}</strong>
+                        )}
+                      </p>
 
                       {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1 sm:gap-1.5">
                         {project.tech.map(tech => (
                           <span
                             key={tech}
-                            className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded"
+                            className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded"
                           >
                             {tech}
                           </span>
@@ -322,19 +350,16 @@ const Portfolio = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium mt-2"
+                        className="inline-flex items-center gap-1 sm:gap-2 text-blue-600 hover:text-blue-700 text-xs sm:text-sm font-medium mt-2"
                         whileHover={{ x: 5 }}
                       >
                         Open Folder
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </motion.a>
                     </div>
                   </div>
-
-                  {/* Folder Bottom Edge */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
                 </div>
               </motion.div>
             ))}

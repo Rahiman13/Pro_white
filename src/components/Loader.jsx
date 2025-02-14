@@ -23,7 +23,7 @@ const Loader = ({ isLoading }) => {
               repeatType: "reverse",
               ease: "easeInOut"
             }}
-            className="w-32 h-32 flex items-center justify-center"
+            className="w-28 h-28 flex items-center justify-center"
           >
             <img src={Logo} alt="Logo" className="w-full h-full" />
           </motion.div>

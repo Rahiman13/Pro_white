@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import VideoModal from '../components/VideoModal';
 
 // imges
+
 import DesignAndArchitecture from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Design&Architecture.jpg';
 import Development from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Development&Testing.jpg';
 import Discovery from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Discovery&Planning.jpg';
@@ -24,7 +25,7 @@ import Blockchain from '../assets/OurServices_6smallTabs(400x200)/Blockchain.jpg
 import DigitalMarketing from '../assets/OurServices_6smallTabs(400x200)/DigitalMarketing.jpg';
 import AISolutions from '../assets/OurServices_6smallTabs(400x200)/AISolutions.jpg';
 import WebDevelopment from '../assets/OurServices_6smallTabs(400x200)/WebDevelopment.jpg';
-import MobileDevelopment from '../assets/OurServices_6smallTabs(400x200)/MobileDevelopment.jpg';
+import MobileDevelopment from '../assets/OurServices_6smallTabs(400x200)/AppDevelopment.jpg';
 import UIXDesign from '../assets/OurServices_6smallTabs(400x200)/UIUXDesign.jpg';
 
 
@@ -44,18 +45,18 @@ const Home = () => {
 
   const features = [
     {
-      title: 'Custom Development',
-      description: 'Tailored solutions built specifically for your business needs',
+      title: 'Tailored Development',
+      description: 'Custom solutions designed to meet the unique needs of your business.',
       icon: <FaCode className="text-2xl" />
     },
     {
-      title: 'Innovation First',
-      description: 'Cutting-edge technologies and modern development practices',
+      title: 'Innovation at the Core',
+      description: 'Leveraging advanced technologies and contemporary development practices.',
       icon: <FaLightbulb className="text-2xl" />
     },
     {
-      title: 'Rapid Deployment',
-      description: 'Quick and efficient delivery without compromising quality',
+      title: 'Fast Track Delivery',
+      description: 'Swift and efficient execution, ensuring quality is never compromised.',
       icon: <FaRocket className="text-2xl" />
     },
     // {
@@ -64,8 +65,8 @@ const Home = () => {
     //   icon: <FaCode className="text-2xl" />
     // },
     {
-      title: 'Cloud Integration',
-      description: 'Seamless integration with cloud services for scalability',
+      title: 'Cloud Connectivity',
+      description: 'Effortless integration with cloud services to ensure scalability and flexibility.',
       icon: <FaCloud className="text-2xl" />
     },
     // {
@@ -201,38 +202,97 @@ const Home = () => {
   ];
 
 
+  // const projects = [
+  //   {
+  //     title: "AI-Powered Analytics Platform",
+  //     category: "AI/ML",
+  //     description: "Enterprise-level analytics platform with predictive insights",
+  //     image: AI_PoweredAnalyticsPlatform,
+  //     tech: ["Python", "TensorFlow", "React", "AWS"],
+  //     link: "#"
+  //   },
+  //   {
+  //     title: "E-Commerce Platform",
+  //     category: "Web Development",
+  //     description: "Modern e-commerce solution with advanced features",
+  //     image: ECommercePlatform,
+  //     tech: ["React", "Node.js", "MongoDB"],
+  //     link: "#"
+  //   },
+  //   {
+  //     title: "DeFi Exchange Platform",
+  //     category: "Blockchain",
+  //     description: "Decentralized exchange with advanced trading features",
+  //     image: DeFiExchangePlatform,
+  //     tech: ["Solidity", "Web3.js", "React"],
+  //     link: "#"
+  //   },
+  //   {
+  //     title: "Mobile Banking App",
+  //     category: "Mobile Apps",
+  //     description: "Next-gen banking experience for mobile users",
+  //     image: MobileBankingApp,
+  //     tech: ["React Native", "Firebase", "Node.js"],
+  //     link: "#"
+  //   }
+  // ];
+
   const projects = [
     {
-      title: "AI-Powered Analytics Platform",
-      category: "AI/ML",
-      description: "Enterprise-level analytics platform with predictive insights",
-      image: AI_PoweredAnalyticsPlatform,
-      tech: ["Python", "TensorFlow", "React", "AWS"],
-      link: "#"
+      title: 'Real Estate Video Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Video marketing platform for real estate professionals (**BombBomb**)',
+      tech: ['Backend Development', 'UI Implementation', 'API Integration'],
+      link: 'https://bombbomb.com/'
     },
     {
-      title: "E-Commerce Platform",
-      category: "Web Development",
-      description: "Modern e-commerce solution with advanced features",
-      image: ECommercePlatform,
-      tech: ["React", "Node.js", "MongoDB"],
-      link: "#"
+      title: 'Real Estate Management',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Property management and listing platform (**ExposioApp**)',
+      tech: ['Backend Architecture', 'Database Design', 'API Development'],
+      link: 'https://exposioapp.com/'
     },
     {
-      title: "DeFi Exchange Platform",
-      category: "Blockchain",
-      description: "Decentralized exchange with advanced trading features",
-      image: DeFiExchangePlatform,
-      tech: ["Solidity", "Web3.js", "React"],
-      link: "#"
+      title: 'Online Education Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Educational platform for online learning (**Vidyakul**)',
+      tech: ['Business Analysis', 'Backend Development', 'System Architecture'],
+      link: 'https://vidyakul.com/'
     },
     {
-      title: "Mobile Banking App",
-      category: "Mobile Apps",
-      description: "Next-gen banking experience for mobile users",
-      image: MobileBankingApp,
-      tech: ["React Native", "Firebase", "Node.js"],
-      link: "#"
+      title: 'Medical Application',
+      category: 'App Development',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Healthcare management application (**IFEEILNCOLOR**)',
+      tech: ['Backend Development', 'Mobile App UI', 'Healthcare Integration'],
+      link: '#'
+    },
+    {
+      title: 'Manufacturing Portal',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Manufacturing management system (**Triveni**)',
+      tech: ['Full Stack Development', 'Process Automation', 'Reporting'],
+      link: 'https://thriveni.projexino.com/'
+    },
+    {
+      title: 'Printing Business Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Print business management system (**PG Printing**)',
+      tech: ['Web Development', 'Order Management', 'Customer Portal'],
+      link: 'https://pgprinting.projexino.com/'
+    },
+    {
+      title: 'Car Sales Application',
+      category: 'App Development',
+      image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      description: 'Mobile app for car sales and management (**CTN Car**)',
+      tech: ['Backend Development', 'Database Design', 'API Integration'],
+      link: 'https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar'
     }
   ];
 
@@ -284,7 +344,7 @@ const Home = () => {
         <div className="bg-white">
           {/* Hero Section */}
           <section className="hero-section relative overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
-          <NetworkBackground />
+            <NetworkBackground />
             {/* Main Content */}
             <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -310,8 +370,8 @@ const Home = () => {
                         </span>
                       </div>
                     </div>
-                    <span 
-                      className="text-transparent bg-clip-text" 
+                    <span
+                      className="text-transparent bg-clip-text"
                       style={{ backgroundImage: 'linear-gradient(to right, #2b5a9e, #d9764a)' }}>
                       Innovating the Future
                     </span>
@@ -349,7 +409,7 @@ const Home = () => {
                     className="text-xl mb-8 leading-relaxed"
                     style={{ color: '#2b5a9e' }}
                   >
-                    Transform your digital presence with cutting-edge solutions that drive growth and innovation.
+                    Elevate your digital presence with innovative solutions designed to foster growth and spark creativity.
                   </motion.p>
 
                   {/* Enhanced CTA Buttons */}
@@ -428,25 +488,7 @@ const Home = () => {
 
             <div className="max-w-full overflow-hidden">
               <div className="relative">
-                {/* Infinite Carousel */}
-                <motion.div
-                  className="flex gap-12 items-center"
-                  animate={{
-                    x: [-2000, 0]
-                  }}
-                  transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    ease: "linear",
-                    repeatDelay: 0
-                  }}
-                  style={{
-                    width: "fit-content",
-                    position: "relative",
-                    willChange: "transform"
-                  }}
-                >
+                <div className="flex gap-12 items-center animate-infinite-scroll">
                   {[...Array(2)].map((_, i) => (
                     <div key={i} className="flex gap-12 items-center">
                       {[
@@ -487,9 +529,8 @@ const Home = () => {
                           color: 'from-teal-500 to-cyan-600'
                         }
                       ].map((highlight) => (
-                        <motion.div
+                        <div
                           key={highlight.label}
-                          whileHover={{ scale: 1.05 }}
                           className="flex items-center justify-center group"
                         >
                           <div className="relative p-4 bg-white/70 backdrop-blur-sm rounded-lg 
@@ -506,14 +547,12 @@ const Home = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 via-purple-600/0 to-blue-600/0 
-                              group-hover:via-purple-600/5 rounded-lg transition-all duration-500" />
                           </div>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   ))}
-                </motion.div>
+                </div>
               </div>
             </div>
           </section>
@@ -533,9 +572,9 @@ const Home = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-5xl font-bold  mb-4 text-[#19234d]">
-                  Why Choose{' '}
+                  Why Partner with{' '}
                   <span className="bg-gradient-to-r from-[#de7527] to-[#de7527] text-transparent bg-clip-text">
-                    Us
+                    Us ?
                   </span>
                 </h2>
 
@@ -655,10 +694,10 @@ const Home = () => {
                 <h2 className="text-5xl font-bold text-[#19234d] mb-4">
                   Our Development{' '}
                   <span className="bg-gradient-to-r from-[#de7527] to-[#de7527] text-transparent bg-clip-text">
-                    Process
+                    Journey
                   </span>
                 </h2>
-                <p className="text-xl text-gray-600">From Concept to Reality</p>
+                <p className="text-xl text-gray-600">Turning Ideas into Reality, Step by Step</p>
               </motion.div>
 
               {/* Process Steps */}
@@ -666,54 +705,54 @@ const Home = () => {
                 {[
                   {
                     step: '01',
-                    title: 'Discovery & Planning',
-                    desc: 'We begin by understanding your vision, goals, and requirements. Our team conducts thorough research and analysis to create a strategic roadmap for your project.',
+                    title: 'Discovery & Strategy Planning',
+                    desc: 'We begin by fully understanding your vision, objectives, and requirements. Our team conducts thorough research and analysis to create a strategic roadmap that ensures the success of your project.',
                     image: Discovery,
                     icon: '🎯',
                     details: [
-                      'Requirements gathering',
-                      'Market research',
-                      'Project scope definition',
-                      'Timeline planning'
+                      'Detailed Requirement Gathering',
+                      'In-Depth Market Analysis',
+                      'Clear Scope Definition',
+                      'Precise Timeline Development'
                     ]
                   },
                   {
                     step: '02',
-                    title: 'Design & Architecture',
-                    desc: 'Our design team creates intuitive and beautiful interfaces while our architects design robust and scalable systems to support your application.',
+                    title: 'Design & System Architecture',
+                    desc: 'Our design professionals create intuitive, visually engaging interfaces, while our architects develop robust, scalable systems to ensure seamless application performance.',
                     image: DesignAndArchitecture,
                     icon: '🎨',
                     details: [
-                      'UI/UX design',
-                      'System architecture',
-                      'Technology stack selection',
-                      'Design prototyping'
+                      'UI/UX Design & Optimization',
+                      'Scalable System Architecture',
+                      'Expert Technology Stack Selection',
+                      'Interactive Design Prototyping'
                     ]
                   },
                   {
                     step: '03',
-                    title: 'Development & Testing',
-                    desc: 'We follow agile development practices, with regular testing and quality assurance throughout the development process.',
+                    title: 'Agile Development & Quality Testing',
+                    desc: 'We utilize agile development practices, ensuring regular testing and continuous quality assurance to deliver high-performance solutions.',
                     image: Development,
                     icon: '⚙️',
                     details: [
-                      'Agile development',
-                      'Continuous integration',
-                      'Quality assurance',
-                      'Performance optimization'
+                      'Agile Software Development',
+                      'Continuous Integration & Deployment',
+                      'Comprehensive Quality Assurance',
+                      'Performance & Speed Optimization'
                     ]
                   },
                   {
                     step: '04',
-                    title: 'Launch & Support',
-                    desc: 'We ensure a smooth deployment and provide ongoing support and maintenance to keep your application running perfectly.',
+                    title: 'Seamless Launch & Ongoing Support',
+                    desc: 'We guarantee a smooth deployment and offer continuous support and maintenance to ensure your application operates flawlessly.',
                     image: Launch,
                     icon: '🚀',
                     details: [
-                      'Deployment preparation',
-                      'Performance monitoring',
-                      'User training',
-                      'Ongoing maintenance'
+                      'Efficient Deployment Preparation',
+                      'Real-Time Performance Monitoring',
+                      'Comprehensive User Training',
+                      'Reliable Ongoing Maintenance & Support'
                     ]
                   }
                 ].map((phase, index) => (
@@ -985,7 +1024,7 @@ const Home = () => {
                     className="group w-full"
                   >
                     {/* Windows-style Folder Container */}
-                    <div className="relative w-full h-[420px] bg-white rounded-lg shadow-lg hover:shadow-xl 
+                    <div className="relative w-full h-[440px] bg-white rounded-lg shadow-lg hover:shadow-xl 
                       transition-all duration-300 border border-gray-200">
                       {/* Folder Header - Windows Style */}
                       <div className="bg-[#f0f0f0] px-4 py-2 rounded-t-lg border-b border-gray-300 
@@ -1018,8 +1057,11 @@ const Home = () => {
                         {/* Project Info */}
                         <div className="space-y-3">
                           <h3 className="text-xl font-semibold text-gray-900 line-clamp-1">{project.title}</h3>
-                          <p className="text-gray-600 text-sm line-clamp-2">{project.description}</p>
-
+                          <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                            {project.description.split('**').map((part, index) =>
+                              index % 2 === 0 ? part : <strong key={index} className="text-[#d9764a]">{part}</strong>
+                            )}
+                          </p>
                           {/* Tech Stack */}
                           <div className="flex flex-wrap gap-1.5">
                             {project.tech.map(tech => (

@@ -301,7 +301,7 @@ const AppDevelopment = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -310,40 +310,52 @@ const AppDevelopment = () => {
                 transition={{ delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-2xl h-[400px]"
               >
+                {/* Background Image */}
                 <div className="absolute inset-0">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover will-change-transform transition-transform duration-700 group-hover:scale-110"
                   />
-                  {/* Initial icon overlay (visible by default) */}
+                  
+                  {/* Initial State - Logo at bottom left */}
                   <div className="absolute bottom-6 left-6">
-                    <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center transform transition-all duration-500 group-hover:scale-0">
+                    <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center transform transition-all duration-300 group-hover:translate-y-[200%]">
                       <div className="text-4xl text-white">{service.icon}</div>
                     </div>
                   </div>
-                  {/* Content overlay (visible on hover) */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Hover State - Dark Overlay */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
                 </div>
-                <div className="absolute inset-x-0 bottom-0">
-                  <div className="p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+
+                {/* Content - Hidden by Default */}
+                <div 
+                  className="absolute inset-x-0 bottom-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
+                >
+                  <div className="p-6 bg-gradient-to-t from-black/95 to-black/80 backdrop-blur-sm">
                     <div className="flex items-center space-x-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
                         <span className="text-3xl text-white">{service.icon}</span>
                       </div>
                       <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                     </div>
-                    <p className="text-gray-200 mb-4">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.benefits.map((benefit) => (
-                        <li key={benefit} className="flex items-center text-gray-200">
-                          <span className="w-2 h-2 bg-white rounded-full mr-2" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
+
+                    <div className="space-y-4">
+                      <p className="text-gray-200">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2">
+                        {service.benefits.map((benefit) => (
+                          <li key={benefit} className="flex items-center text-gray-200">
+                            <span className="w-2 h-2 bg-white rounded-full mr-2" />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </motion.div>

@@ -4,11 +4,10 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { 
   FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaGithub,
-  FaMapMarkerAlt, FaPhone, FaEnvelope, FaArrowRight
+  FaMapMarkerAlt, FaPhone, FaEnvelope, FaArrowRight, FaYoutube
 } from 'react-icons/fa';
 import Logo from '../../assets/projexino.png';
 import BaseUrl from '../../API';
-
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -179,11 +178,14 @@ const Footer = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-purple-200 backdrop-blur-sm rounded-2xl group-hover:from-blue-100 group-hover:to-purple-100 transition-all duration-300"></div>
               <Link to="/" className="relative p-6 block">
-                <img 
-                  src={Logo} 
-                  alt="Projexino" 
-                  className="w-full h-auto max-w-[200px] mx-auto" 
-                />
+                <div className="relative">
+                  <img 
+                    src={Logo} 
+                    alt="Projexino" 
+                    className="w-full h-auto max-w-[200px] mx-auto" 
+                  />
+                  <span className="absolute -top-2 -right-1 text-[1.2rem] font-bold text-[#0A047D]">™</span>
+                </div>
               </Link>
             </motion.div>
             <p className="text-gray-400 mb-8 text-lg leading-relaxed font-light">
@@ -191,18 +193,43 @@ const Footer = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               {[
-                { icon: <FaFacebookF size={18} />, link: '#', label: 'Facebook' },
-                { icon: <FaTwitter size={18} />, link: '#', label: 'Twitter' },
-                { icon: <FaLinkedinIn size={18} />, link: '#', label: 'LinkedIn' },
-                { icon: <FaInstagram size={18} />, link: '#', label: 'Instagram' },
-                // { icon: <FaGithub size={18} />, link: '#', label: 'GitHub' }
+                { 
+                  icon: <FaFacebookF size={18} />, 
+                  link: 'https://www.facebook.com/profile.php?id=61571638723890', 
+                  label: 'Facebook',
+                  bgColor: 'bg-[#1877F2] hover:bg-[#1877F2]/90',
+                  textColor: 'text-white'
+                },
+                { 
+                  icon: <FaYoutube size={18} />, 
+                  link: 'https://www.youtube.com/@projexinosolutionspvtltd', 
+                  label: 'Youtube',
+                  bgColor: 'bg-[#FF0000] hover:bg-[#FF0000]/90',
+                  textColor: 'text-white'
+                },
+                { 
+                  icon: <FaLinkedinIn size={18} />, 
+                  link: 'https://www.linkedin.com/company/projexino/about/', 
+                  label: 'LinkedIn',
+                  bgColor: 'bg-[#0A66C2] hover:bg-[#0A66C2]/90',
+                  textColor: 'text-white'
+                },
+                { 
+                  icon: <FaInstagram size={18} />, 
+                  link: 'https://www.instagram.com/projexinosolutionspvtltd/?hl=en', 
+                  label: 'Instagram',
+                  bgColor: 'bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:opacity-90',
+                  textColor: 'text-white'
+                }
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   whileHover={{ y: -3 }}
-                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-colors duration-300"
+                  className={`w-10 h-10 rounded-full ${social.bgColor} ${social.textColor} flex items-center justify-center transition-all duration-300`}
                 >
                   {social.icon}
                 </motion.a>

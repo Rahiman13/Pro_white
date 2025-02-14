@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaHandshake } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaHandshake, FaYoutube } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
 
 const Contact = () => {
@@ -105,20 +105,40 @@ const Contact = () => {
             {/* Social Media Links */}
             <div className="flex gap-4 mt-8">
               {[
-                { icon: <FaFacebook />, href: '#', color: 'bg-[#0077B5]' },
-                { icon: <FaLinkedin />, href: '#', color: 'bg-[#0077B5]' },
-                { icon: <FaTwitter />, href: '#', color: 'bg-[#1DA1F2]' },
-
-                { icon: <FaInstagram />, href: '#', color: 'bg-[#C13584]' }
+                { 
+                  icon: <FaFacebook />, 
+                  href: 'https://www.facebook.com/profile.php?id=61571638723890', 
+                  color: 'bg-[#1877F2] hover:bg-[#1864D9]' // Facebook blue
+                },
+                
+                { 
+                  icon: <FaYoutube />, 
+                  href: 'https://www.youtube.com/@projexinosolutionspvtltd', 
+                  color: 'bg-[#FF0000] hover:bg-[#D90000]' // YouTube red
+                },
+                
+                { 
+                  icon: <FaLinkedin />, 
+                  href: 'https://www.linkedin.com/company/projexino/about/', 
+                  color: 'bg-[#0A66C2] hover:bg-[#0952A0]' // LinkedIn blue
+                },
+                { 
+                  icon: <FaInstagram />, 
+                  href: 'https://www.instagram.com/projexinosolutionspvtltd/?hl=en', 
+                  color: 'bg-gradient-to-tr from-[#FD5949] via-[#D6249F] to-[#285AEB] hover:opacity-90' // Instagram gradient
+                }
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`${social.color} p-3 rounded-full text-white hover:shadow-lg transition-all duration-300`}
+                  className={`${social.color} p-3 rounded-full text-white shadow-lg transition-all duration-300`}
                 >
-                  {social.icon}
+                  <i className="text-xl">
+                    {social.icon}
+                  </i>
                 </motion.a>
               ))}
             </div>

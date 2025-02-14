@@ -51,11 +51,14 @@ const Navbar = () => {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-border-flow"></div>
                 <div className="absolute inset-[2px] bg-white flex items-center justify-center p-2 rounded-xl">
-                  <img 
-                    src={Logo} 
-                    alt="Projexino"
-                    className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300"
-                  />
+                  <div className="relative">
+                    <img 
+                      src={Logo} 
+                      alt="Projexino"
+                      className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <span className="absolute -top-1 -right-1 text-[0.8rem] font-semibold text-[#0A047D]">™</span>
+                  </div>
                 </div>
               </div>
             </Link>

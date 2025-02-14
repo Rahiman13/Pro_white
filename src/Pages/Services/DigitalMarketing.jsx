@@ -26,6 +26,13 @@ import {
 } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
 
+
+// images
+import SeoOptimization from '../../assets/DigitalMarketing/SeoOptimization.jpg';
+import SocialMediaMarketing from '../../assets/DigitalMarketing/SocialMedia.jpg';
+import ContentMarketing from '../../assets/DigitalMarketing/ContentWriting.jpg';
+import EmailMarketing from '../../assets/DigitalMarketing/EmailMarketing.jpg';
+
 const DigitalMarketing = () => {
   const navigate = useNavigate();
 
@@ -34,7 +41,7 @@ const DigitalMarketing = () => {
       title: 'Search Engine Optimization',
       description: 'Boost your online visibility with data-driven SEO strategies',
       icon: <FaSearchDollar className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      image: SeoOptimization,
       color: 'from-blue-800 to-blue-900',
       benefits: ['Keyword Research', 'On-Page SEO', 'Technical SEO', 'Link Building']
     },
@@ -42,7 +49,7 @@ const DigitalMarketing = () => {
       title: 'Social Media Marketing',
       description: 'Engage and grow your audience across social platforms',
       icon: <FaHashtag className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      image: SocialMediaMarketing,
       color: 'from-purple-800 to-purple-900',
       benefits: ['Content Strategy', 'Community Management', 'Paid Advertising', 'Analytics']
     },
@@ -50,7 +57,7 @@ const DigitalMarketing = () => {
       title: 'Content Marketing',
       description: 'Create compelling content that converts visitors into customers',
       icon: <FaPenFancy className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      image: ContentMarketing,
       color: 'from-green-800 to-green-900',
       benefits: ['Blog Writing', 'Email Campaigns', 'Video Content', 'Infographics']
     },
@@ -58,7 +65,7 @@ const DigitalMarketing = () => {
       title: 'Email Marketing',
       description: 'Build lasting relationships through targeted email campaigns',
       icon: <FaMailBulk className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      image: EmailMarketing,
       color: 'from-red-800 to-red-900',
       benefits: ['List Building', 'Automation', 'A/B Testing', 'Analytics']
     }

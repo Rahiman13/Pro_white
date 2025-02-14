@@ -10,7 +10,7 @@ const PageLoader = () => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 bg-[#19234d]/70 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
+          className="fixed inset-0 bg-[#19234d]/40 backdrop-blur-sm z-50 flex flex-col items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -38,7 +38,7 @@ const PageLoader = () => {
             <img 
               src={projexinoLogo} 
               alt="Projexino Logo" 
-              className="w-32 h-32 object-contain mix-blend-luminosity"
+              className="w-28 h-28 object-contain mix-blend-luminosity"
             />
           </motion.div>
           
