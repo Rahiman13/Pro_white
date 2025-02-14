@@ -31,6 +31,9 @@ const Footer = () => {
         })
       });
 
+      const data = await response.json();
+      console.log('Server response:', data);
+
       if (response.ok) {
         toast.custom(
           (t) => (
@@ -60,7 +63,7 @@ const Footer = () => {
                     <p className="mt-1 text-sm text-gray-500">
                       Welcome {name}! You're now subscribed to our newsletter. 
                       <Link 
-                        to={`/unsubscribe?email=${email}`}
+                        to={`/unsubscribe/${encodeURIComponent(email)}`}
                         className="text-blue-600 hover:text-blue-800 ml-1"
                       >
                         Manage subscription
@@ -86,10 +89,11 @@ const Footer = () => {
         );
         setEmail('');
       } else {
-        throw new Error('Failed to subscribe');
+        throw new Error(data.message || 'Failed to subscribe');
       }
     } catch (error) {
-      toast.error('Failed to subscribe. Please try again.', {
+      console.log('Full error details:', error);
+      toast.error(error.message || 'Failed to subscribe. Please try again.', {
         position: 'top-center',
         duration: 3000,
         style: {

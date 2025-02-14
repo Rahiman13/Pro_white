@@ -72,7 +72,7 @@ const App = () => {
             <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
             <Route path="/services/staffing" element={<Staffing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/unsubscribe" element={<Unsubscribe />} />
+            <Route path="/unsubscribe/:email" element={<Unsubscribe />} />
           </Routes>
           <Footer />
           <FloatingActionButton />

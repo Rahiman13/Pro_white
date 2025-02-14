@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { FaEnvelope, FaExclamationTriangle } from 'react-icons/fa';
@@ -7,14 +7,13 @@ import NetworkBackground from '../components/NetworkBackground';
 import BaseUrl from '../API';
 
 const Unsubscribe = () => {
-  const [searchParams] = useSearchParams();
-  const email = searchParams.get('email');
+  const { email } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!email) {
-      toast.error('Invalid unsubscribe link. Please try again or contact support.');
+      showToast('error', 'Invalid unsubscribe link. Please try again or contact support.');
       navigate('/');
     }
   }, [email, navigate]);
@@ -23,11 +22,11 @@ const Unsubscribe = () => {
     setIsLoading(true);
     try {
       const response = await fetch(`${BaseUrl}/api/subscribers/unsubscribe`, {
-        method: 'DELETE',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: decodeURIComponent(email) })
       });
 
       if (response.ok) {
