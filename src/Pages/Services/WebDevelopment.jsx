@@ -10,7 +10,11 @@ import {
   FaDocker,
   FaDatabase,
   FaAngular,
-  FaPhp
+  FaPhp,
+  FaRobot,
+  FaBrain,
+  FaChartLine,
+  FaMedkit
 } from 'react-icons/fa';
 import {
   SiMongodb,
@@ -18,9 +22,12 @@ import {
   SiJavascript,
   SiTailwindcss,
   SiRedux,
-  SiNextdotjs
+  SiNextdotjs,
+  SiTensorflow,
+  SiOpenai
 } from 'react-icons/si';
 import CountUp from 'react-countup';
+import AIEnhancementSection from './AIEnhancementSection';
 
 
 // images
@@ -28,6 +35,7 @@ import Ecommerce from '../../assets/WebDevelopment/Ecommerce.jpg';
 import CustomWebApplications from '../../assets/WebDevelopment/CustomWebApplications.jpg';
 import ApiDevelopment from '../../assets/WebDevelopment/ApiDevelopment.jpg';
 import ProgressiveWebApps from '../../assets/WebDevelopment/ProgressiveWebApps.jpg';
+
 
 const WebDevelopment = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -127,6 +135,22 @@ const WebDevelopment = () => {
       description: 'Backend Scripting',
       gradient: 'from-[#777BB4]/20 to-[#777BB4]/40',
       color: 'text-[#777BB4]'
+    },
+    {
+      name: 'TensorFlow.js',
+      icon: <SiTensorflow />,
+      level: 'Advanced',
+      description: 'AI Integration',
+      gradient: 'from-[#FF6F00]/20 to-[#FF6F00]/40',
+      color: 'text-[#FF6F00]'
+    },
+    {
+      name: 'OpenAI',
+      icon: <SiOpenai />,
+      level: 'Advanced',
+      description: 'AI Solutions',
+      gradient: 'from-[#412991]/20 to-[#412991]/40',
+      color: 'text-[#412991]'
     }
   ];
 
@@ -225,15 +249,15 @@ const WebDevelopment = () => {
 
               {/* Enhanced Heading */}
               <h1 className="text-6xl lg:text-7xl font-bold mb-6" style={{ color: '#19234d' }}>
-                Transforming Ideas Into
+                Expert Web
                 <span className="block mt-4">
                   <TypeAnimation
                     sequence={[
-                      'Digital Solutions',
+                      'Development Services',
                       2000,
-                      'Powerful Platforms',
+                      'Application Solutions',
                       2000,
-                      'Success Stories',
+                      'Technology Consulting',
                       2000,
                     ]}
                     wrapper="span"
@@ -245,7 +269,7 @@ const WebDevelopment = () => {
               </h1>
 
               <p className="text-xl md:text-2xl mb-8" style={{ color: '#19234d' }}>
-                Building scalable, secure, and innovative web solutions that drive business growth
+                Transforming businesses with cutting-edge web solutions and modern technologies
               </p>
 
               {/* Enhanced CTA Buttons */}
@@ -253,6 +277,7 @@ const WebDevelopment = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => window.location.href = '/contact'}
                   className="px-8 py-4 rounded-full font-semibold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Start Your Project
@@ -260,7 +285,8 @@ const WebDevelopment = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-full font-semibold bg-white/10 backdrop-blur-lg text-white border border-white/20 hover:bg-white/20 transition-all duration-300"
+                  onClick={() => window.location.href = '/portfolio'}
+                  className="px-8 py-4 rounded-full font-semibold border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300"
                 >
                   View Portfolio
                 </motion.button>
@@ -272,25 +298,21 @@ const WebDevelopment = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
+              className="hidden lg:block relative"
             >
-              {features.slice(0, 4).map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300"
-                >
-                  <span className="text-3xl mb-4 block">{feature.icon}</span>
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#2b5a9e' }}>{feature.title}</h3>
-                  <p className="text-sm" style={{ color: '#19234d' }}>{feature.description}</p>
-                </motion.div>
-              ))}
+              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Professional Web Developer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
+
 
       {/* Rest of the sections... */}
       {/* Features Grid */}
@@ -341,7 +363,8 @@ const WebDevelopment = () => {
                     alt={feature.title}
                     className="w-full h-full object-cover will-change-transform transition-transform duration-700 group-hover:scale-110"
                   />
-                  
+
+
                   {/* Initial State - Logo at bottom left */}
                   <div className="absolute bottom-6 left-6">
                     <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center transform transition-all duration-300 group-hover:translate-y-[200%]">
@@ -350,13 +373,14 @@ const WebDevelopment = () => {
                   </div>
 
                   {/* Hover State - Dark Overlay */}
-                  <div 
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
+                  {/* <div
                     className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  />
+                  /> */}
                 </div>
 
                 {/* Content - Hidden by Default */}
-                <div 
+                <div
                   className="absolute inset-x-0 bottom-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
                 >
                   <div className="p-6 bg-gradient-to-t from-black/95 to-black/80 backdrop-blur-sm">
@@ -406,7 +430,7 @@ const WebDevelopment = () => {
               whileInView={{ scale: 1 }}
               className="inline-flex items-center space-x-2 px-6 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6"
             >
-              <span className="animate-pulse-fast w-2 h-2 rounded-full bg-blue-400"></span>
+              {/* <span className="animate-pulse-fast w-2 h-2 rounded-full bg-blue-400"></span> */}
               <span className="text-white/80 text-sm font-medium">Development Stack</span>
             </motion.div>
             <h2 className="text-5xl md:text-6xl font-bold mb-4">
@@ -465,24 +489,54 @@ const WebDevelopment = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { phase: 'Discovery', icon: '🔍', description: 'Requirements gathering and project planning' },
-              { phase: 'Design', icon: '🎨', description: 'UI/UX design and prototyping' },
-              { phase: 'Development', icon: '⚡', description: 'Agile development with regular updates' },
-              { phase: 'Deployment', icon: '🚀', description: 'Testing, optimization, and launch' }
+              {
+                phase: 'Discovery',
+                icon: '🔍',
+                description: 'Requirements gathering and project planning',
+                details: ['Stakeholder Interviews', 'Technical Assessment', 'Project Scope Definition', 'Timeline Planning']
+              },
+              {
+                phase: 'Design',
+                icon: '🎨',
+                description: 'UI/UX design and prototyping',
+                details: ['Wireframing', 'User Flow Design', 'Visual Design', 'Interactive Prototypes']
+              },
+              {
+                phase: 'Development',
+                icon: '⚡',
+                description: 'Agile development with regular updates',
+                details: ['Sprint Planning', 'Iterative Development', 'Code Reviews', 'Quality Assurance']
+              },
+              {
+                phase: 'Deployment',
+                icon: '🚀',
+                description: 'Testing, optimization, and launch',
+                details: ['Performance Testing', 'Security Audits', 'Deployment Strategy', 'Post-launch Support']
+              }
             ].map((step, index) => (
               <motion.div
                 key={step.phase}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="relative group"
+                className="relative group h-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
-                <div className="relative p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300">
-                  <div className="text-4xl mb-4">{step.icon}</div>
+                <div className="relative h-full p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-4xl">{step.icon}</div>
+                    <div className="text-5xl font-bold text-blue-500/20">0{index + 1}</div>
+                  </div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: '#2b5a9e' }}>{step.phase}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                  <div className="absolute top-4 right-4 text-sm font-bold text-[#d9764a]">0{index + 1}</div>
+                  <p className="text-gray-600 mb-4">{step.description}</p>
+                  <ul className="space-y-2 mt-auto">
+                    {step.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-center text-gray-600 text-sm">
+                        <span className="w-1.5 h-1.5 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-full mr-2" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}
@@ -490,75 +544,128 @@ const WebDevelopment = () => {
         </div>
       </section>
 
-      {/* Web Development Services Grid */}
+      {/* Industries We Serve Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
+        {/* Creative Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+          <div className="absolute inset-0">
+            <div className="absolute w-full h-full">
+              <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <motion.path
+                  d="M0,50 Q25,45 50,50 T100,50"
+                  stroke="url(#gradient-line)"
+                  strokeWidth="0.1"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </svg>
+            </div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-spin-slower" />
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <motion.div className="text-center mb-16">
             <motion.span
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+              className="px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full text-sm font-medium text-white inline-block mb-6"
             >
-              Specialized Services
+              Industries We Serve
             </motion.span>
-            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
-              Web Development
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d9764a] to-[#d9764a]">
-                Solutions We Offer
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+              Transforming Industries with
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#ffa07a] to-[#ff6b6b]">
+                Digital Excellence
               </span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: 'Custom Web Applications',
-                icon: '💻',
-                features: ['Scalable Architecture', 'Real-time Features', 'API Integration']
+                title: 'Healthcare',
+                icon: '⚕️',
+                color: '#fff',
+                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d',
+                description: 'Revolutionizing healthcare with digital solutions',
+                features: ['Patient Portals', 'EMR Integration', 'Telemedicine']
               },
               {
-                title: 'E-commerce Solutions',
+                title: 'E-Commerce',
                 icon: '🛍️',
-                features: ['Payment Gateway Integration', 'Inventory Management', 'Shopping Cart']
+                color: '#fff',
+                image: 'https://images.unsplash.com/photo-1607082349566-187342175e2f',
+                description: 'Building next-gen shopping experiences',
+                features: ['Payment Systems', 'Inventory Management', 'Analytics']
               },
               {
-                title: 'Progressive Web Apps',
-                icon: '📱',
-                features: ['Offline Functionality', 'Push Notifications', 'App-like Experience']
-              },
-              {
-                title: 'CMS Development',
-                icon: '📝',
-                features: ['Content Management', 'User Roles', 'Custom Plugins']
-              },
-              {
-                title: 'API Development',
-                icon: '🔌',
-                features: ['RESTful APIs', 'GraphQL', 'Microservices']
-              },
-              {
-                title: 'Web Optimization',
-                icon: '⚡',
-                features: ['Performance Tuning', 'SEO Optimization', 'Security Hardening']
+                title: 'Education',
+                icon: '🎓',
+                color: '#fff',
+                image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655',
+                description: 'Transforming learning through technology',
+                features: ['LMS Development', 'Virtual Classrooms', 'Student Portals']
               }
-            ].map((service, index) => (
+            ].map((industry, index) => (
               <motion.div
-                key={service.title}
+                key={industry.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                transition={{ delay: index * 0.2 }}
+                className="group relative h-[500px] rounded-2xl overflow-hidden"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-4" style={{ color: '#2b5a9e' }}>{service.title}</h3>
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-gray-600">
-                      <span className="w-2 h-2 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-full mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                {/* Floating Icon */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 z-20">
+                  <div className="relative w-full h-full">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${industry.color} rounded-2xl blur-lg opacity-70 group-hover:opacity-100 transition-all duration-300`} />
+                    <div className="relative w-full h-full bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl shadow-2xl border border-white/20">
+                      {industry.icon}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="relative h-full transform group-hover:scale-105 transition-all duration-500">
+                  {/* Background Image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={industry.image}
+                      alt={industry.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${industry.color} opacity-60`} />
+                  </div>
+
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8">
+                    <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+                      <h3 className="text-2xl font-bold text-white mb-3">{industry.title}</h3>
+                      <p className="text-white/90 mb-4">{industry.description}</p>
+
+                      {/* Features */}
+                      <ul className="space-y-3">
+                        {industry.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center space-x-3">
+                            <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${industry.color}`} />
+                            <span className="text-white/90">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Action Button */}
+                      {/* <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`mt-6 w-full py-3 rounded-xl bg-gradient-to-r ${industry.color} text-white font-semibold opacity-90 hover:opacity-100 transition-all duration-300`}
+                      >
+                        Explore Solutions
+                      </motion.button> */}
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -601,9 +708,9 @@ const WebDevelopment = () => {
         </div>
       </section> */}
 
-      
+      {/* AI Enhancement Section */}
+      <AIEnhancementSection serviceType="webDevelopment" />
 
-     
     </main>
   );
 };

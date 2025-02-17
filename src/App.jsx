@@ -23,6 +23,10 @@ import PrivacyPolicy from './Pages/privacypolicy';
 import BlogDetail from './Pages/BlogDetail';
 // import Unsubscriber from './Pages/Unsubscriber';
 import Unsubscribe from './Pages/Unsubscribe';
+import ProjectDetail from './Pages/ProjectDetail';
+import CookiePolicy from './Pages/CookiePolicy';
+import TermsOfService from './Pages/TermsOfService';
+import ScrollToTop from './components/ScrollToTop';
 
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
@@ -45,6 +49,7 @@ const App = () => {
     <LoaderProvider>
       <BrowserRouter>
         <RouteChangeHandler>
+          <ScrollToTop />
           <Toaster
             position="top-center"
             reverseOrder={false}
@@ -61,7 +66,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/industries" element={<Industries />} />
-            <Route path="/portfolio" element={<Portfolio />} />
+            {/* <Route path="/portfolio" element={<Portfolio />} /> */}
             <Route path="/careers" element={<Careers />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:blogId" element={<BlogDetail />} />
@@ -73,6 +78,9 @@ const App = () => {
             <Route path="/services/staffing" element={<Staffing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/unsubscribe/:email" element={<Unsubscribe />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
           <Footer />
           <FloatingActionButton />

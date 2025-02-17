@@ -134,8 +134,8 @@ const Footer = () => {
       </div>
 
       {/* Newsletter Section */}
-      <div className="relative py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative pt-16 pb-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -178,7 +178,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           {/* Company Info */}
           <div>
@@ -356,7 +356,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-2 border-t border-gray-800">
+        <div className="mt-20 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0 font-light">
               © {currentYear} Projexino. All rights reserved.
@@ -365,7 +365,7 @@ const Footer = () => {
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
                 <motion.a
                   key={item}
-                  href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                  href="/privacy-policy"
                   whileHover={{ scale: 1.05 }}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >

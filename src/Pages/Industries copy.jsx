@@ -10,24 +10,20 @@ const Industries = () => {
     {
       title: 'Healthcare',
       icon: '🏥',
-      description: 'Comprehensive digital solutions for modern healthcare',
-      developmentNeeds: ['Web Platforms', 'Mobile Apps', 'EHR Systems'],
+      description: 'Digital solutions for modern healthcare challenges',
       features: ['Electronic Health Records', 'Telemedicine', 'Medical IoT', 'Healthcare Analytics'],
       techStack: ['HIPAA Compliance', 'HL7', 'FHIR'],
       color: 'from-blue-500 to-cyan-500',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      priority: 'high'
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
     },
     {
       title: 'E-commerce',
       icon: '🛍️',
-      description: 'End-to-end digital commerce solutions',
-      developmentNeeds: ['E-commerce Platform', 'Mobile Shopping Apps', 'Admin Dashboard'],
+      description: 'Cutting-edge platforms for online retail',
       features: ['Payment Integration', 'Inventory Management', 'Analytics', 'Mobile Commerce'],
       techStack: ['Shopify', 'WooCommerce', 'Stripe'],
       color: 'from-green-500 to-emerald-500',
-      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      priority: 'high'
+      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
     },
     {
       title: 'Education',
@@ -143,22 +139,6 @@ const Industries = () => {
         { label: 'Customer Retention', value: '85%' },
         { label: 'Order Processing', value: '3x' }
       ]
-    }
-  ];
-
-  const useCases = [
-    {
-      industry: 'Healthcare',
-      title: 'Digital Patient Care Platform',
-      challenge: 'Streamline patient care and record management',
-      solution: 'Integrated web and mobile platform for healthcare providers',
-      results: [
-        { metric: 'Patient Satisfaction', value: '95%' },
-        { metric: 'Processing Time', value: '-40%' },
-        { metric: 'Data Accuracy', value: '99.9%' }
-      ],
-      technologies: ['React', 'React Native', 'Node.js', 'FHIR API'],
-      image: 'healthcare-case-study.jpg'
     }
   ];
 

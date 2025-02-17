@@ -10,6 +10,9 @@ import {
   FaLayerGroup,
   FaSwatchbook,
   FaMagic,
+  FaRobot,
+  FaBrain,
+  FaChartLine
 } from 'react-icons/fa';
 import {
   SiAdobexd,
@@ -17,9 +20,10 @@ import {
   SiAdobeillustrator,
   SiFramer,
   SiWebflow,
-  
   SiInvision,
-  SiAdobe
+  SiAdobe,
+  SiTensorflow,
+  SiOpenai
 } from 'react-icons/si';
 import CountUp from 'react-countup';
 import { useNavigate } from 'react-router-dom';
@@ -28,46 +32,49 @@ const WebDesign = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const navigate = useNavigate();
 
-  const services = [
+  const features = [
     {
       title: 'UI/UX Design',
       description: 'User-centered design solutions that enhance engagement',
       icon: <FaPalette className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      image: 'https://images.unsplash.com/photo-1559028012-481c04fa702d',
+      color: 'from-purple-800 to-pink-900',
       benefits: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing']
-    },
-    {
-      title: 'Responsive Design',
-      description: 'Websites that work seamlessly across all devices',
-      icon: <FaLayerGroup className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      benefits: ['Mobile First', 'Cross-platform', 'Fluid Layouts', 'Adaptive Images']
     },
     {
       title: 'Brand Identity',
       description: 'Cohesive visual language for your digital presence',
       icon: <FaSwatchbook className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698',
+      color: 'from-blue-800 to-indigo-900',
       benefits: ['Logo Design', 'Color Theory', 'Typography', 'Brand Guidelines']
     },
     {
-      title: 'Prototypingcxsdvdf',
-      description: 'Interactive mockups for testing and validation',
+      title: 'Interactive Design',
+      description: 'Engaging and responsive user interfaces',
       icon: <FaMagic className="text-5xl" />,
-      image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      benefits: ['Interactive Models', 'User Flow', 'Animation', 'Feedback Loop']
+      image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490',
+      color: 'from-green-800 to-teal-900',
+      benefits: ['Motion Design', 'Micro-interactions', 'Animation', 'Interactive Prototypes']
+    },
+    {
+      title: 'Design Systems',
+      description: 'Scalable and consistent design frameworks',
+      icon: <FaLayerGroup className="text-5xl" />,
+      image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e',
+      color: 'from-orange-800 to-red-900',
+      benefits: ['Component Libraries', 'Style Guides', 'Documentation', 'Design Tokens']
     }
   ];
 
   const technologies = [
     {
       name: 'Figma',
-      icon: <FaFigma />,
+      icon: <FaFigma className="group-hover:animate-spin-slow" />,
       level: 'Expert',
       description: 'UI/UX Design',
-      gradient: 'from-[#F24E1E]/20 to-[#FF7262]/40',
-      color: 'text-[#F24E1E]',
-      benefits: ['Component Libraries', 'Prototyping', 'Collaboration']
+      gradient: 'from-[#F24E1E]/20 to-[#F24E1E]/40',
+      color: 'text-[#F24E1E]'
     },
     {
       name: 'Adobe XD',
@@ -75,8 +82,7 @@ const WebDesign = () => {
       level: 'Expert',
       description: 'Prototyping',
       gradient: 'from-[#FF61F6]/20 to-[#FF61F6]/40',
-      color: 'text-[#FF61F6]',
-      benefits: ['Wireframing', 'Interactive Prototypes', 'Design Systems']
+      color: 'text-[#FF61F6]'
     },
     {
       name: 'Photoshop',
@@ -125,6 +131,22 @@ const WebDesign = () => {
       description: 'Creative Suite',
       gradient: 'from-[#FF0000]/20 to-[#FF0000]/40',
       color: 'text-[#FF0000]'
+    },
+    {
+      name: 'TensorFlow.js',
+      icon: <SiTensorflow />,
+      level: 'Advanced',
+      description: 'AI Integration',
+      gradient: 'from-[#FF6F00]/20 to-[#FF6F00]/40',
+      color: 'text-[#FF6F00]'
+    },
+    {
+      name: 'OpenAI',
+      icon: <SiOpenai />,
+      level: 'Advanced',
+      description: 'AI Solutions',
+      gradient: 'from-[#412991]/20 to-[#412991]/40',
+      color: 'text-[#412991]'
     }
   ];
 
@@ -158,6 +180,77 @@ const WebDesign = () => {
 
   const handleViewPortfolio = () => {
     navigate('/portfolio'); // Navigate to portfolio page
+  };
+
+  const AIEnhancementSection = ({ serviceType }) => {
+    const aiFeatures = {
+      webDesign: [
+        {
+          title: 'AI-Powered Design Generation',
+          description: 'Create stunning design variations and layouts using advanced AI algorithms',
+          icon: <FaRobot className="text-3xl text-purple-500" />,
+          tools: ['Midjourney', 'DALL-E 3', 'Adobe Firefly', 'Stable Diffusion']
+        },
+        {
+          title: 'Smart Design Analysis',
+          description: 'Optimize designs using AI-powered user behavior analysis and heatmaps',
+          icon: <FaBrain className="text-3xl text-blue-500" />,
+          tools: ['Heat Mapping', 'A/B Testing', 'Eye Tracking', 'UX Analytics']
+        },
+        {
+          title: 'Predictive Design',
+          description: 'Anticipate design trends and user preferences using machine learning',
+          icon: <FaChartLine className="text-3xl text-green-500" />,
+          tools: ['Style Transfer', 'Color Harmony', 'Layout Optimization', 'Design Trends AI']
+        }
+      ]
+    };
+
+    return (
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-blue-50 opacity-50" />
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full text-sm font-medium text-purple-600 inline-block mb-6"
+            >
+              AI-Powered Design
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#19234d]">
+              Enhanced with
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d9764a] to-[#d9764a]">
+                Artificial Intelligence
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {aiFeatures[serviceType].map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="relative group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{feature.title}</h3>
+                <p className="text-gray-600 mb-4">{feature.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {feature.tools.map(tool => (
+                    <span key={tool} className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-sm">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
   };
 
   return (
@@ -254,21 +347,16 @@ const WebDesign = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
+              className="hidden lg:block relative"
             >
-              {services.slice(0, 4).map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300"
-                >
-                  <span className="text-3xl mb-4 block">{service.icon}</span>
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#2b5a9e' }}>{service.title}</h3>
-                  <p className="text-sm" style={{ color: '#19234d' }}>{service.description}</p>
-                </motion.div>
-              ))}
+              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Professional Web Developer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -315,60 +403,21 @@ const WebDesign = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group relative"
+                className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
               >
-                {/* Glass Card */}
-                <div className="relative h-full bg-white/10 backdrop-blur-lg rounded-2xl p-6 overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300">
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 pointer-events-none"></div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                      <div className="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center text-3xl">
-                        {tech.icon}
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-2">{tech.name}</h3>
-                    <p className="text-white/70 text-sm mb-4">{tech.description}</p>
-                    
-                    {/* Level Badge */}
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white">
-                      {tech.level}
-                    </span>
-                    
-                    {/* Benefits Tags */}
-                    {tech.benefits && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {tech.benefits.map((benefit) => (
-                          <span
-                            key={benefit}
-                            className="px-2 py-1 text-xs rounded-md bg-white/5 text-white/80 border border-white/10"
-                          >
-                            {benefit}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Hover Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </div>
+                <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
+                <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
+                <p className="text-gray-300 text-sm">{tech.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      {/* Copy and adapt the Process Section from AppDevelopment.jsx */}
-      {/* Reference lines 380-428 */}
-
+      
       {/* Development Process Section */}
       <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 " />
         <div className="max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16">
             <motion.span
@@ -376,42 +425,77 @@ const WebDesign = () => {
               whileInView={{ scale: 1 }}
               className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
             >
-              Development Process
+              Our Process
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
-              How We Build
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500" style={{ color: '#d9764a' }}>
-                Your Mobile App
-              </span>
+              Development Journey
+              <span className="block mt-2 text-[#d9764a]">From Concept to Launch</span>
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { phase: 'Discovery', icon: '🔍', description: 'Requirements gathering and project planning' },
-              { phase: 'Design', icon: '🎨', description: 'UI/UX design and prototyping' },
-              { phase: 'Development', icon: '⚡', description: 'Agile development with regular updates' },
-              { phase: 'Deployment', icon: '🚀', description: 'Testing, optimization, and launch' }
+              {
+                phase: 'Discovery & Planning',
+                icon: '🔍',
+                description: 'Requirements analysis, project scope definition, and strategic planning',
+                details: ['Market Research', 'User Analysis', 'Technical Planning', 'Project Roadmap']
+              },
+              {
+                phase: 'Design & Prototyping',
+                icon: '🎨',
+                description: 'Creating intuitive interfaces and seamless user experiences',
+                details: ['UI/UX Design', 'Wireframing', 'Interactive Prototypes', 'User Testing']
+              },
+              {
+                phase: 'Development',
+                icon: '⚡',
+                description: 'Agile development with continuous integration and deployment',
+                details: ['Clean Code', 'Best Practices', 'Regular Updates', 'Quality Assurance']
+              },
+              {
+                phase: 'Launch & Support',
+                icon: '🚀',
+                description: 'Thorough testing, optimization, and ongoing maintenance',
+                details: ['Performance Testing', 'Security Audit', 'App Store Launch', '24/7 Support']
+              }
             ].map((step, index) => (
               <motion.div
                 key={step.phase}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="relative group"
+                className="group relative h-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
-                <div className="relative p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300">
-                  <div className="text-4xl mb-4">{step.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-blue-600">{step.phase}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                  <div className="absolute top-4 right-4 text-sm font-bold text-purple-500">0{index + 1}</div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative h-full p-8 bg-white rounded-2xl border border-blue-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-4xl">{step.icon}</div>
+                    <div className="text-5xl font-bold text-blue-500/20">0{index + 1}</div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-blue-600">{step.phase}</h3>
+                  <p className="text-gray-600 mb-6">{step.description}</p>
+                  <div className="">
+                    <ul className="space-y-2">
+                      {step.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center text-gray-500">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+
+      {/* AI Enhancement Section */}
+      <AIEnhancementSection serviceType="webDesign" />
+
     </main>
   );
 };

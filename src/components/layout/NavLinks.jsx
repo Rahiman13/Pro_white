@@ -12,7 +12,7 @@ const NavLinks = ({ mobile }) => {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services', hasDropdown: true },
-    { name: 'Portfolio', path: '/portfolio' },
+    // { name: 'Portfolio', path: '/portfolio' },
     { name: 'Blog', path: '/blogs' },
     { name: 'Industries', path: '/industries' },
     { name: 'Careers', path: '/careers' },

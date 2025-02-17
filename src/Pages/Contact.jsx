@@ -71,7 +71,7 @@ const Contact = () => {
                   color: 'from-orange-500 to-red-500'
                 },
                 {
-                  icon: <FaHandshake className="text-2xl" />, // Added handshake icon
+                  icon: <FaHandshake className="text-2xl" />,
                   title: 'Let\'s Collaborate',
                   content: ['Let\'s work together to achieve great things.'],
                   color: 'from-green-500 to-blue-500'
@@ -103,44 +103,49 @@ const Contact = () => {
             </div>
 
             {/* Social Media Links */}
-            <div className="flex gap-4 mt-8">
-              {[
-                { 
-                  icon: <FaFacebook />, 
-                  href: 'https://www.facebook.com/profile.php?id=61571638723890', 
-                  color: 'bg-[#1877F2] hover:bg-[#1864D9]' // Facebook blue
-                },
-                
-                { 
-                  icon: <FaYoutube />, 
-                  href: 'https://www.youtube.com/@projexinosolutionspvtltd', 
-                  color: 'bg-[#FF0000] hover:bg-[#D90000]' // YouTube red
-                },
-                
-                { 
-                  icon: <FaLinkedin />, 
-                  href: 'https://www.linkedin.com/company/projexino/about/', 
-                  color: 'bg-[#0A66C2] hover:bg-[#0952A0]' // LinkedIn blue
-                },
-                { 
-                  icon: <FaInstagram />, 
-                  href: 'https://www.instagram.com/projexinosolutionspvtltd/?hl=en', 
-                  color: 'bg-gradient-to-tr from-[#FD5949] via-[#D6249F] to-[#285AEB] hover:opacity-90' // Instagram gradient
-                }
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`${social.color} p-3 rounded-full text-white shadow-lg transition-all duration-300`}
-                >
-                  <i className="text-xl">
+            <div className="flex flex-col gap-4 mt-8">
+              <h3 className="text-lg font-semibold text-gray-900">Connect With Us</h3>
+              <div className="flex gap-4">
+                {[
+                  {
+                    icon: <FaFacebook />,
+                    href: 'https://www.facebook.com/profile.php?id=61571638723890',
+                    label: 'Facebook',
+                    color: 'bg-[#1877F2] hover:bg-[#1864D9]'
+                  },
+                  {
+                    icon: <FaYoutube />,
+                    href: 'https://www.youtube.com/@projexinosolutionspvtltd',
+                    label: 'YouTube',
+                    color: 'bg-[#FF0000] hover:bg-[#D90000]'
+                  },
+                  {
+                    icon: <FaLinkedin />,
+                    href: 'https://www.linkedin.com/company/projexino/about/',
+                    label: 'LinkedIn',
+                    color: 'bg-[#0A66C2] hover:bg-[#0952A0]'
+                  },
+                  {
+                    icon: <FaInstagram />,
+                    href: 'https://www.instagram.com/projexinosolutionspvtltd/?hl=en',
+                    label: 'Instagram',
+                    color: 'bg-gradient-to-tr from-[#FD5949] via-[#D6249F] to-[#285AEB] hover:opacity-90'
+                  }
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`${social.color} p-3 rounded-full text-white shadow-lg transition-all duration-300 flex items-center justify-center`}
+                  >
                     {social.icon}
-                  </i>
-                </motion.a>
-              ))}
+                  </motion.a>
+                ))}
+              </div>
             </div>
 
 
@@ -200,25 +205,25 @@ const Contact = () => {
         </div>
 
         {/* Map */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="relative rounded-2xl max-w-full mt-12 overflow-hidden shadow-lg"
-          >
-            <iframe
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="relative rounded-2xl max-w-full mt-12 overflow-hidden shadow-lg"
+        >
+          <iframe
 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3027470973836!2d78.37669631487752!3d17.458982988030458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8f5d40e7%3A0x7f0c7b7c4dd42f39!2sKhanamet%2C%20Kondapur%2C%20Hyderabad%2C%20Telangana%20500084!5e0!3m2!1sen!2sin!4v1647850844221!5m2!1sen!2sin"
-              width="100%"
-              height="350"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              className="hover:opacity-90 transition-opacity duration-300"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3027470973836!2d78.37669631487752!3d17.458982988030458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8f5d40e7%3A0x7f0c7b7c4dd42f39!2sKhanamet%2C%20Kondapur%2C%20Hyderabad%2C%20Telangana%20500084!5e0!3m2!1sen!2sin!4v1647850844221!5m2!1sen!2sin"
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            className="hover:opacity-90 transition-opacity duration-300"
 
-            ></iframe>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-          </motion.div>
+          ></iframe>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        </motion.div>
 
       </div>
     </main>

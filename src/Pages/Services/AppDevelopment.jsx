@@ -10,7 +10,10 @@ import {
   FaCode,
   FaRocket,
   FaDatabase,
-  FaCloud
+  FaCloud,
+  FaRobot,
+  FaBrain,
+  FaChartLine
 } from 'react-icons/fa';
 import {
   SiFlutter,
@@ -20,10 +23,13 @@ import {
   SiXcode,
   SiAndroidstudio,
   SiRedux,
-  SiGraphql
+  SiGraphql,
+  SiTensorflow,
+  SiOpenai
 } from 'react-icons/si';
 import CountUp from 'react-countup';
 import { useNavigate } from 'react-router-dom';
+import AIEnhancementSection from './AIEnhancementSection';
 
 const AppDevelopment = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -128,6 +134,22 @@ const AppDevelopment = () => {
       description: 'API Integration',
       gradient: 'from-[#E535AB]/20 to-[#E535AB]/40',
       color: 'text-[#E535AB]'
+    },
+    {
+      name: 'TensorFlow.js',
+      icon: <SiTensorflow />,
+      level: 'Advanced',
+      description: 'AI Integration',
+      gradient: 'from-[#FF6F00]/20 to-[#FF6F00]/40',
+      color: 'text-[#FF6F00]'
+    },
+    {
+      name: 'OpenAI',
+      icon: <SiOpenai />,
+      level: 'Advanced',
+      description: 'AI Solutions',
+      gradient: 'from-[#412991]/20 to-[#412991]/40',
+      color: 'text-[#412991]'
     }
   ];
 
@@ -139,6 +161,77 @@ const AppDevelopment = () => {
   const handleViewPortfolio = () => {
     navigate('/portfolio'); // Navigate to portfolio page
   };
+
+  // const AIEnhancementSection = ({ serviceType }) => {
+  //   const aiFeatures = {
+  //     appDevelopment: [
+  //       {
+  //         title: 'AI-Powered App Development',
+  //         description: 'Accelerate mobile app development with AI assistance',
+  //         icon: <FaRobot className="text-3xl text-purple-500" />,
+  //         tools: ['GitHub Copilot', 'Flutter AI', 'App Code Generation']
+  //       },
+  //       {
+  //         title: 'Smart User Analytics',
+  //         description: 'Analyze user behavior and optimize app performance',
+  //         icon: <FaBrain className="text-3xl text-blue-500" />,
+  //         tools: ['User Flow Analysis', 'Behavioral Patterns', 'Performance Metrics']
+  //       },
+  //       {
+  //         title: 'Intelligent Testing',
+  //         description: 'Automated testing and quality assurance with AI',
+  //         icon: <FaChartLine className="text-3xl text-green-500" />,
+  //         tools: ['AI Testing Tools', 'Bug Prediction', 'Test Automation']
+  //       }
+  //     ]
+  //   };
+
+  //   return (
+  //     <section className="py-20 relative overflow-hidden">
+  //       <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-blue-50 opacity-50" />
+  //       <div className="max-w-7xl mx-auto px-4 relative z-10">
+  //         <motion.div className="text-center mb-16">
+  //           <motion.span
+  //             initial={{ scale: 0 }}
+  //             whileInView={{ scale: 1 }}
+  //             className="px-6 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full text-sm font-medium text-purple-600 inline-block mb-6"
+  //           >
+  //             AI-Powered Solutions
+  //           </motion.span>
+  //           <h2 className="text-4xl md:text-5xl font-bold text-[#19234d]">
+  //             Enhanced with
+  //             <span className="block text-[#d9764a]">
+  //               Artificial Intelligence
+  //             </span>
+  //           </h2>
+  //         </motion.div>
+
+  //         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  //           {aiFeatures[serviceType].map((feature, index) => (
+  //             <motion.div
+  //               key={feature.title}
+  //               initial={{ opacity: 0, y: 20 }}
+  //               whileInView={{ opacity: 1, y: 0 }}
+  //               transition={{ delay: index * 0.2 }}
+  //               className="relative group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
+  //             >
+  //               <div className="mb-4">{feature.icon}</div>
+  //               <h3 className="text-xl font-bold mb-2 text-gray-900">{feature.title}</h3>
+  //               <p className="text-gray-600 mb-4">{feature.description}</p>
+  //               <div className="flex flex-wrap gap-2">
+  //                 {feature.tools.map(tool => (
+  //                   <span key={tool} className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-sm">
+  //                     {tool}
+  //                   </span>
+  //                 ))}
+  //               </div>
+  //             </motion.div>
+  //           ))}
+  //         </div>
+  //       </div>
+  //     </section>
+  //   );
+  // };
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50">
@@ -211,18 +304,16 @@ const AppDevelopment = () => {
 
               {/* Enhanced Heading */}
               <h1 className="text-6xl lg:text-7xl font-bold mb-6" style={{ color: '#19234d' }}>
-                Building Amazing
+                Expert Mobile
                 <span className="block mt-4">
                   <TypeAnimation
                     sequence={[
-                      'Mobile Apps',
+                      'Development Services',
                       2000,
-                      'iOS Solutions',
+                      'Application Solutions',
                       2000,
-                      'Android Apps',
+                      'Technology Consulting',
                       2000,
-                      'Cross-Platform Apps',
-                      2000
                     ]}
                     wrapper="span"
                     repeat={Infinity}
@@ -233,7 +324,7 @@ const AppDevelopment = () => {
               </h1>
 
               <p className="text-xl md:text-2xl mb-8" style={{ color: '#19234d' }}>
-                Transform your ideas into powerful mobile experiences with cutting-edge technology
+                Building scalable, secure, and innovative mobile solutions that drive business growth
               </p>
 
               {/* Enhanced CTA Buttons */}
@@ -248,8 +339,8 @@ const AppDevelopment = () => {
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
-                  onClick={handleViewPortfolio}
                   whileTap={{ scale: 0.95 }}
+                  onClick={handleViewPortfolio}
                   className="px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text font-semibold text-lg hover:border-blue-500 rounded-full transition-all duration-300"
                 >
                   View Portfolio
@@ -262,21 +353,16 @@ const AppDevelopment = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
+              className="hidden lg:block relative"
             >
-              {features.slice(0, 4).map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300"
-                >
-                  <span className="text-3xl mb-4 block">{feature.icon}</span>
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#2b5a9e' }}>{feature.title}</h3>
-                  <p className="text-sm" style={{ color: '#19234d' }}>{feature.description}</p>
-                </motion.div>
-              ))}
+              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Professional Web Developer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -399,16 +485,11 @@ const AppDevelopment = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300`}
+                className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
               >
                 <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
                 <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
                 <p className="text-gray-300 text-sm">{tech.description}</p>
-                <div className="mt-4">
-                  <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
-                    {tech.level}
-                  </span>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -417,6 +498,7 @@ const AppDevelopment = () => {
 
       {/* Development Process Section */}
       <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 " />
         <div className="max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16">
             <motion.span
@@ -424,42 +506,174 @@ const AppDevelopment = () => {
               whileInView={{ scale: 1 }}
               className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
             >
-              Development Process
+              Our Process
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
-              How We Build
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500" style={{ color: '#d9764a' }}>
-                Your Mobile App
-              </span>
+              Development Journey
+              <span className="block mt-2 text-[#d9764a]">From Concept to Launch</span>
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { phase: 'Discovery', icon: '🔍', description: 'Requirements gathering and project planning' },
-              { phase: 'Design', icon: '🎨', description: 'UI/UX design and prototyping' },
-              { phase: 'Development', icon: '⚡', description: 'Agile development with regular updates' },
-              { phase: 'Deployment', icon: '🚀', description: 'Testing, optimization, and launch' }
+              {
+                phase: 'Discovery & Planning',
+                icon: '🔍',
+                description: 'Requirements analysis, project scope definition, and strategic planning',
+                details: ['Market Research', 'User Analysis', 'Technical Planning', 'Project Roadmap']
+              },
+              {
+                phase: 'Design & Prototyping',
+                icon: '🎨',
+                description: 'Creating intuitive interfaces and seamless user experiences',
+                details: ['UI/UX Design', 'Wireframing', 'Interactive Prototypes', 'User Testing']
+              },
+              {
+                phase: 'Development',
+                icon: '⚡',
+                description: 'Agile development with continuous integration and deployment',
+                details: ['Clean Code', 'Best Practices', 'Regular Updates', 'Quality Assurance']
+              },
+              {
+                phase: 'Launch & Support',
+                icon: '🚀',
+                description: 'Thorough testing, optimization, and ongoing maintenance',
+                details: ['Performance Testing', 'Security Audit', 'App Store Launch', '24/7 Support']
+              }
             ].map((step, index) => (
               <motion.div
                 key={step.phase}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="relative group"
+                className="group relative h-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
-                <div className="relative p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300">
-                  <div className="text-4xl mb-4">{step.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-blue-600">{step.phase}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                  <div className="absolute top-4 right-4 text-sm font-bold text-purple-500">0{index + 1}</div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative h-full p-8 bg-white rounded-2xl border border-blue-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-4xl">{step.icon}</div>
+                    <div className="text-5xl font-bold text-blue-500/20">0{index + 1}</div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-blue-600">{step.phase}</h3>
+                  <p className="text-gray-600 mb-6">{step.description}</p>
+                  <div className="">
+                    <ul className="space-y-2">
+                      {step.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center text-gray-500">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Industries We Serve Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900" />
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full text-sm font-medium text-white inline-block mb-6"
+            >
+              Industries We Serve
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+              Transforming Industries with
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#ffa07a] to-[#ff6b6b]">
+                Mobile Innovation
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Healthcare',
+                icon: '⚕️',
+                color: '#fff',
+                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d',
+                description: 'Revolutionary healthcare mobile solutions',
+                features: ['Patient Apps', 'Medical Records', 'Telemedicine', 'Health Monitoring']
+              },
+              {
+                title: 'E-Commerce',
+                icon: '🛍️',
+                color: '#fff',
+                image: 'https://images.unsplash.com/photo-1607082349566-187342175e2f',
+                description: 'Cutting-edge mobile shopping experiences',
+                features: ['Mobile Commerce', 'Inventory Management', 'Payment Systems', 'Order Tracking']
+              },
+              {
+                title: 'Education',
+                icon: '🎓',
+                color: '#fff',
+                image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655',
+                description: 'Next-gen mobile learning platforms',
+                features: ['E-Learning Apps', 'Student Portals', 'Virtual Classrooms', 'Progress Tracking']
+              }
+            ].map((industry, index) => (
+              <motion.div
+                key={industry.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative h-[500px] rounded-2xl overflow-hidden"
+              >
+                {/* Floating Icon */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 z-20">
+                  <div className="relative w-full h-full">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${industry.color} rounded-2xl blur-lg opacity-70 group-hover:opacity-100 transition-all duration-300`} />
+                    <div className="relative w-full h-full bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl shadow-2xl border border-white/20">
+                      {industry.icon}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="relative h-full transform group-hover:scale-105 transition-all duration-500">
+                  {/* Background Image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={industry.image}
+                      alt={industry.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${industry.color} opacity-60`} />
+                  </div>
+
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8">
+                    <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+                      <h3 className="text-2xl font-bold text-white mb-3">{industry.title}</h3>
+                      <p className="text-white/90 mb-4">{industry.description}</p>
+                      
+                      {/* Features */}
+                      <ul className="space-y-3">
+                        {industry.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center space-x-3">
+                            <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${industry.color}`} />
+                            <span className="text-white/90">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <AIEnhancementSection serviceType="appDevelopment" />
     </main>
   );
 };

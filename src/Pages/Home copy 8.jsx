@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import CountUp from 'react-countup';
-import { FaRocket, FaLightbulb, FaCode, FaCloud, FaCog } from 'react-icons/fa';
+import { FaRocket, FaLightbulb, FaCode, FaCloud } from 'react-icons/fa';
 import '../styles/animations.css';
 import NetworkBackground from '../components/NetworkBackground';
 import CreativeImage from '../components/CreativeImage';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import VideoModal from '../components/VideoModal';
 
 // imges
@@ -21,6 +21,7 @@ import AI_PoweredAnalyticsPlatform from '../assets/OurProjects_4Tabs(600x300)/AI
 import MobileBankingApp from '../assets/OurProjects_4Tabs(600x300)/MobileBankingApp.jpg';
 import DeFiExchangePlatform from '../assets/OurProjects_4Tabs(600x300)/DeFiExchangePlatform.jpg';
 
+import Blockchain from '../assets/OurServices_6smallTabs(400x200)/Blockchain.jpg';
 import DigitalMarketing from '../assets/OurServices_6smallTabs(400x200)/DigitalMarketing.jpg';
 import AISolutions from '../assets/OurServices_6smallTabs(400x200)/AISolutions.jpg';
 import WebDevelopment from '../assets/OurServices_6smallTabs(400x200)/WebDevelopment.jpg';
@@ -44,35 +45,35 @@ const Home = () => {
 
   const features = [
     {
-      title: 'Insight-Driven Strategy',
-      description: 'Craft a customized digital roadmap based on business needs, industry trends, and user expectations.',
-      icon: <FaLightbulb className="text-2xl" />,
-      highlights: ['customized digital roadmap', 'business needs', 'industry trends']
+      title: 'Tailored Development',
+      description: 'Custom solutions designed to meet the unique needs of your business.',
+      icon: <FaCode className="text-2xl" />
     },
     {
-      title: 'Tech-First Innovation',
-      description: 'Utilize AI-driven solutions, modern frameworks, and cutting-edge tech stacks to deliver high-performance digital experiences.',
-      icon: <FaCode className="text-2xl" />,
-      highlights: ['AI-driven solutions', 'modern frameworks', 'high-performance']
+      title: 'Innovation at the Core',
+      description: 'Leveraging advanced technologies and contemporary development practices.',
+      icon: <FaLightbulb className="text-2xl" />
     },
     {
-      title: 'Agile Execution',
-      description: 'Implement Agile & DevOps for rapid prototyping, iterative improvements, and timely delivery.',
-      icon: <FaRocket className="text-2xl" />,
-      highlights: ['Agile & DevOps', 'rapid prototyping', 'timely delivery']
+      title: 'Fast Track Delivery',
+      description: 'Swift and efficient execution, ensuring quality is never compromised.',
+      icon: <FaRocket className="text-2xl" />
     },
+    // {
+    //   title: 'Agile Methodologies',
+    //   description: 'Iterative approach to ensure flexibility and adaptability',
+    //   icon: <FaCode className="text-2xl" />
+    // },
     {
-      title: 'Cloud-Optimized Scalability',
-      description: 'Ensure seamless AWS, Azure, and GCP integrations for scalability and security.',
-      icon: <FaCloud className="text-2xl" />,
-      highlights: ['AWS, Azure, and GCP', 'scalability', 'security']
+      title: 'Cloud Connectivity',
+      description: 'Effortless integration with cloud services to ensure scalability and flexibility.',
+      icon: <FaCloud className="text-2xl" />
     },
-    {
-      title: 'Continuous Optimization',
-      description: 'Provide post-launch support and performance optimization for evolving digital needs.',
-      icon: <FaCog className="text-2xl" />,
-      highlights: ['post-launch support', 'performance optimization', 'evolving digital needs']
-    }
+    // {
+    //   title: 'Cybersecurity',
+    //   description: 'Robust security measures to protect your digital assets',
+    //   icon: <FaShieldAlt className="text-2xl" />
+    // }
   ];
 
 
@@ -81,40 +82,40 @@ const Home = () => {
       name: "Emma Thompson",
       role: "Tech Innovator",
       company: "Future Labs",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956",
-      content: "Their innovative approach not only transformed our digital presence but also streamlined our entire business process. The results exceeded our expectations.",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      content: "Their innovative approach transformed our digital presence completely.",
       rating: 5
     },
     {
       name: "David Chen",
       role: "Product Lead",
       company: "StartUp Hub",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
-      content: "The team's attention to detail and technical expertise made our complex project feel seamless. They truly understand modern development needs.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      content: "Exceptional quality and attention to detail in every project.",
       rating: 5
     },
     {
       name: "Sarah Johnson",
       role: "Marketing Director",
       company: "Growth Co",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-      content: "Working with them was transformative for our marketing strategy. Their innovative solutions helped us achieve 200% growth in user engagement.",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+      content: "The team's dedication to excellence is truly remarkable.",
       rating: 5
     },
     {
       name: "Michael Brown",
       role: "Startup Founder",
       company: "Tech Ventures",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-      content: "From concept to execution, they delivered excellence at every step. Their agile approach helped us launch our product ahead of schedule.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+      content: "They delivered beyond our expectations, truly outstanding work.",
       rating: 5
     },
     {
       name: "Lisa Zhang",
       role: "Creative Director",
       company: "Design Masters",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
-      content: "The perfect blend of creativity and technical expertise. Their UI/UX solutions have significantly improved our user satisfaction rates.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      content: "Innovative solutions that truly transformed our business approach.",
       rating: 5
     },
     {
@@ -122,23 +123,7 @@ const Home = () => {
       role: "CTO",
       company: "Tech Solutions",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-      content: "Their cloud architecture solutions helped us scale efficiently. The performance improvements were immediate and substantial.",
-      rating: 5
-    },
-    {
-      name: "Rachel Foster",
-      role: "Digital Strategist",
-      company: "Innovation Hub",
-      image: "https://images.unsplash.com/photo-1598550874175-4d0ef436c909",
-      content: "Their strategic approach to digital transformation helped us achieve our yearly goals in just 6 months. Exceptional service!",
-      rating: 5
-    },
-    {
-      name: "Marcus Wong",
-      role: "E-commerce Director",
-      company: "Global Retail",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-      content: "The e-commerce solution they built increased our conversion rates by 150%. Their attention to performance was outstanding.",
+      content: "Their technical expertise and creativity are unmatched in the industry.",
       rating: 5
     }
   ];
@@ -203,17 +188,17 @@ const Home = () => {
       techStack: ['TensorFlow', 'PyTorch', 'OpenAI'],
       path: 'ai-solutions'
     },
-    // {
-    //   title: 'Blockchain',
-    //   description: 'Building secure and transparent blockchain solutions for modern businesses',
-    //   image: Blockchain,
-    //   icon: '⛓️',
-    //   features: ['Smart Contracts', 'DeFi Solutions', 'NFT Platforms', 'Blockchain Integration'],
-    //   color: 'from-yellow-500 to-orange-500',
-    //   accent: 'yellow',
-    //   techStack: ['Ethereum', 'Solidity', 'Web3.js'],
-    //   path: 'blockchain'
-    // }
+    {
+      title: 'Blockchain',
+      description: 'Building secure and transparent blockchain solutions for modern businesses',
+      image: Blockchain,
+      icon: '⛓️',
+      features: ['Smart Contracts', 'DeFi Solutions', 'NFT Platforms', 'Blockchain Integration'],
+      color: 'from-yellow-500 to-orange-500',
+      accent: 'yellow',
+      techStack: ['Ethereum', 'Solidity', 'Web3.js'],
+      path: 'blockchain'
+    }
   ];
 
 
@@ -259,8 +244,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Video marketing platform for real estate professionals (**BombBomb**)',
       tech: ['Backend Development', 'UI Implementation', 'API Integration'],
-      link: 'https://bombbomb.com/',
-      id: 'real-estate-video-platform'
+      link: 'https://bombbomb.com/'
     },
     {
       title: 'Real Estate Management',
@@ -268,8 +252,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Property management and listing platform (**ExposioApp**)',
       tech: ['Backend Architecture', 'Database Design', 'API Development'],
-      link: 'https://exposioapp.com/',
-      id: 'real-estate-management'
+      link: 'https://exposioapp.com/'
     },
     {
       title: 'Online Education Platform',
@@ -277,8 +260,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Educational platform for online learning (**Vidyakul**)',
       tech: ['Business Analysis', 'Backend Development', 'System Architecture'],
-      link: 'https://vidyakul.com/',
-      id: 'online-education-platform'
+      link: 'https://vidyakul.com/'
     },
     {
       title: 'Medical Application',
@@ -286,8 +268,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Healthcare management application (**IFEEILNCOLOR**)',
       tech: ['Backend Development', 'Mobile App UI', 'Healthcare Integration'],
-      link: '#',
-      id: 'medical-application'
+      link: '#'
     },
     {
       title: 'Manufacturing Portal',
@@ -295,8 +276,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Manufacturing management system (**Triveni**)',
       tech: ['Full Stack Development', 'Process Automation', 'Reporting'],
-      link: 'https://thriveni.projexino.com/',
-      id: 'manufacturing-portal'
+      link: 'https://thriveni.projexino.com/'
     },
     {
       title: 'Printing Business Platform',
@@ -304,8 +284,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Print business management system (**PG Printing**)',
       tech: ['Web Development', 'Order Management', 'Customer Portal'],
-      link: 'https://pgprinting.projexino.com/',
-      id: 'printing-business-platform'
+      link: 'https://pgprinting.projexino.com/'
     },
     {
       title: 'Car Sales Application',
@@ -313,8 +292,7 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       description: 'Mobile app for car sales and management (**CTN Car**)',
       tech: ['Backend Development', 'Database Design', 'API Integration'],
-      link: 'https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar',
-      id: 'car-sales-application'
+      link: 'https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar'
     }
   ];
 
@@ -442,7 +420,7 @@ const Home = () => {
                       onClick={() => navigate('/contact')}
                       className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 text-white rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
                     >
-                      Shape Your Vision
+                      Get Started
                     </motion.button>
                     <motion.button
                       whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.1)" }}
@@ -623,89 +601,64 @@ const Home = () => {
                         <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600">
-                          {feature.description.split(' ').map((word, i) => {
-                            const highlight = feature.highlights.some(h => 
-                              word.toLowerCase().includes(h.toLowerCase())
-                            );
-                            return (
-                              <span key={i} className={highlight ? "text-[#d9764a] font-semibold" : ""}>
-                                {word}{' '}
-                              </span>
-                            );
-                          })}
-                        </p>
+                        <p className="text-gray-600">{feature.description}</p>
                       </div>
                     </motion.div>
                   ))}
                 </div>
 
                 {/* Right Side - Enhanced Testimonials Display */}
-                <div className="relative h-full">
+                <div className="relative">
                   <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    className="sticky top-8 h-[800px]"
+                    className="sticky top-8"
                   >
-                    <div className="relative h-full bg-white/50 backdrop-blur-sm rounded-2xl p-6 overflow-hidden">
+                    <div className="relative">
                       {/* Decorative Elements */}
                       <div className="absolute -left-8 -top-8 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-full blur-3xl animate-pulse" />
                       <div className="absolute -right-8 -bottom-8 w-64 h-64 bg-gradient-to-br from-purple-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse delay-1000" />
 
-                      {/* Scroll Gradients */}
-                      <div className="absolute left-0 top-0 right-0 h-20 bg-gradient-to-b from-white via-white to-transparent z-10" />
-                      <div className="absolute left-0 bottom-0 right-0 h-20 bg-gradient-to-t from-white via-white to-transparent z-10" />
+                      {/* Testimonials Scroll Container */}
+                      <div className="relative max-h-[600px] overflow-hidden">
+                        <div className="absolute left-0 top-0 right-0 h-20 bg-gradient-to-b from-white to-transparent z-10" />
+                        <div className="absolute left-0 bottom-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
 
-                      {/* Testimonials Container */}
-                      <div className="relative h-full overflow-hidden">
                         <motion.div
-                          className="flex flex-col gap-6 py-4 px-2"
+                          className="flex flex-col gap-6 py-4"
                           animate={{
-                            y: ["0%", "-100%"]
+                            y: [-1200, 0]
                           }}
                           transition={{
-                            duration: 80,
+                            duration: 40,
                             repeat: Infinity,
                             repeatType: "loop",
                             ease: "linear"
                           }}
-                          whileHover={{ scale: 0.98 }}
                         >
                           {[...testimonials, ...testimonials].map((review, index) => (
                             <motion.div
                               key={`${review.name}-${index}`}
-                              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-                              whileHover={{ scale: 1.02, y: -5 }}
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: false }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 260,
-                                damping: 20,
-                                delay: index * 0.1
-                              }}
+                              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                              whileHover={{ scale: 1.02 }}
                             >
                               <div className="flex items-start gap-4">
                                 <img
                                   src={review.image}
                                   alt={review.name}
-                                  className="w-16 h-16 rounded-full object-cover ring-4 ring-purple-100 transform transition-transform duration-300 hover:scale-110"
+                                  className="w-16 h-16 rounded-full object-cover ring-4 ring-purple-100"
                                 />
                                 <div>
                                   <div className="flex items-center gap-2 mb-1">
                                     {[...Array(review.rating)].map((_, i) => (
-                                      <motion.svg
+                                      <svg
                                         key={i}
-                                        className="w-4 h-4 text-yellow-400"
+                                        className="w-5 h-5 text-yellow-400"
                                         fill="currentColor"
                                         viewBox="0 0 20 20"
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: i * 0.1 }}
                                       >
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                      </motion.svg>
+                                      </svg>
                                     ))}
                                   </div>
                                   <p className="text-gray-700 italic mb-3">{review.content}</p>
@@ -1043,7 +996,7 @@ const Home = () => {
 
               {/* Project Category Tabs */}
               <div className="flex justify-center mb-12 gap-4">
-                {['All', 'Web Development', 'App Development', 'AI/ML'].map((tab) => (
+                {['All', 'Web Development', 'Mobile Apps', 'AI/ML', 'Blockchain'].map((tab) => (
                   <motion.button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -1062,77 +1015,86 @@ const Home = () => {
               {/* Projects Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 {filteredProjects.map((project, index) => (
-                  <Link 
-                    to={`/projects/${project.id}`} 
-                    key={project.id}
-                    className="block group"
+                  <motion.div
+                    key={project.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group w-full"
                   >
-                    <motion.div
-                      key={project.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="group w-full"
-                    >
-                      {/* Windows-style Folder Container */}
-                      <div className="relative w-full h-[440px] bg-white rounded-lg shadow-lg hover:shadow-xl 
-                        transition-all duration-300 border border-gray-200">
-                        {/* Folder Header - Windows Style */}
-                        <div className="bg-[#f0f0f0] px-4 py-2 rounded-t-lg border-b border-gray-300 
-                          flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z" />
-                            </svg>
-                            <span className="text-sm font-medium text-gray-700">{project.category}</span>
-                          </div>
-                          <div className="flex gap-2">
-                            <button className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
-                            <button className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
-                            <button className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500" />
-                          </div>
+                    {/* Windows-style Folder Container */}
+                    <div className="relative w-full h-[440px] bg-white rounded-lg shadow-lg hover:shadow-xl 
+                      transition-all duration-300 border border-gray-200">
+                      {/* Folder Header - Windows Style */}
+                      <div className="bg-[#f0f0f0] px-4 py-2 rounded-t-lg border-b border-gray-300 
+                        flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <svg className="w-5 h-5 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z" />
+                          </svg>
+                          <span className="text-sm font-medium text-gray-700">{project.category}</span>
                         </div>
-
-                        {/* Folder Content */}
-                        <div className="p-4">
-                          {/* Project Image */}
-                          <div className="w-full h-48 mb-4 rounded overflow-hidden bg-gray-100 border border-gray-200">
-                            <img
-                              src={project.image}
-                              alt={project.title}
-                              className="w-full h-full object-cover transform transition-transform duration-500 
-                                group-hover:scale-105"
-                            />
-                          </div>
-
-                          {/* Project Info */}
-                          <div className="space-y-3">
-                            <h3 className="text-xl font-semibold text-gray-900 line-clamp-1">{project.title}</h3>
-                            <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
-                              {project.description.split('**').map((part, index) =>
-                                index % 2 === 0 ? part : <strong key={index} className="text-[#d9764a]">{part}</strong>
-                              )}
-                            </p>
-                            {/* Tech Stack */}
-                            <div className="flex flex-wrap gap-1.5">
-                              {project.tech.map(tech => (
-                                <span
-                                  key={tech}
-                                  className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
+                        <div className="flex gap-2">
+                          <button className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
+                          <button className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400" />
+                          <button className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500" />
                         </div>
-
-                        {/* Folder Bottom Edge */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
                       </div>
-                    </motion.div>
-                  </Link>
+
+                      {/* Folder Content */}
+                      <div className="p-4">
+                        {/* Project Image */}
+                        <div className="w-full h-48 mb-4 rounded overflow-hidden bg-gray-100 border border-gray-200">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover transform transition-transform duration-500 
+                              group-hover:scale-105"
+                          />
+                        </div>
+
+                        {/* Project Info */}
+                        <div className="space-y-3">
+                          <h3 className="text-xl font-semibold text-gray-900 line-clamp-1">{project.title}</h3>
+                          <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                            {project.description.split('**').map((part, index) =>
+                              index % 2 === 0 ? part : <strong key={index} className="text-[#d9764a]">{part}</strong>
+                            )}
+                          </p>
+                          {/* Tech Stack */}
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.tech.map(tech => (
+                              <span
+                                key={tech}
+                                className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Project Link */}
+                          <motion.a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium mt-2"
+                            whileHover={{ x: 5 }}
+                          >
+                            Open Folder
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                d="M9 5l7 7-7 7" />
+                            </svg>
+                          </motion.a>
+                        </div>
+                      </div>
+
+                      {/* Folder Bottom Edge */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

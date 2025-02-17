@@ -53,42 +53,36 @@ const Staffing = () => {
     {
       name: 'Software Development',
       icon: <FaCode />,
-      level: 'Expert',
       description: 'Technical Talent',
       color: 'text-blue-500'
     },
     {
       name: 'UI/UX Design',
       icon: <FaPalette />,
-      level: 'Advanced',
       description: 'Creative Talent',
       color: 'text-purple-500'
     },
     {
       name: 'Project Management',
       icon: <FaProjectDiagram />,
-      level: 'Expert',
       description: 'Leadership Talent',
       color: 'text-green-500'
     },
     {
       name: 'Digital Marketing',
       icon: <FaChartLine />,
-      level: 'Advanced',
       description: 'Marketing Talent',
       color: 'text-red-500'
     },
     {
       name: 'Data Science',
       icon: <FaChartLine />,
-      level: 'Expert',
       description: 'Analytics Talent',
       color: 'text-yellow-500'
     },
     {
       name: 'Cloud Computing',
       icon: <FaCloud />,
-      level: 'Advanced',
       description: 'Infrastructure Talent',
       color: 'text-cyan-500'
     }
@@ -103,7 +97,7 @@ const Staffing = () => {
       {/* Hero Section */}
       <section className="hero-section relative min-h-screen overflow-hidden">
         <NetworkBackground />
-        
+
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,165,250,0.1),transparent_50%)]" />
@@ -186,21 +180,16 @@ const Staffing = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
+              className="hidden lg:block relative"
             >
-              {services.slice(0, 4).map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300"
-                >
-                  <div className="text-blue-600 mb-4">{service.icon}</div>
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#2b5a9e' }}>{service.title}</h3>
-                  <p className="text-sm" style={{ color: '#19234d' }}>{service.description}</p>
-                </motion.div>
-              ))}
+              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Professional Web Developer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -245,10 +234,110 @@ const Staffing = () => {
                 <div className={`text-4xl mb-4 ${field.color}`}>{field.icon}</div>
                 <h3 className="text-white font-semibold mb-2">{field.name}</h3>
                 <p className="text-gray-300 text-sm">{field.description}</p>
-                <div className="mt-4">
-                  <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
-                    {field.level}
-                  </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Process Section */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Creative Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+          <div className="absolute inset-0">
+            <div className="absolute w-full h-full">
+              <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <motion.path
+                  d="M0,50 Q25,45 50,50 T100,50"
+                  stroke="url(#gradient-line)"
+                  strokeWidth="0.1"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </svg>
+            </div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-spin-slower" />
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+            >
+              Our Process
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
+              How We Find
+              <span className="block mt-2 text-[#d9764a]">Your Perfect Match</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              {
+                phase: 'Requirements Analysis',
+                icon: '📋',
+                description: 'Understanding your needs and culture',
+                details: ['Stakeholder Interviews', 'Technical Assessment', 'Project Scope Definition', 'Timeline Planning'],
+                image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: 'from-blue-500 to-purple-500'
+              },
+              {
+                phase: 'Talent Sourcing',
+                icon: '🔍',
+                description: 'Finding the best talent in the market',
+                details: ['Market Research', 'Candidate Screening', 'Skill Assessment', 'Cultural Fit Evaluation'],
+                image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: 'from-purple-500 to-pink-500'
+              },
+              {
+                phase: 'Comprehensive Screening',
+                icon: '✅',
+                description: 'Technical and cultural assessment',
+                details: ['Technical Interviews', 'Code Challenges', 'Background Checks', 'Reference Verification'],
+                image: 'https://images.unsplash.com/photo-1542626991-cbc4e32524cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: 'from-pink-500 to-red-500'
+              },
+              {
+                phase: 'Successful Placement',
+                icon: '🤝',
+                description: 'Seamless integration and onboarding',
+                details: ['Offer Management', 'Onboarding Support', 'Integration Planning', 'Performance Monitoring'],
+                image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: 'from-red-500 to-orange-500'
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={step.phase}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative h-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative h-full p-8 bg-white rounded-2xl border border-blue-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-4xl">{step.icon}</div>
+                    <div className="text-5xl font-bold text-blue-500/20">0{index + 1}</div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-blue-600">{step.phase}</h3>
+                  <p className="text-gray-600 mb-6">{step.description}</p>
+                  <div className="">
+                    <ul className="space-y-2">
+                      {step.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center text-gray-500">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -256,45 +345,187 @@ const Staffing = () => {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Industries We Serve Section */}
       <section className="py-24 relative overflow-hidden">
+        {/* Creative Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+          <div className="absolute inset-0">
+            <div className="absolute w-full h-full">
+              <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <motion.path
+                  d="M0,50 Q25,45 50,50 T100,50"
+                  stroke="url(#gradient-line)"
+                  strokeWidth="0.1"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </svg>
+            </div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-spin-slower" />
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div className="text-center mb-16">
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full text-sm font-medium text-white inline-block mb-6"
+            >
+              Industries We Serve
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+              Specialized Talent for
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#ffa07a] to-[#ff6b6b]">
+                Every Industry
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Technology',
+                description: 'From startups to enterprise tech companies',
+                icon: '💻',
+                image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: '#fff',
+                features: ['Software Engineers', 'DevOps Specialists', 'Product Managers', 'Data Scientists']
+              },
+              {
+                title: 'Healthcare',
+                description: 'Digital health and medical technology',
+                icon: '🏥',
+                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: '#fff',
+                features: ['Health Tech Developers', 'Medical Data Analysts', 'Healthcare IT Specialists']
+              },
+              {
+                title: 'Finance',
+                description: 'FinTech and financial services',
+                icon: '🏦',
+                image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                color: '#fff',
+                features: ['Financial Software Developers', 'Blockchain Engineers', 'Security Specialists']
+              }
+            ].map((industry, index) => (
+              <motion.div
+                key={industry.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative h-[500px] rounded-2xl overflow-hidden"
+              >
+                {/* Floating Icon */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 z-20">
+                  <div className="relative w-full h-full">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${industry.color} rounded-2xl blur-lg opacity-70 group-hover:opacity-100 transition-all duration-300`} />
+                    <div className="relative w-full h-full bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl shadow-2xl border border-white/20">
+                      {industry.icon}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="relative h-full transform group-hover:scale-105 transition-all duration-500">
+                  {/* Background Image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={industry.image}
+                      alt={industry.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${industry.color} opacity-60`} />
+                  </div>
+
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8">
+                    <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+                      <h3 className="text-2xl font-bold text-white mb-3">{industry.title}</h3>
+                      <p className="text-white/90 mb-4">{industry.description}</p>
+
+                      {/* Features */}
+                      <ul className="space-y-3">
+                        {industry.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center space-x-3">
+                            <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${industry.color}`} />
+                            <span className="text-white/90">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* AI-Powered Recruitment Section */}
+      <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16">
             <motion.span
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+              className="px-6 py-3  rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
             >
-              Recruitment Process
+              AI-Powered Recruitment
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#19234d' }}>
-              How We Find
-              <span style={{ color: '#d9764a' }} className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-                Your Perfect Match
+              Enhanced Talent Acquisition
+              <span className="block mt-2 text-[#d9764a]">
+                With Artificial Intelligence
               </span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { phase: 'Requirements', icon: '📋', description: 'Understanding your needs and culture' },
-              { phase: 'Sourcing', icon: '🔍', description: 'Finding the best talent in the market' },
-              { phase: 'Screening', icon: '✅', description: 'Technical and cultural assessment' },
-              { phase: 'Placement', icon: '🤝', description: 'Successful candidate integration' }
-            ].map((step, index) => (
+              {
+                title: 'AI Resume Screening',
+                description: 'Advanced algorithms analyze resumes to match skills and experience with job requirements',
+                icon: '🤖',
+                features: ['Skill Matching', 'Experience Validation', 'Cultural Fit Analysis']
+              },
+              {
+                title: 'Predictive Analytics',
+                description: 'Data-driven insights to predict candidate success and retention',
+                icon: '📊',
+                features: ['Performance Prediction', 'Retention Analysis', 'Team Fit Scoring']
+              },
+              {
+                title: 'Automated Assessment',
+                description: 'Intelligent evaluation of technical and soft skills',
+                icon: '✨',
+                features: ['Technical Skill Verification', 'Personality Assessment', 'Communication Analysis']
+              }
+            ].map((feature, index) => (
               <motion.div
-                key={step.phase}
+                key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
-                <div className="relative p-8 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg group-hover:-translate-y-1 transition-all duration-300">
-                  <div className="text-4xl mb-4">{step.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-blue-600">{step.phase}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                  <div className="absolute top-4 right-4 text-sm font-bold text-purple-500">0{index + 1}</div>
+                <div className="relative p-8 bg-white rounded-2xl border border-blue-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-bold mb-4 text-blue-600">{feature.title}</h3>
+                  <p className="text-gray-600 mb-6">{feature.description}</p>
+                  <ul className="space-y-2">
+                    {feature.features.map((item, i) => (
+                      <li key={i} className="flex items-center text-gray-500 text-sm">
+                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}

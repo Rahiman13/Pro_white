@@ -64,12 +64,12 @@ const Navbar = () => {
           </motion.div>
 
           {/* Centered Navigation */}
-          <div className="hidden lg:flex flex-1 justify-center items-center">
+          <div className="hidden lg:flex flex-1 justify-end items-center">
             <NavLinks showServices={showServices} setShowServices={setShowServices} />
           </div>
 
           {/* Right Side - WhatsApp Button */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* <div className="hidden md:flex items-center space-x-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -79,7 +79,7 @@ const Navbar = () => {
               <FaWhatsapp className="text-xl" />
               <span className="font-medium">Chat Now</span>
             </motion.button>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">

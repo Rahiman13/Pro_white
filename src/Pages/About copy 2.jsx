@@ -25,10 +25,7 @@ import {
   FaJs,
   FaMapMarkerAlt,
   FaEnvelope,
-  FaPhone,
-  FaMicrosoft,
-  // FaIbm,
-  // FaAws
+  FaPhone
 } from 'react-icons/fa';
 import { 
   SiTypescript, 
@@ -38,14 +35,7 @@ import {
   SiTailwindcss,
   SiNextdotjs,
   SiFirebase,
-  SiRedux,
-  SiGooglecloud,
-  SiOracle,
-  SiSalesforce,
-  SiSap,
-  SiAdobe,
-  // SiIbm,
-  
+  SiRedux
 } from 'react-icons/si';
 import HeroImage from '../assets/AboutHero.jpg';
 
@@ -144,18 +134,6 @@ const achievements = [
       awards: 'ELEVATE Award',
       newTools: 'AI Analysis',
       teamGrowth: '40%'
-    }
-  },
-  {
-    year: '2025',
-    title: 'Global Innovation Hub',
-    description: 'Expanding AI capabilities and establishing global innovation centers.',
-    longDescription: 'Launching <span class="text-[#2b5a9e] font-semibold">AI Innovation Labs</span> across key markets. Strengthening partnerships with <span class="text-[#d9764a] font-semibold">Fortune 500 companies</span>. Pioneering <span class="text-[#2b5a9e] font-semibold">sustainable tech solutions</span> and expanding global presence.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    stats: {
-      globalPresence: '10+ Countries',
-      aiProjects: '50+',
-      partnerships: '20+'
     }
   }
 ];
@@ -961,39 +939,27 @@ const About = () => {
             </motion.div>
             
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
-              Our Strategic
+              Our Tech Stack
             </h2>
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
-              Partners
-            </h2>
-            <p className="text-xl text-white/80 mt-4">
-              Collaborating with industry leaders to deliver excellence
+            <p className="text-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text font-semibold">
+              Powering Your Digital Success
             </p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { name: 'Microsoft', icon: <FaMicrosoft />, level: 'Gold Partner' },
-              { name: 'Google Cloud', icon: <SiGooglecloud />, level: 'Premier Partner' },
-              { name: 'AWS', icon: <FaAws />, level: 'Advanced Partner' },
-              // { name: 'IBM', icon: <FaIbm />, level: 'Solutions Partner' },
-              { name: 'Oracle', icon: <SiOracle />, level: 'Gold Partner' },
-              { name: 'Salesforce', icon: <SiSalesforce />, level: 'Consulting Partner' },
-              { name: 'SAP', icon: <SiSap />, level: 'Silver Partner' },
-              { name: 'Adobe', icon: <SiAdobe />, level: 'Solution Partner' }
-            ].map((partner, index) => (
+            {techStack.map((tech, index) => (
               <motion.div
-                key={partner.name}
+                key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+                className={`group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300`}
               >
-                <div className="text-4xl mb-4 text-white/90">{partner.icon}</div>
-                <h3 className="text-white font-semibold mb-2">{partner.name}</h3>
+                <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
+                <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
                 <div className="mt-4">
                   <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
-                    {partner.level}
+                    Expert
                   </span>
                 </div>
               </motion.div>
@@ -1025,11 +991,11 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="space-y-6 md:col-span-2"
+              className="space-y-6"
             >
               {[
                 {
@@ -1079,13 +1045,13 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="relative md:col-span-3"
+              className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3027470973836!2d78.37669631487752!3d17.458982988030458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8f5d40e7%3A0x7f0c7b7c4dd42f39!2sKhanamet%2C%20Kondapur%2C%20Hyderabad%2C%20Telangana%20500084!5e0!3m2!1sen!2sin!4v1647850844221!5m2!1sen!2sin"
                   width="100%"
-                  height="450"
+                  height="350"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
