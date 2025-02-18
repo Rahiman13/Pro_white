@@ -279,29 +279,29 @@ const Industries = () => {
                   transition={{ delay: 0.3 }}
                   className="hidden lg:block relative z-20"
                 >
-                  <div className="relative overflow-hidden rounded-2xl">
+                  <div className="relative">
                     <motion.div
-                      className="relative z-0 hover:scale-105 transition-transform duration-700 "
+                      animate={{
+                        y: [0, -20, 0],
+                        rotateZ: [0, 2, 0]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="relative z-20"
                     >
-                      {/* Professional Industry Image */}
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                        <img
-                          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                          alt="Industry Innovation"
-                          className="w-full h-[600px] object-cover"
-                        />
-                        {/* Professional Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 via-transparent to-transparent" />
-                        
-                        {/* Decorative Elements */}
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500" />
-                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500" />
-                      </div>
+                      <img
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Industry Innovation"
+                        className="rounded-2xl shadow-2xl"
+                      />
+                      <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                      <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-50 animate-pulse" />
                     </motion.div>
 
-                    {/* Enhanced Glow Effects */}
-                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" />
-                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl transform rotate-6 scale-105" />
                   </div>
                 </motion.div>
               </div>
@@ -524,6 +524,134 @@ const Industries = () => {
                     </motion.div>
                   ))}
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Success Stories Section */}
+          <section className="py-20 relative overflow-hidden">
+            {/* Enhanced Creative Background */}
+            <div className="absolute inset-0">
+              <div className="absolute inset-0 bg-[url('/patterns/circuit-board.svg')] opacity-5" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 via-purple-900/5 to-orange-900/5" />
+              <div className="absolute top-0 right-0 w-full h-full bg-[url('/patterns/flow-lines.svg')] opacity-10 animate-flow" />
+              <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-conic from-blue-500/20 via-purple-500/20 to-orange-500/20 blur-3xl animate-spin-slower" />
+            </div>
+
+            <div className="max-w-[1400px] mx-auto px-4 relative z-10">
+              {/* Creative Section Header */}
+              <motion.div className="text-center mb-32">
+                <div className="relative">
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-sm font-medium text-blue-600 inline-block mb-6"
+                  >
+                    SUCCESS STORIES
+                  </motion.span>
+                </div>
+
+                <h2 className="text-7xl font-bold mb-8" style={{ color: '#19234d' }}>
+                  Transforming Industries Into
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-[#d9764a] via-[#d9764a] to-[#d9764a] bg-size-200 animate-gradient"
+                  >
+                    Remarkable Success Stories
+                  </motion.span>
+                </h2>
+              </motion.div>
+
+              {/* Modern Success Stories Layout */}
+              <div className="space-y-40">
+                {successStories.map((story, index) => (
+                  <motion.div
+                    key={story.title}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.2 }}
+                    className="relative"
+                  >
+                    {/* Background Elements */}
+                    <div className="absolute inset-0 -z-10">
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/5 to-[#d9764a]/5 rounded-[3rem]" />
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-32 bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 blur-3xl" />
+                    </div>
+
+                    <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16`}>
+                      {/* Enhanced Image Section */}
+                      <div className="w-full md:w-1/2 relative">
+                        <div className="relative rounded-[2rem] overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] blur-2xl opacity-30" />
+                          <div className="relative h-[600px] rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl hover:scale-110 transition-transform duration-700">
+                            <motion.img
+                              src={story.image}
+                              alt={story.title}
+                              className="w-full h-full object-cover transition-transform duration-700 "
+                              whileHover={{ scale: 1.15 }}
+                              transition={{ duration: 0.7, ease: "easeOut" }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Enhanced Content Section */}
+                      <div className="w-full md:w-1/2 space-y-8 px-8">
+                        <div className="space-y-6">
+                          <motion.div
+                            className="flex items-center gap-4"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                          >
+                            <span className="px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] border border-[#2b5a9e]/20">
+                              {story.industry}
+                            </span>
+                            <div className="h-[2px] flex-1 bg-gradient-to-r from-[#2b5a9e]/20 to-[#d9764a]/20" />
+                          </motion.div>
+
+                          <h3 className="text-5xl font-bold text-[#19234d] leading-tight">{story.title}</h3>
+                          <p className="text-xl text-gray-600 leading-relaxed">{story.description}</p>
+                        </div>
+
+                        {/* Enhanced Metrics */}
+                        <div className="grid grid-cols-3 gap-6">
+                          {story.metrics.map((metric, idx) => (
+                            <motion.div
+                              key={metric.label}
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ delay: idx * 0.1 }}
+                              whileHover={{ scale: 1.05 }}
+                              className="relative group"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-2xl blur opacity-20 group-hover:opacity-30 transition-all duration-300" />
+                              <div className="relative p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/20">
+                                <div className="text-4xl font-bold bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text">
+                                  {metric.value}
+                                </div>
+                                <div className="text-sm text-gray-600 mt-2">{metric.label}</div>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        {/* Enhanced CTA Button */}
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          className="group relative px-8 py-4 rounded-xl overflow-hidden w-full md:w-auto"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] transition-all duration-300" />
+                          <div className="relative flex items-center justify-center gap-2 text-white font-medium">
+                            Explore Case Study
+                            <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          </div>
+                        </motion.button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </section>
