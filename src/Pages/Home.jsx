@@ -11,10 +11,10 @@ import VideoModal from '../components/VideoModal';
 
 // imges
 
-import DesignAndArchitecture from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Design&Architecture.jpg';
-import Development from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Development&Testing.jpg';
-import Discovery from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Discovery&Planning.jpg';
-import Launch from '../assets/OurDevelopmentProcess_4Tabs(600x400)/Launch&Support.jpg';
+import DesignAndArchitecture from '../assets/Home_Services_1.jpg';
+import Development from '../assets/Home_Services_2.jpg';
+import Discovery from '../assets/Home_Services_3.jpg';
+import Launch from '../assets/Home_Services_4.jpg';
 
 import ECommercePlatform from '../assets/OurProjects_4Tabs(600x300)/E-CommercePlatform.jpg';
 import AI_PoweredAnalyticsPlatform from '../assets/OurProjects_4Tabs(600x300)/AI-PoweredAnalyticsPlatform.jpg';
