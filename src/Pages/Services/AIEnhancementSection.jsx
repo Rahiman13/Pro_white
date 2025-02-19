@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const AIEnhancementSection = () => {
+  const [activeCard, setActiveCard] = useState(null);
 
   const aiSolutions = [
     {
@@ -12,7 +14,8 @@ const AIEnhancementSection = () => {
         'Automated lead qualification & customer engagement',
         'Integration with WhatsApp, Messenger, Websites, & Mobile Apps'
       ],
-      bestFor: ['E-commerce', 'Healthcare', 'FinTech', 'Customer Service']
+      bestFor: ['E-commerce', 'Healthcare', 'FinTech', 'Customer Service'],
+      color: 'from-blue-500 to-purple-500'
     },
     {
       title: 'AI-Driven Personalization & Recommendation',
@@ -62,21 +65,27 @@ const AIEnhancementSection = () => {
 
   return (
     <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-50" />
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-50" />
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
+        <div className="absolute w-96 h-96 -left-48 top-0 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute w-96 h-96 -right-48 bottom-0 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div className="text-center mb-16">
           <motion.span
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full text-sm font-medium text-purple-600 inline-block mb-6"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full 
+                     text-sm font-medium text-purple-600 inline-block mb-6"
           >
             AI Integration
           </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#19234d]">
             Our AI-Driven Solutions for
-            <span className="block text-[#d9764a]">
-              Web & App Development
-            </span>
+            <span className="block text-[#d9764a]">Web & App Development</span>
           </h2>
         </motion.div>
 
@@ -87,31 +96,65 @@ const AIEnhancementSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="relative group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              className={`relative group bg-white p-8 rounded-2xl shadow-xl 
+                         hover:shadow-2xl transition-all duration-300 
+                         overflow-hidden cursor-pointer`}
+              onClick={() => setActiveCard(activeCard === index ? null : index)}
             >
-              <div className="text-4xl mb-4">{solution.icon}</div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">{solution.title}</h3>
-              <ul className="space-y-3 mb-6">
-                {solution.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-green-500 mt-1">✔</span>
-                    <span className="text-gray-600">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Card Header */}
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  {solution.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">{solution.title}</h3>
+              </div>
+
+              {/* Features List */}
+              <motion.div
+                initial={false}
+                animate={{ height: activeCard === index ? 'auto' : '0' }}
+                className="overflow-hidden"
+              >
+                <ul className="space-y-3 mb-6">
+                  {solution.features.map((feature, idx) => (
+                    <motion.li
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * idx }}
+                      className="flex items-start space-x-2"
+                    >
+                      <span className="text-green-500 mt-1">✔</span>
+                      <span className="text-gray-600">{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              {/* Best For Tags */}
               <div className="mt-4">
                 <p className="text-sm font-medium text-purple-600 mb-2">📌 Best for:</p>
                 <div className="flex flex-wrap gap-2">
                   {solution.bestFor.map((industry, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-sm"
+                      className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-sm
+                               transform hover:scale-105 transition-transform duration-200"
                     >
                       {industry}
                     </span>
                   ))}
                 </div>
               </div>
+
+              {/* Decorative Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 
+                           transition-opacity duration-300 rounded-2xl"
+                   style={{
+                     background: `linear-gradient(135deg, ${solution.color})`
+                   }} 
+              />
             </motion.div>
           ))}
         </div>

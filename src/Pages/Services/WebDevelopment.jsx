@@ -31,11 +31,11 @@ import AIEnhancementSection from './AIEnhancementSection';
 
 
 // images
+import WebDevelopmentPNG from '../../assets/WebHome.png';
 import Ecommerce from '../../assets/WebDevelopment/Ecommerce.jpg';
 import CustomWebApplications from '../../assets/WebDevelopment/CustomWebApplications.jpg';
 import ApiDevelopment from '../../assets/WebDevelopment/ApiDevelopment.jpg';
 import ProgressiveWebApps from '../../assets/WebDevelopment/ProgressiveWebApps.jpg';
-
 
 const WebDevelopment = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -302,7 +302,7 @@ const WebDevelopment = () => {
             >
               <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  src={WebDevelopmentPNG}
                   alt="Professional Web Developer"
                   className="w-full h-full object-cover"
                 />
@@ -456,11 +456,11 @@ const WebDevelopment = () => {
                 <div className={`text-4xl mb-4 ${tech.color}`}>{tech.icon}</div>
                 <h3 className="text-white font-semibold mb-2">{tech.name}</h3>
                 <p className="text-gray-300 text-sm">{tech.description}</p>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <span className="px-3 py-1 bg-white/20 rounded-full text-xs text-white">
                     {tech.level}
                   </span>
-                </div>
+                </div> */}
               </motion.div>
             ))}
           </div>

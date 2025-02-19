@@ -146,18 +146,19 @@ const achievements = [
       teamGrowth: '40%'
     }
   },
-  {
-    year: '2025',
-    title: 'Global Innovation Hub',
-    description: 'Expanding AI capabilities and establishing global innovation centers.',
-    longDescription: 'Launching <span class="text-[#2b5a9e] font-semibold">AI Innovation Labs</span> across key markets. Strengthening partnerships with <span class="text-[#d9764a] font-semibold">Fortune 500 companies</span>. Pioneering <span class="text-[#2b5a9e] font-semibold">sustainable tech solutions</span> and expanding global presence.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    stats: {
-      globalPresence: '10+ Countries',
-      aiProjects: '50+',
-      partnerships: '20+'
-    }
-  }
+  // {
+  //   year: '2025',
+  //   title: 'Global Innovation Hub',
+  //   description: 'Expanding AI capabilities and establishing global innovation centers.',
+  //   longDescription: 'Currently pioneering <span class="text-[#2b5a9e] font-semibold">AI Innovation Labs</span> across key markets. Building partnerships with <span class="text-[#d9764a] font-semibold">Fortune 500 companies</span>. Developing <span class="text-[#2b5a9e] font-semibold">sustainable tech solutions</span> for tomorrow.',
+  //   image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+  //   stats: {
+  //     ongoingProjects: '15+',
+  //     globalPartners: '10+',
+  //     newInitiatives: '5'
+  //   },
+  //   isOngoing: true
+  // }
 ];
 
 const techStack = [
@@ -638,7 +639,7 @@ const About = () => {
       </section> */}
 
       {/* Enhanced Company Achievements Section */}
-      <section className="py-16 bg-white relative overflow-hidden">
+      <section className="py-28 bg-white relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-full">
@@ -695,26 +696,26 @@ const About = () => {
                       </div>
                       
                       {/* Hover Content - Appears on Right Side */}
-                      <div className="absolute top-0 -right-[calc(80%+4rem)] w-4/5 opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 pointer-events-none group-hover:pointer-events-auto">
-                        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl h-[calc(100%)] flex flex-col">
+                      <div className="absolute -top-12 -right-[calc(95%+4rem)] w-[99%] opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 pointer-events-none group-hover:pointer-events-auto">
+                        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl transform scale-95 group-hover:scale-100 transition-all duration-300">
                           {achievement.image && (
                             <img
                               src={achievement.image}
                               alt={achievement.title}
-                              className="w-full h-40 object-cover rounded-xl mb-6"
+                              className="w-full h-32 object-cover rounded-xl mb-4"
                             />
                           )}
-                          <p className="text-gray-800 mb-4 text-left flex-grow" 
+                          <p className="text-gray-800 mb-4 text-left text-sm" 
                              dangerouslySetInnerHTML={{ __html: achievement.longDescription || achievement.description }}>
                           </p>
                           {achievement.stats && (
-                            <div className="grid grid-cols-3 gap-4 w-full mt-auto">
+                            <div className="grid grid-cols-3 gap-3 w-full mt-auto">
                               {Object.entries(achievement.stats).map(([key, value]) => (
                                 <div key={key} className="text-center">
-                                  <div className="text-xl font-bold" style={{ color: '#2b5a9e' }}>
+                                  <div className="text-lg font-bold" style={{ color: '#2b5a9e' }}>
                                     {value}
                                   </div>
-                                  <div className="text-sm text-gray-600">
+                                  <div className="text-xs text-gray-600">
                                     {key.replace(/([A-Z])/g, ' $1').trim()}
                                   </div>
                                 </div>
@@ -751,26 +752,26 @@ const About = () => {
                     </div>
 
                     {/* Hover Content - Appears on Left Side */}
-                    <div className="absolute top-0 -left-[calc(80%+4rem)] w-4/5 opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 pointer-events-none group-hover:pointer-events-auto">
-                      <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl h-[calc(100%)] flex flex-col">
+                    <div className="absolute -top-12 -left-[calc(95%+4rem)] w-[99%] opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 pointer-events-none group-hover:pointer-events-auto">
+                      <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl transform scale-95 group-hover:scale-100 transition-all duration-300">
                         {achievement.image && (
                           <img
                             src={achievement.image}
                             alt={achievement.title}
-                            className="w-full h-40 object-cover rounded-xl mb-6"
+                            className="w-full h-32 object-cover rounded-xl mb-4"
                           />
                         )}
-                        <p className="text-gray-800 mb-4 text-left flex-grow" 
+                        <p className="text-gray-800 mb-4 text-left text-sm" 
                            dangerouslySetInnerHTML={{ __html: achievement.longDescription || achievement.description }}>
                         </p>
                         {achievement.stats && (
-                          <div className="grid grid-cols-3 gap-4 w-full mt-auto">
+                          <div className="grid grid-cols-3 gap-3 w-full mt-auto">
                             {Object.entries(achievement.stats).map(([key, value]) => (
                               <div key={key} className="text-center">
-                                <div className="text-xl font-bold" style={{ color: '#2b5a9e' }}>
+                                <div className="text-lg font-bold" style={{ color: '#2b5a9e' }}>
                                   {value}
                                 </div>
-                                <div className="text-sm text-gray-600">
+                                <div className="text-xs text-gray-600">
                                   {key.replace(/([A-Z])/g, ' $1').trim()}
                                 </div>
                               </div>
@@ -934,6 +935,123 @@ const About = () => {
                 </>
               )}
             </div>
+
+            {/* Current Initiatives Sections */}
+            <div className="absolute inset-0 flex items-center justify-between w-[800px] -translate-x-1/2 left-1/2">
+              {/* Left Side Initiatives */}
+              <motion.div 
+                className="flex flex-col items-end gap-4 w-64"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                {[
+                  { 
+                    title: 'AI Innovation Labs',
+                    icon: '🧠',
+                    gradient: 'from-blue-500/20 to-purple-500/20',
+                    description: 'Pioneering AI Solutions'
+                  },
+                  { 
+                    title: 'Global Partnerships',
+                    icon: '🌐',
+                    gradient: 'from-emerald-500/20 to-teal-500/20',
+                    description: 'Expanding Worldwide'
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7 + (index * 0.2) }}
+                    className="group relative"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-xl blur-sm transition-all duration-300 group-hover:blur-md`} />
+                    <div className="relative bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10">
+                          <span className="text-xl transform transition-transform duration-300 group-hover:scale-125">
+                            {item.icon}
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-[#19234d]">{item.title}</h4>
+                          <p className="text-xs text-gray-600">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Center Space for Trophy */}
+              <div className="w-32" />
+
+              {/* Right Side Initiatives */}
+              <motion.div 
+                className="flex flex-col items-start gap-4 w-64"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                {[
+                  { 
+                    title: 'Sustainable Tech',
+                    icon: '🌱',
+                    gradient: 'from-amber-500/20 to-orange-500/20',
+                    description: 'Eco-friendly Innovation'
+                  },
+                  { 
+                    title: 'Digital Transformation',
+                    icon: '💫',
+                    gradient: 'from-purple-500/20 to-pink-500/20',
+                    description: 'Future-Ready Solutions'
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7 + (index * 0.2) }}
+                    className="group relative"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-xl blur-sm transition-all duration-300 group-hover:blur-md`} />
+                    <div className="relative bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10">
+                          <span className="text-xl transform transition-transform duration-300 group-hover:scale-125">
+                            {item.icon}
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-[#19234d]">{item.title}</h4>
+                          <p className="text-xs text-gray-600">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Progress Indicator */}
+            <motion.div
+              className="absolute -left-4 top-44 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1 }}
+            >
+              <div className="text-sm font-medium text-gray-600 mb-2">Journey Progress</div>
+              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a]"
+                  initial={{ width: 0 }}
+                  animate={{ width: '80%' }}
+                  transition={{ duration: 1.5, delay: 1.2 }}
+                />
+              </div>
+              <div className="text-xs text-gray-500 mt-1">80% of 2025 Goals</div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -1003,7 +1121,7 @@ const About = () => {
       </section>
 
       {/* Global Presence Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute w-96 h-96 -left-12 -top-12 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute w-96 h-96 -right-12 -bottom-12 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -1014,11 +1132,10 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-4" style={{ color: '#19234d' }}>
-              Global{' '}
-              <span style={{ color: '#d9764a' }}>Presence</span>
+            <h2 className="text-5xl font-bold mb-3" style={{ color: '#19234d' }}>
+              Global<span style={{ color: '#d9764a' }}>Presence</span>
             </h2>
             <p style={{ color: '#19234d' }} className="text-xl">
               Serving clients worldwide from our strategic locations

@@ -1,9 +1,113 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaHandshake, FaYoutube } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
+import { toast } from 'react-hot-toast';
+import BaseUrl from '../API';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch(`${BaseUrl}/api/contacts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.custom(
+          (t) => (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="max-w-md w-full bg-white/90 backdrop-blur-lg shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5"
+            >
+              <div className="flex-1 w-0 p-4">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 pt-0.5">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center"
+                    >
+                      <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </motion.div>
+                  </div>
+                  <div className="ml-3 flex-1">
+                    <p className="text-sm font-medium text-gray-900">
+                      Message Sent Successfully!
+                    </p>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Thank you for reaching out. We'll get back to you soon!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex border-l border-gray-200">
+                <button
+                  onClick={() => toast.dismiss(t.id)}
+                  className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          ),
+          {
+            position: 'top-center',
+            duration: 4000,
+          }
+        );
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      } else {
+        throw new Error(data.message || 'Failed to send message');
+      }
+    } catch (error) {
+      toast.error(error.message || 'Failed to send message. Please try again.', {
+        position: 'top-center',
+        duration: 3000,
+        style: {
+          background: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 8px 32px rgba(31, 38, 135, 0.37)',
+          color: '#e53e3e',
+          padding: '16px',
+          borderRadius: '12px',
+        },
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   return (
     <main className="pt-20 relative overflow-hidden">
       {/* Background Elements */}
@@ -47,10 +151,10 @@ const Contact = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-8"
+            className="space-y-1"
           >
             {/* Contact Cards */}
-            <div className="space-y-6">
+            <div className="space-y-1">
               {[
                 {
                   icon: <FaMapMarkerAlt className="text-2xl" />,
@@ -61,7 +165,7 @@ const Contact = () => {
                 {
                   icon: <FaEnvelope className="text-2xl" />,
                   title: 'Email Us',
-                  content: ['contact@projexino.com'],
+                  content: ['hello@projexino.com'],
                   color: 'from-purple-500 to-pink-500'
                 },
                 {
@@ -160,11 +264,11 @@ const Contact = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl blur-xl" />
             <div className="relative bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {[
-                  { label: 'Name', type: 'text', placeholder: 'Your name' },
-                  { label: 'Email', type: 'email', placeholder: 'your@email.com' },
-                  { label: 'Message', type: 'textarea', placeholder: 'Your message' }
+                  { label: 'Name', type: 'text', placeholder: 'Your name', name: 'name' },
+                  { label: 'Email', type: 'email', placeholder: 'your@email.com', name: 'email' },
+                  { label: 'Message', type: 'textarea', placeholder: 'Your message', name: 'message' }
                 ].map((field, index) => (
                   <motion.div
                     key={field.label}
@@ -177,13 +281,19 @@ const Contact = () => {
                     </label>
                     {field.type === 'textarea' ? (
                       <textarea
+                        name={field.name}
                         rows="4"
+                        value={formData[field.name]}
+                        onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/50 backdrop-blur-sm"
                         placeholder={field.placeholder}
                       />
                     ) : (
                       <input
                         type={field.type}
+                        name={field.name}
+                        value={formData[field.name]}
+                        onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/50 backdrop-blur-sm"
                         placeholder={field.placeholder}
                       />

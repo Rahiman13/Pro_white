@@ -5,11 +5,12 @@ import CountUp from 'react-countup';
 import { FaRocket, FaLightbulb, FaCode, FaCloud, FaCog } from 'react-icons/fa';
 import '../styles/animations.css';
 import NetworkBackground from '../components/NetworkBackground';
-import CreativeImage from '../components/CreativeImage';
+// import CreativeImage from '../components/CreativeImage';
 import { useNavigate, Link } from 'react-router-dom';
 import VideoModal from '../components/VideoModal';
 
 // imges
+import CreativeImage from '../assets/Home_CreativeImage.png';
 
 import DesignAndArchitecture from '../assets/Home_Services_1.jpg';
 import Development from '../assets/Home_Services_2.jpg';
@@ -26,6 +27,7 @@ import AISolutions from '../assets/OurServices_6smallTabs(400x200)/AISolutions.j
 import WebDevelopment from '../assets/OurServices_6smallTabs(400x200)/WebDevelopment.jpg';
 import MobileDevelopment from '../assets/OurServices_6smallTabs(400x200)/AppDevelopment.jpg';
 import UIXDesign from '../assets/OurServices_6smallTabs(400x200)/UIUXDesign.jpg';
+import StaffingSolutions from '../assets/OurServices_6smallTabs(400x200)/StaffingSolutions.jpg';
 
 
 // import ScrollBackground from '../components/ScrollBackground';
@@ -153,67 +155,55 @@ const Home = () => {
 
   const services = [
     {
-      title: 'Web Development',
-      description: 'Custom websites and web applications built with modern technologies',
-      image: WebDevelopment,
+      name: 'Web Development',
+      shortDescription: 'Modern, responsive web applications built with cutting-edge technologies',
+      longDescription: 'Crafting sophisticated web solutions that combine stunning design with powerful functionality. Our web development services leverage the latest technologies to deliver scalable, secure, and high-performance applications tailored to your business needs.',
+      path: '/services/web-development',
       icon: '💻',
-      features: ['Custom Solutions', 'Responsive Design', 'Performance Optimization', 'SEO Integration'],
-      color: 'from-blue-500 to-cyan-500',
-      techStack: ['React', 'Node.js', 'MongoDB'],
-      path: 'web-development'
+      image: WebDevelopment,
+      features: ['Custom Development', 'Responsive Design', 'Performance Optimization', 'SEO Integration'],
+      techStack: ['React', 'Node.js', 'Next.js', 'MongoDB']
     },
     {
-      title: 'Mobile Development',
-      description: 'Native and cross-platform mobile applications',
-      image: MobileDevelopment,
+      name: 'App Development',
+      shortDescription: 'Native and cross-platform mobile solutions for iOS and Android',
+      longDescription: 'End-to-end mobile app development services delivering intuitive, feature-rich applications. We specialize in both native and cross-platform solutions that provide seamless user experiences across all devices.',
+      path: '/services/app-development',
       icon: '📱',
-      features: ['iOS & Android', 'Cross-Platform', 'UI/UX Design', 'App Store Optimization'],
-      color: 'from-green-500 to-emerald-500',
-      techStack: ['React Native', 'Flutter', 'Swift'],
-      path: 'app-development'
+      image: MobileDevelopment,
+      features: ['Native Apps', 'Cross-Platform', 'UI/UX Design', 'App Store Optimization'],
+      techStack: ['React Native', 'Flutter', 'Swift', 'Kotlin']
     },
     {
-      title: 'UI/UX Design',
-      description: 'User-centered design solutions that enhance engagement',
-      image: UIXDesign,
+      name: 'UI/UX Design',
+      shortDescription: 'User-centric design solutions that enhance engagement and conversion',
+      longDescription: 'Creating intuitive and visually appealing interfaces that drive user engagement. Our design process combines aesthetic excellence with user behavior research to deliver experiences that convert visitors into customers.',
+      path: '/services/web-design',
       icon: '🎨',
+      image: UIXDesign,
       features: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing'],
-      color: 'from-purple-500 to-pink-500',
-      techStack: ['Figma', 'Adobe XD', 'Sketch'],
-      path: 'web-design'
+      techStack: ['Figma', 'Adobe XD', 'Sketch', 'InVision']
     },
     {
-      title: 'Digital Marketing',
-      description: 'Strategic digital marketing solutions for business growth',
-      image: DigitalMarketing,
+      name: 'Digital Marketing',
+      shortDescription: 'Data-driven marketing strategies to accelerate business growth',
+      longDescription: 'Comprehensive digital marketing solutions that drive brand awareness and customer acquisition. We combine analytics with creative strategies to deliver measurable results and ROI for your business.',
+      path: '/services/digital-marketing',
       icon: '📈',
+      image: DigitalMarketing,
       features: ['SEO', 'Content Marketing', 'Social Media', 'Analytics'],
-      color: 'from-orange-500 to-red-500',
-      techStack: ['Google Analytics', 'SEMrush', 'HubSpot'],
-      path: 'digital-marketing'
+      techStack: ['Google Analytics', 'SEMrush', 'HubSpot', 'Meta Ads']
     },
     {
-      title: 'AI Solutions',
-      description: 'Implementing intelligent solutions to automate and enhance business processes',
-      image: AISolutions,
-      icon: '🤖',
-      features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Predictive Analytics'],
-      color: 'from-green-500 to-teal-500',
-      accent: 'green',
-      techStack: ['TensorFlow', 'PyTorch', 'OpenAI'],
-      path: 'ai-solutions'
-    },
-    // {
-    //   title: 'Blockchain',
-    //   description: 'Building secure and transparent blockchain solutions for modern businesses',
-    //   image: Blockchain,
-    //   icon: '⛓️',
-    //   features: ['Smart Contracts', 'DeFi Solutions', 'NFT Platforms', 'Blockchain Integration'],
-    //   color: 'from-yellow-500 to-orange-500',
-    //   accent: 'yellow',
-    //   techStack: ['Ethereum', 'Solidity', 'Web3.js'],
-    //   path: 'blockchain'
-    // }
+      name: 'Staffing Solutions',
+      shortDescription: 'Expert talent acquisition and management for tech teams',
+      longDescription: 'Strategic staffing solutions to build and scale your technical teams. We provide skilled professionals across various technology domains, ensuring the right fit for your organization\'s needs and culture.',
+      path: '/services/staffing',
+      icon: '👥',
+      image: StaffingSolutions,
+      features: ['Talent Sourcing', 'Skill Assessment', 'Team Building', 'Resource Management'],
+      techStack: ['HR Tech', 'ATS Systems', 'LinkedIn Recruiter', 'Assessment Tools']
+    }
   ];
 
 
@@ -368,13 +358,13 @@ const Home = () => {
           <section className="hero-section relative overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
             <NetworkBackground />
             {/* Main Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative z-10 max-w-7xl mx-auto h-screen">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end h-full ">
                 {/* Left Column - Text Content */}
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="text-left pt-20"
+                  className="text-left py-24"
                 >
                   {/* Enhanced Innovation Badge */}
                   <motion.div
@@ -491,9 +481,13 @@ const Home = () => {
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="hidden lg:block relative z-20 mt-16"
+                  className="hidden lg:block relative items-center z-20 px-2 h-full"
                 >
-                  <CreativeImage />
+                  <img 
+                    src={CreativeImage} 
+                    alt="Creative Image" 
+                    className="w-full h-[85%]  object-cover absolute bottom-0 left-0  object-bottom" 
+                  />
                 </motion.div>
               </div>
             </div>
@@ -890,15 +884,16 @@ const Home = () => {
               <div className="flex flex-col lg:flex-row gap-8">
                 {/* Left Column - Image Gallery */}
                 <div className="w-full lg:w-1/2">
-                  <div className="grid grid-cols-2 gap-4 h-[500px]">
+                  <div className="grid grid-cols-2 auto-rows-fr gap-4 h-[500px]">
                     {services.map((service, index) => (
                       <motion.div
-                        key={service.title}
+                        key={service.name}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-white/80 backdrop-blur-lg
                           shadow-lg hover:shadow-2xl transition-all duration-500
+                          ${index === 4 ? 'col-span-2' : ''} 
                           ${index === activeService ? 'ring-2 ring-blue-600 ring-offset-4 ring-offset-white/50' : ''}`}
                         onMouseEnter={() => {
                           setIsHovered(true);
@@ -908,23 +903,32 @@ const Home = () => {
                           setIsHovered(false);
                         }}
                       >
-                        <div className="aspect-square">
+                        <div className={`${index === 4 ? 'aspect-[2/1]' : 'aspect-square'}`}>
                           <img
                             src={service.image}
-                            alt={service.title}
+                            alt={service.name}
                             className={`w-full h-full object-cover transform transition-all duration-700
                               ${index === activeService ? 'scale-110' : 'group-hover:scale-110'}`}
                           />
-                          <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent 
-                            transition-all duration-500
-                            ${index === activeService ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                            <div className={`absolute bottom-0 left-0 right-0 p-6 transform transition-all duration-500
-                              ${index === activeService ? 'translate-y-0' : 'translate-y-full group-hover:translate-y-0'}`}>
-                              <div className="flex items-center gap-3 text-white mb-3">
-                                <span className="text-3xl">{service.icon}</span>
-                                <h3 className="text-xl font-bold">{service.title}</h3>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent 
+                            transition-all duration-500">
+                            <div className="absolute bottom-0 left-0 right-0 transform transition-transform duration-300
+                              group-hover:translate-y-0 translate-y-12">
+                              <div className="p-4">
+                                <div className="flex items-center space-x-3 mb-2">
+                                  <div className="w-10 h-10 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-lg">
+                                    <span className="text-2xl transform transition-transform duration-300 
+                                      group-hover:-translate-y-1">{service.icon}</span>
+                                  </div>
+                                  <h3 className="text-xl font-semibold text-white transform transition-transform 
+                                    duration-300 group-hover:-translate-y-1 line-clamp-1">{service.name}</h3>
+                                </div>
+                                <p className="text-sm text-gray-300 opacity-0 transform translate-y-4 
+                                  group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300
+                                  line-clamp-2">
+                                  {service.shortDescription}
+                                </p>
                               </div>
-                              <p className="text-sm text-white/90 leading-relaxed">{service.description}</p>
                             </div>
                           </div>
                         </div>
@@ -947,7 +951,7 @@ const Home = () => {
                       <div className="relative h-[200px]">
                         <motion.img
                           src={services[activeService].image}
-                          alt={services[activeService].title}
+                          alt={services[activeService].name}
                           className="w-full h-full object-cover"
                           initial={{ scale: 1.2 }}
                           animate={{ scale: 1 }}
@@ -961,7 +965,7 @@ const Home = () => {
                             <span className="text-5xl">{services[activeService].icon}</span>
                             <div>
                               <h3 className="text-3xl font-bold text-white mb-2">
-                                {services[activeService].title}
+                                {services[activeService].name}
                               </h3>
                               <div className="flex flex-wrap gap-2">
                                 {services[activeService].techStack.map((tech) => (
@@ -982,7 +986,7 @@ const Home = () => {
                       {/* Content Section with Explore Button */}
                       <div className="p-6 flex-1 flex flex-col">
                         <p className="text-lg text-gray-700 mb-6 flex-1">
-                          {services[activeService].description}
+                          {services[activeService].longDescription}
                         </p>
 
                         <div className="flex justify-between items-center">
@@ -1002,7 +1006,7 @@ const Home = () => {
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => navigate(`/services/${services[activeService].path}`)}
+                            onClick={() => navigate(services[activeService].path)}
                             className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
                               rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 
                               transition-all duration-300"
