@@ -27,6 +27,7 @@ import ProjectDetail from './Pages/ProjectDetail';
 import CookiePolicy from './Pages/CookiePolicy';
 import TermsOfService from './Pages/TermsOfService';
 import ScrollToTop from './components/ScrollToTop';
+import ImagePreloader from './components/ImagePreloader';
 
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
@@ -47,6 +48,7 @@ const RouteChangeHandler = ({ children }) => {
 const App = () => {
   return (
     <LoaderProvider>
+      <ImagePreloader />
       <BrowserRouter>
         <RouteChangeHandler>
           <ScrollToTop />

@@ -13,6 +13,7 @@ import {
   FaChartLine,
   FaCloud
 } from 'react-icons/fa';
+import StaffingPNG from '../../assets/png/Staffing_banner.png';
 
 const Staffing = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -95,36 +96,27 @@ const Staffing = () => {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50">
       {/* Hero Section */}
-      <section className="hero-section relative min-h-screen overflow-hidden">
+      <section className="hero-section relative overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
         <NetworkBackground />
-
-        {/* Enhanced Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,165,250,0.1),transparent_50%)]" />
-          <div className="absolute inset-0">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-spin-slower" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-conic from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-full blur-3xl animate-spin-reverse" />
-          </div>
-        </div>
-
+        
         {/* Main Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto h-[80vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end h-full">
             {/* Left Column - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-left pt-20"
+              className="text-left py-24"
             >
-              {/* Innovation Badge */}
+              {/* Enhanced Innovation Badge */}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5 }}
-                className="inline-flex items-center space-x-3 mb-8 glass-morphism px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                className="inline-flex items-center space-x-2 mb-6 glass-morphism px-8 py-4 rounded-full"
               >
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-conic from-blue-400 via-purple-400 to-pink-400 rounded-full animate-spin-slow group-hover:animate-spin" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-spin-slow" />
                   <div className="relative bg-white rounded-full p-2">
                     <span className="relative flex h-4 w-4">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
@@ -133,10 +125,11 @@ const Staffing = () => {
                   </div>
                 </div>
                 <span className="text-2xl">👥</span>
-                <span className="font-medium" style={{ color: '#2b5a9e' }}>Staffing Excellence</span>
+                <span className="font-medium text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(to right, #2b5a9e, #d9764a)' }}>
+                  Staffing Excellence
+                </span>
               </motion.div>
 
-              {/* Enhanced Heading */}
               <h1 className="text-6xl lg:text-7xl font-bold mb-6" style={{ color: '#19234d' }}>
                 Building Amazing
                 <span className="block mt-4">
@@ -153,7 +146,6 @@ const Staffing = () => {
                     ]}
                     wrapper="span"
                     repeat={Infinity}
-                    style={{ color: '#d9764a' }}
                     className="bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text"
                   />
                 </span>
@@ -175,21 +167,18 @@ const Staffing = () => {
               </div>
             </motion.div>
 
-            {/* Right Column - Services Preview */}
+            {/* Right Column - Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:block relative"
+              className="hidden lg:block relative items-center z-20 px-2 h-full"
             >
-              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                  alt="Professional Web Developer"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              </div>
+              <img 
+                src={StaffingPNG} 
+                alt="Staffing Solutions" 
+                className="w-full h-[100%] object-cover absolute bottom-0 left-0 object-bottom" 
+              />
             </motion.div>
           </div>
         </div>

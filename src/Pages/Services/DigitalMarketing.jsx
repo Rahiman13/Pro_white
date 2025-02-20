@@ -25,6 +25,8 @@ import {
   SiYoutube,
 } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
+import DigitalMarketingPNG from '../../assets/png/DM_banner.png';
+import OptimizedImage from '../OptimizedImage';
 
 
 // images
@@ -35,6 +37,41 @@ import EmailMarketing from '../../assets/DigitalMarketing/EmailMarketing.jpg';
 
 const DigitalMarketing = () => {
   const navigate = useNavigate();
+
+  // const features = [
+  //   {
+  //     title: 'Search Engine Optimization',
+  //     description: 'Boost your online visibility with data-driven SEO strategies',
+  //     icon: <FaSearchDollar className="text-5xl" />,
+  //     image: 'https://res.cloudinary.com/dib9kutp6/image/upload/v1740060635/Projexino/ovkurwmcxnek34wlzmfy.jpg',
+  //     color: 'from-blue-800 to-blue-900',
+  //     benefits: ['Keyword Research', 'On-Page SEO', 'Technical SEO', 'Link Building']
+  //   },
+  //   {
+  //     title: 'Social Media Marketing',
+  //     description: 'Engage and grow your audience across social platforms',
+  //     icon: <FaHashtag className="text-5xl" />,
+  //     image: 'https://res.cloudinary.com/dib9kutp6/image/upload/v1740060650/Projexino/n1jebmdbafekar5wfu7s.jpg',
+  //     color: 'from-purple-800 to-purple-900',
+  //     benefits: ['Content Strategy', 'Community Management', 'Paid Advertising', 'Analytics']
+  //   },
+  //   {
+  //     title: 'Content Marketing',
+  //     description: 'Create compelling content that converts visitors into customers',
+  //     icon: <FaPenFancy className="text-5xl" />,
+  //     image: 'https://res.cloudinary.com/dib9kutp6/image/upload/v1740060640/Projexino/wgnnsacoqvjc1p6btvni.jpg',
+  //     color: 'from-green-800 to-green-900',
+  //     benefits: ['Blog Writing', 'Email Campaigns', 'Video Content', 'Infographics']
+  //   },
+  //   {
+  //     title: 'Email Marketing',
+  //     description: 'Build lasting relationships through targeted email campaigns',
+  //     icon: <FaMailBulk className="text-5xl" />,
+  //     image: 'https://res.cloudinary.com/dib9kutp6/image/upload/v1740060634/Projexino/dvxtrm1zl1t7ysgp3jbr.jpg',
+  //     color: 'from-red-800 to-red-900',
+  //     benefits: ['List Building', 'Automation', 'A/B Testing', 'Analytics']
+  //   }
+  // ];
 
   const features = [
     {
@@ -141,31 +178,24 @@ const DigitalMarketing = () => {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50">
       {/* Hero Section */}
-      <section className="hero-section relative min-h-screen overflow-hidden">
+      <section className="hero-section relative overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
         <NetworkBackground />
-
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,165,250,0.1),transparent_50%)]" />
-          <div className="absolute inset-0">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-spin-slower" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-conic from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-full blur-3xl animate-spin-reverse" />
-          </div>
-        </div>
-
+        
         {/* Main Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto h-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end h-full">
+            {/* Left Column - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-left pt-20"
+              className="text-left py-24"
             >
+              {/* Enhanced Innovation Badge */}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5 }}
-                className="inline-flex items-center space-x-3 mb-8 glass-morphism px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                className="inline-flex items-center space-x-2 mb-6 glass-morphism px-8 py-4 rounded-full"
               >
                 <span className="text-2xl">🚀</span>
                 <span className="font-medium" style={{ color: '#2b5a9e' }}>Digital Marketing Excellence</span>
@@ -185,7 +215,6 @@ const DigitalMarketing = () => {
                     ]}
                     wrapper="span"
                     repeat={Infinity}
-                    style={{ color: '#d9764a' }}
                     className="bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text"
                   />
                 </span>
@@ -215,20 +244,18 @@ const DigitalMarketing = () => {
               </div>
             </motion.div>
 
+            {/* Right Column - Enhanced Creative Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:block relative"
+              className="hidden lg:block relative items-center z-20 px-2 h-full"
             >
-              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                  alt="Professional Web Developer"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              </div>
+              <img 
+                src={DigitalMarketingPNG} 
+                alt="Digital Marketing Services" 
+                className="w-full h-[100%] object-cover absolute bottom-0 left-0 object-bottom" 
+              />
             </motion.div>
           </div>
         </div>
@@ -277,10 +304,11 @@ const DigitalMarketing = () => {
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">
-                  <img
+                  <OptimizedImage
                     src={feature.image}
                     alt={feature.title}
                     className="w-full h-full object-cover will-change-transform transition-transform duration-700 group-hover:scale-110"
+                    priority={true}
                   />
 
 

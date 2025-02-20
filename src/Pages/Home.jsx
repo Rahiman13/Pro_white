@@ -10,7 +10,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import VideoModal from '../components/VideoModal';
 
 // imges
-import CreativeImage from '../assets/Home_CreativeImage.png';
+import CreativeImage from '../assets/png/home_banner.png';
 
 import DesignAndArchitecture from '../assets/Home_Services_1.jpg';
 import Development from '../assets/Home_Services_2.jpg';

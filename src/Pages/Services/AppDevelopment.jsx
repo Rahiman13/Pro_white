@@ -30,6 +30,7 @@ import {
 import CountUp from 'react-countup';
 import { useNavigate } from 'react-router-dom';
 import AIEnhancementSection from './AIEnhancementSection';
+import AppDevelopmentPNG from '../../assets/png/AppDev_banner.png';
 
 const AppDevelopment = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -236,58 +237,23 @@ const AppDevelopment = () => {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50">
       {/* Hero Section */}
-      <section className="hero-section relative min-h-screen overflow-hidden">
+      <section className="hero-section relative overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
         <NetworkBackground />
-
-        {/* Enhanced Background Elements */}
-        <div className="absolute inset-0">
-          {/* Animated Mesh Gradient */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,165,250,0.1),transparent_50%)]" />
-
-          {/* Geometric Patterns */}
-          <div className="absolute inset-0">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-conic from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-spin-slower" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-conic from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-full blur-3xl animate-spin-reverse" />
-          </div>
-
-          {/* Decorative Lines */}
-          <div className="absolute inset-0 overflow-hidden">
-            <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <motion.path
-                d="M0,50 Q25,45 50,50 T100,50"
-                stroke="url(#gradient-line)"
-                strokeWidth="0.1"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <defs>
-                <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgba(96,165,250,0.2)" />
-                  <stop offset="50%" stopColor="rgba(168,85,247,0.2)" />
-                  <stop offset="100%" stopColor="rgba(96,165,250,0.2)" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-        </div>
-
         {/* Main Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto h-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end h-full">
             {/* Left Column - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-left pt-20"
+              className="text-left py-24"
             >
               {/* Innovation Badge */}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5 }}
-                className="inline-flex items-center space-x-3 mb-8 glass-morphism px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                className="inline-flex items-center space-x-2 mb-6 glass-morphism px-8 py-4 rounded-full"
               >
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-conic from-blue-400 via-purple-400 to-pink-400 rounded-full animate-spin-slow group-hover:animate-spin" />
@@ -317,7 +283,6 @@ const AppDevelopment = () => {
                     ]}
                     wrapper="span"
                     repeat={Infinity}
-                    style={{ color: '#d9764a' }}
                     className="bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-transparent bg-clip-text"
                   />
                 </span>
@@ -327,7 +292,7 @@ const AppDevelopment = () => {
                 Building scalable, secure, and innovative mobile solutions that drive business growth
               </p>
 
-              {/* Enhanced CTA Buttons */}
+              {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -348,21 +313,18 @@ const AppDevelopment = () => {
               </div>
             </motion.div>
 
-            {/* Right Column - Features Preview */}
+            {/* Right Column - Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="hidden lg:block relative"
+              className="hidden lg:block relative items-center z-20 px-2 h-full"
             >
-              <div className="relative w-full h-[600px] rounded-2xl mt-8 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                  alt="Professional Web Developer"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              </div>
+              <img 
+                src={AppDevelopmentPNG} 
+                alt="App Development"
+                className="w-full h-[85%] object-cover absolute bottom-0 left-0 object-bottom" 
+              />
             </motion.div>
           </div>
         </div>
