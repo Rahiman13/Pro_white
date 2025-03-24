@@ -12,9 +12,12 @@ const Navbar = () => {
   const [showServices, setShowServices] = useState(false);
   const location = useLocation();
 
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
+
   const handleWhatsAppClick = () => {
-    // Remove spaces and format the number correctly
-    const phoneNumber = '919601843090'; // Remove +91 and spaces
+    const phoneNumber = '919601843090';
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
   };
 
@@ -106,18 +109,26 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden backdrop-blur-xl"
+            className="lg:hidden overflow-hidden backdrop-blur-xl text-white"
             style={{
               background: 'rgba(17, 25, 40, 0.95)',
               borderTop: '1px solid rgba(255, 255, 255, 0.1)'
             }}
           >
             <div className="px-4 py-6 space-y-4">
-              <NavLinks showServices={showServices} setShowServices={setShowServices} mobile />
+              <NavLinks 
+                showServices={showServices} 
+                setShowServices={setShowServices} 
+                mobile 
+                onNavClick={handleNavClick}
+              />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleWhatsAppClick}
+                onClick={() => {
+                  handleWhatsAppClick();
+                  handleNavClick();
+                }}
                 className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300"
               >
                 <FaWhatsapp className="text-xl" />

@@ -507,69 +507,143 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                title: 'Innovation First',
-                description: 'Pushing boundaries and embracing new technologies to create groundbreaking solutions',
-                icon: '💡',
-                image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                color: 'from-blue-500 to-purple-500'
-              },
-              {
-                title: 'Client Success',
-                description: 'Your success is our primary measure of achievement and drives everything we do',
-                icon: '🎯',
-                image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                color: 'from-purple-500 to-pink-500'
-              },
-              {
-                title: 'Excellence',
-                description: 'Delivering nothing but the highest quality solutions with meticulous attention to detail',
-                icon: '⭐',
-                image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                color: 'from-pink-500 to-orange-500'
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="group relative"
-              >
-                {/* Card Container */}
-                <div className="relative h-full rounded-2xl bg-white p-1 shadow-xl transition-all duration-300 hover:scale-[1.02]">
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${value.color} opacity-10 blur transition-all duration-300 group-hover:opacity-20`} />
-                  
-                  <div className="relative h-full rounded-xl bg-white p-8">
-                    {/* Image Section */}
-                    <div className="relative mb-6 overflow-hidden rounded-xl">
-                      <div className="aspect-w-16 aspect-h-9">
-                        <img
-                          src={value.image}
-                          alt={value.title}
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                      </div>
-                      <div className="absolute bottom-4 left-4 flex items-center space-x-2">
-                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl shadow-lg">
-                          {value.icon}
+          {/* Main Container */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 px-4 md:px-8 py-12 overflow-visible">
+            {/* Left Points */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="w-full lg:w-1/3 space-y-3"
+            >
+              {[
+                {
+                  title: "Innovation Excellence",
+                  description: "Pushing boundaries in tech",
+                  icon: "🚀",
+                  gradient: "from-[#2b5a9e]/20 to-[#d9764a]/20"
+                },
+                {
+                  title: "Client Success",
+                  description: "100% satisfaction rate",
+                  icon: "🎯",
+                  gradient: "from-[#d9764a]/20 to-[#2b5a9e]/20"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + (index * 0.2) }}
+                  className="group relative w-full"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-xl blur-sm transition-all duration-300 group-hover:blur-md`} />
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10">
+                        <span className="text-xl transform transition-transform duration-300 group-hover:scale-125">
+                          {item.icon}
                         </span>
                       </div>
+                      <div className="min-w-0 flex-1">
+                        <h4 className="font-semibold text-[#19234d] text-sm md:text-base">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-gray-600">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-
-                    {/* Content */}
-                    <h3 className="mb-4 text-2xl font-bold text-gray-900">{value.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
-
-                    {/* Hover Effect Line */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-xl bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
-                </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Center Trophy */}
+            <div className="w-full lg:w-auto flex justify-center items-center py-6 lg:py-0">
+              <motion.div
+                className="relative z-10"
+                animate={showCelebration ? {
+                  scale: [1, 1.2, 1],
+                  rotateY: [0, 360],
+                } : {}}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="text-5xl filter drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">🏆</span>
+                {showCelebration && (
+                  <>
+                    <motion.span
+                      className="absolute -top-4 -right-4 text-2xl"
+                      animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ✨
+                    </motion.span>
+                    <motion.span
+                      className="absolute -bottom-4 -left-4 text-2xl"
+                      animate={{ rotate: -360, scale: [1, 1.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ✨
+                    </motion.span>
+                  </>
+                )}
               </motion.div>
-            ))}
+            </div>
+
+            {/* Right Points */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="w-full lg:w-1/3 space-y-3"
+            >
+              {[
+                {
+                  title: "Global Reach",
+                  description: "Worldwide presence",
+                  icon: "🌏",
+                  gradient: "from-[#2b5a9e]/20 to-[#d9764a]/20"
+                },
+                {
+                  title: "Expert Team",
+                  description: "Industry leaders",
+                  icon: "👥",
+                  gradient: "from-[#d9764a]/20 to-[#2b5a9e]/20"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + (index * 0.2) }}
+                  className="group relative w-full"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-xl blur-sm transition-all duration-300 group-hover:blur-md`} />
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10">
+                        <span className="text-xl transform transition-transform duration-300 group-hover:scale-125">
+                          {item.icon}
+                        </span>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h4 className="font-semibold text-[#19234d] text-sm md:text-base">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-gray-600">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

@@ -12,7 +12,6 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(true);
   const [showShareModal, setShowShareModal] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState(null);
-  const [activeHeading, setActiveHeading] = useState(null);
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -36,33 +35,6 @@ const BlogDetail = () => {
 
     fetchBlogDetail();
   }, [blogId]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            const index = parseInt(id.split('-')[1]);
-            setActiveHeading(index);
-          }
-        });
-      },
-      {
-        rootMargin: '-100px 0px -80% 0px'
-      }
-    );
-
-    const headings = blog?.content.filter(block => block.type === 'heading');
-    if (headings) {
-      headings.forEach((_, index) => {
-        const element = document.getElementById(`heading-${index}`);
-        if (element) observer.observe(element);
-      });
-    }
-
-    return () => observer.disconnect();
-  }, [blog]);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -94,16 +66,13 @@ const BlogDetail = () => {
                 className="relative group"
               >
                 <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <h2 
-                  id={`heading-${index}`}
-                  className={`
-                    text-3xl font-bold mb-6 pl-8 
-                    bg-clip-text text-transparent bg-gradient-to-r 
-                    from-[#19234d] to-[#2b5a9e]
-                    hover:from-[#2b5a9e] hover:to-[#d9764a]
-                    transition-all duration-300
-                  `}
-                >
+                <h2 className={`
+                  text-3xl font-bold mb-6 pl-8 
+                  bg-clip-text text-transparent bg-gradient-to-r 
+                  from-[#19234d] to-[#2b5a9e]
+                  hover:from-[#2b5a9e] hover:to-[#d9764a]
+                  transition-all duration-300
+                `}>
                   {block.text}
                 </h2>
               </motion.div>
@@ -212,20 +181,6 @@ const BlogDetail = () => {
     
     if (headings.length < 2) return null;
 
-    const scrollToHeading = (index) => {
-      const element = document.getElementById(`heading-${index}`);
-      if (element) {
-        const offset = 100; // Adjust this value based on your header height
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    };
-
     return (
       <motion.div
         initial={{ opacity: 0, x: 20 }}
@@ -236,23 +191,14 @@ const BlogDetail = () => {
           <h3 className="text-lg font-semibold mb-4 text-[#19234d]">Table of Contents</h3>
           <nav className="space-y-2">
             {headings.map((heading, index) => (
-              <motion.button
+              <motion.a
                 key={index}
-                onClick={() => scrollToHeading(index)}
+                href={`#heading-${index}`}
                 whileHover={{ x: 4 }}
-                className={`
-                  block text-left w-full transition-colors duration-200
-                  ${activeHeading === index 
-                    ? 'text-[#2b5a9e] font-medium' 
-                    : 'text-gray-600 hover:text-[#2b5a9e]'
-                  }
-                `}
+                className="block text-gray-600 hover:text-[#2b5a9e] transition-colors duration-200"
               >
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="line-clamp-1">{heading.text}</span>
-                </div>
-              </motion.button>
+                {heading.text}
+              </motion.a>
             ))}
           </nav>
         </div>
@@ -508,7 +454,7 @@ const BlogDetail = () => {
         )}
       </AnimatePresence>
 
-      {/* <TableOfContents content={blog.content} /> */}
+      <TableOfContents content={blog.content} />
     </main>
   );
 };

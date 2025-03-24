@@ -1046,12 +1046,12 @@ const Home = () => {
               </motion.div>
 
               {/* Project Category Tabs */}
-              <div className="flex justify-center mb-12 gap-4">
+              <div className="flex flex-wrap justify-center mb-12 gap-2 sm:gap-4 px-2 sm:px-0">
                 {['All', 'Web Development', 'App Development', 'AI/ML'].map((tab) => (
                   <motion.button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-6 py-3 rounded-xl font-medium transition-all duration-300
+                    className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-medium transition-all duration-300
                       ${activeTab === tab
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25'
                         : 'bg-white text-gray-600 hover:bg-gray-50'}`}

@@ -12,7 +12,6 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(true);
   const [showShareModal, setShowShareModal] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState(null);
-  const [activeHeading, setActiveHeading] = useState(null);
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -37,33 +36,6 @@ const BlogDetail = () => {
     fetchBlogDetail();
   }, [blogId]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            const index = parseInt(id.split('-')[1]);
-            setActiveHeading(index);
-          }
-        });
-      },
-      {
-        rootMargin: '-100px 0px -80% 0px'
-      }
-    );
-
-    const headings = blog?.content.filter(block => block.type === 'heading');
-    if (headings) {
-      headings.forEach((_, index) => {
-        const element = document.getElementById(`heading-${index}`);
-        if (element) observer.observe(element);
-      });
-    }
-
-    return () => observer.disconnect();
-  }, [blog]);
-
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -75,189 +47,131 @@ const BlogDetail = () => {
   const renderContent = () => {
     if (!blog.content) return null;
 
+    // Try parsing the content as JSON first
     try {
-      const contentArray = Array.isArray(blog.content) ? blog.content : [blog.content];
+      // If content is already a string, parse it
+      const contentArray = typeof blog.content === 'string' ? 
+        JSON.parse(blog.content) : blog.content;
 
-      return contentArray.map((block, index) => {
-        const baseAnimation = {
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          transition: { delay: index * 0.1 }
-        };
+      if (Array.isArray(contentArray)) {
+        return contentArray.map((block, index) => {
+          switch (block.type) {
+            case 'heading':
+              const HeadingTag = `h${block.level}`;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <HeadingTag className={`
+                    ${block.level === 1 ? 'text-4xl font-bold mb-6 text-[#19234d]' : ''}
+                    ${block.level === 2 ? 'text-3xl font-bold mb-5 text-[#19234d]' : ''}
+                    ${block.level === 3 ? 'text-2xl font-bold mb-4 text-[#19234d]' : ''}
+                    ${block.level === 4 ? 'text-xl font-bold mb-3 text-[#19234d]' : ''}
+                    ${block.level === 5 ? 'text-lg font-bold mb-2 text-[#19234d]' : ''}
+                    ${block.level === 6 ? 'text-base font-bold mb-2 text-[#19234d]' : ''}
+                  `}>
+                    {block.text}
+                  </HeadingTag>
+                </motion.div>
+              );
 
-        switch (block.type) {
-          case 'heading':
-            return (
-              <motion.div
-                key={index}
-                {...baseAnimation}
-                className="relative group"
-              >
-                <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <h2 
-                  id={`heading-${index}`}
-                  className={`
-                    text-3xl font-bold mb-6 pl-8 
-                    bg-clip-text text-transparent bg-gradient-to-r 
-                    from-[#19234d] to-[#2b5a9e]
-                    hover:from-[#2b5a9e] hover:to-[#d9764a]
-                    transition-all duration-300
-                  `}
+            case 'paragraph':
+              return (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-gray-700 leading-relaxed mb-6"
                 >
                   {block.text}
-                </h2>
-              </motion.div>
-            );
+                </motion.p>
+              );
 
-          case 'paragraph':
-            return (
-              <motion.div
-                key={index}
-                {...baseAnimation}
-                className="relative group"
-              >
-                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#2b5a9e]/20 to-[#d9764a]/20 group-hover:from-[#2b5a9e] group-hover:to-[#d9764a] transition-all duration-300" />
-                <p className="text-gray-700 leading-relaxed mb-6 pl-6 prose prose-lg hover:text-gray-900 transition-colors duration-300">
-                  {block.text}
-                </p>
-              </motion.div>
-            );
-
-          case 'list':
-            return (
-              <motion.div
-                key={index}
-                {...baseAnimation}
-                className="relative bg-gradient-to-r from-gray-50 to-transparent rounded-lg p-6 mb-6"
-              >
-                <ul className="space-y-3">
+            case 'list':
+              return (
+                <motion.ul
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="list-disc pl-6 space-y-2 mb-6"
+                >
                   {block.items.map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors duration-300"
-                    >
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a]" />
-                      {item}
-                    </motion.li>
+                    <li key={i} className="text-gray-700">{item}</li>
                   ))}
-                </ul>
-              </motion.div>
-            );
+                </motion.ul>
+              );
 
-          case 'quote':
-            return (
-              <motion.div
-                key={index}
-                {...baseAnimation}
-                className="relative my-8"
-              >
-                <div className="absolute -left-4 top-0 text-6xl text-[#2b5a9e]/20">"</div>
-                <blockquote className="pl-8 py-4 italic text-gray-700 border-l-4 border-gradient-to-b from-[#2b5a9e] to-[#d9764a] bg-gradient-to-r from-gray-50 to-transparent rounded-lg">
+            case 'quote':
+              return (
+                <motion.blockquote
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="border-l-4 border-[#2b5a9e] pl-4 italic text-gray-700 my-6"
+                >
                   {block.text}
-                </blockquote>
-              </motion.div>
-            );
+                </motion.blockquote>
+              );
 
-          case 'code':
-            return (
-              <motion.div
-                key={index}
-                {...baseAnimation}
-                className="relative group my-8"
-              >
-                <div className="relative overflow-hidden rounded-xl bg-[#1a1b26] shadow-2xl">
-                  <div className="absolute top-0 left-0 right-0 h-10 bg-[#1a1b26] flex items-center justify-between px-4 border-b border-gray-800">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                      <div className="w-3 h-3 rounded-full bg-green-500" />
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        navigator.clipboard.writeText(block.text);
-                        setCopiedIndex(index);
-                        setTimeout(() => setCopiedIndex(null), 2000);
-                      }}
-                      className="p-1.5 rounded-md bg-gray-700 text-gray-300 hover:bg-gray-600 transition-colors duration-200"
-                    >
-                      {copiedIndex === index ? <FaCheck size={12} /> : <FaCopy size={12} />}
-                    </motion.button>
+            case 'code':
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative group mb-6"
+                >
+                  <div className="absolute -top-4 right-4 bg-gray-700 text-white text-xs px-2 py-1 rounded">
+                    {block.language}
                   </div>
-                  <pre className="pt-12 p-4 overflow-x-auto">
-                    <code className="text-gray-100 font-mono text-sm">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(block.text);
+                      // Add toast notification here
+                    }}
+                    className="absolute top-2 right-2 p-2 rounded-lg bg-gray-700/50 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <FaCopy className="text-sm" />
+                  </motion.button>
+                  <pre className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                    <code className={`language-${block.language}`}>
                       {block.text}
                     </code>
                   </pre>
-                </div>
-              </motion.div>
-            );
+                </motion.div>
+              );
 
-          default:
-            return null;
-        }
-      });
-    } catch (e) {
-      console.error('Error rendering content:', e);
-      return null;
-    }
-  };
-
-  const TableOfContents = ({ content }) => {
-    const headings = content.filter(block => block.type === 'heading');
-    
-    if (headings.length < 2) return null;
-
-    const scrollToHeading = (index) => {
-      const element = document.getElementById(`heading-${index}`);
-      if (element) {
-        const offset = 100; // Adjust this value based on your header height
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
+            default:
+              return null;
+          }
         });
       }
-    };
-
-    return (
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="fixed right-8 top-1/2 transform -translate-y-1/2 max-w-xs w-full hidden xl:block"
-      >
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-white/20">
-          <h3 className="text-lg font-semibold mb-4 text-[#19234d]">Table of Contents</h3>
-          <nav className="space-y-2">
-            {headings.map((heading, index) => (
-              <motion.button
-                key={index}
-                onClick={() => scrollToHeading(index)}
-                whileHover={{ x: 4 }}
-                className={`
-                  block text-left w-full transition-colors duration-200
-                  ${activeHeading === index 
-                    ? 'text-[#2b5a9e] font-medium' 
-                    : 'text-gray-600 hover:text-[#2b5a9e]'
-                  }
-                `}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="line-clamp-1">{heading.text}</span>
-                </div>
-              </motion.button>
-            ))}
-          </nav>
-        </div>
-      </motion.div>
-    );
+    } catch (e) {
+      // If JSON parsing fails, treat as plain text
+      return blog.content.split('\r\n').map((paragraph, index) => {
+        if (!paragraph.trim()) return null;
+        return (
+          <motion.p
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="text-gray-700 leading-relaxed mb-6"
+          >
+            {paragraph}
+          </motion.p>
+        );
+      });
+    }
   };
 
   if (loading) {
@@ -277,7 +191,7 @@ const BlogDetail = () => {
     <main className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
       <section className="relative min-h-[60vh] overflow-hidden">
         <NetworkBackground />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <motion.button
@@ -315,7 +229,7 @@ const BlogDetail = () => {
                 </div>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#19234d] to-[#2b5a9e]">
+              <h1 className="text-5xl md:text-6xl font-bold" style={{ color: '#19234d' }}>
                 {blog.title}
               </h1>
 
@@ -394,10 +308,7 @@ const BlogDetail = () => {
             </div>
             
             <div className="prose prose-lg max-w-none">
-              <div className="relative space-y-6">
-                <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-[#2b5a9e]/20 via-[#d9764a]/20 to-transparent" />
-                {renderContent()}
-              </div>
+              {renderContent()}
             </div>
           </div>
         </motion.section>
@@ -507,8 +418,6 @@ const BlogDetail = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* <TableOfContents content={blog.content} /> */}
     </main>
   );
 };

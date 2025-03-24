@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import NetworkBackground from '../components/NetworkBackground';
 import BaseUrl from '../API';
-import { FaEye, FaHeart, FaClock, FaCalendarAlt } from 'react-icons/fa';
+import { FaEye, FaHeart, FaClock, FaCalendarAlt, FaCopy } from 'react-icons/fa';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -284,7 +284,22 @@ const Blogs = () => {
                         <h2 className="text-2xl font-bold mb-2 text-[#19234d] group-hover:text-[#2b5a9e] transition-colors duration-300">
                           {blog.title}
                         </h2>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {blog.tags.map((tag, index) => (
+                            <span
+                              key={index}
+                              className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e]"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
                         <p className="text-gray-600 line-clamp-2">{blog.excerpt}</p>
+                        {blog.status !== 'Published' && (
+                          <span className="inline-block mt-2 px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">
+                            {blog.status}
+                          </span>
+                        )}
                       </div>
 
                       {/* Author Info */}
@@ -316,7 +331,6 @@ const Blogs = () => {
                           </div>
                           <motion.button
                             onClick={() => navigate(`/blogs/${blog._id}`)}
-
                             whileHover={{ scale: 1.05 }}
                             className="px-4 py-2 rounded-full text-sm bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] font-medium group-hover:from-[#2b5a9e] group-hover:to-[#d9764a] group-hover:text-white transition-all duration-300"
                           >
