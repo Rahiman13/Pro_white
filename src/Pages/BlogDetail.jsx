@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowLeft, FaEye, FaHeart, FaCalendarAlt, FaBookmark, FaShare, FaTwitter, FaFacebook, FaLinkedin, FaCopy, FaEnvelope, FaCheck } from 'react-icons/fa';
 import BaseUrl from '../API';
 import NetworkBackground from '../components/NetworkBackground';
-// import axios from 'axios';
-// import { useInView } from 'react-intersection-observer';
+import axios from 'axios';
+import { useInView } from 'react-intersection-observer';
+
+
 
 const BlogDetail = () => {
   const { blogId } = useParams();
@@ -17,17 +19,18 @@ const BlogDetail = () => {
   const [activeHeading, setActiveHeading] = useState(null);
 
 
-  // const { inView } = useInView({
-  //   triggerOnce: true,
-  // });
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2, // Trigger when 20% of the content is visible
+  });
 
-  // useEffect(() => {
-  //   if (inView) {
-  //     axios.put(`${BaseUrl}/api/blogs/${blogId}/view`)
-  //       .then(res => console.log('View counted:', res.data.views))
-  //       .catch(err => console.error('View count failed', err));
-  //   }
-  // }, [inView, blogId]);
+  useEffect(() => {
+    if (inView) {
+      axios.put(`${BaseUrl}/api/blogs/${blogId}/view`)
+        .then(res => console.log('View counted:', res.data.views))
+        .catch(err => console.error('View count failed', err));
+    }
+  }, [inView, blogId]);
 
 
 
@@ -295,7 +298,7 @@ const BlogDetail = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
+    <main  ref={ref} className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
       <section className="relative min-h-[60vh] overflow-hidden">
         <NetworkBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
