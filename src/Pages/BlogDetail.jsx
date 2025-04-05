@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowLeft, FaEye, FaHeart, FaCalendarAlt, FaBookmark, FaShare, FaTwitter, FaFacebook, FaLinkedin, FaCopy, FaEnvelope, FaCheck } from 'react-icons/fa';
 import BaseUrl from '../API';
 import NetworkBackground from '../components/NetworkBackground';
+// import axios from 'axios';
+// import { useInView } from 'react-intersection-observer';
 
 const BlogDetail = () => {
   const { blogId } = useParams();
@@ -13,6 +15,21 @@ const BlogDetail = () => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [activeHeading, setActiveHeading] = useState(null);
+
+
+  // const { inView } = useInView({
+  //   triggerOnce: true,
+  // });
+
+  // useEffect(() => {
+  //   if (inView) {
+  //     axios.put(`${BaseUrl}/api/blogs/${blogId}/view`)
+  //       .then(res => console.log('View counted:', res.data.views))
+  //       .catch(err => console.error('View count failed', err));
+  //   }
+  // }, [inView, blogId]);
+
+
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -34,7 +51,10 @@ const BlogDetail = () => {
       }
     };
 
+    
+
     fetchBlogDetail();
+
   }, [blogId]);
 
   useEffect(() => {
@@ -75,6 +95,7 @@ const BlogDetail = () => {
   const renderContent = () => {
     if (!blog.content) return null;
 
+
     try {
       const contentArray = Array.isArray(blog.content) ? blog.content : [blog.content];
 
@@ -94,7 +115,7 @@ const BlogDetail = () => {
                 className="relative group"
               >
                 <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <h2 
+                <h2
                   id={`heading-${index}`}
                   className={`
                     text-3xl font-bold mb-6 pl-8 
@@ -209,7 +230,7 @@ const BlogDetail = () => {
 
   const TableOfContents = ({ content }) => {
     const headings = content.filter(block => block.type === 'heading');
-    
+
     if (headings.length < 2) return null;
 
     const scrollToHeading = (index) => {
@@ -242,8 +263,8 @@ const BlogDetail = () => {
                 whileHover={{ x: 4 }}
                 className={`
                   block text-left w-full transition-colors duration-200
-                  ${activeHeading === index 
-                    ? 'text-[#2b5a9e] font-medium' 
+                  ${activeHeading === index
+                    ? 'text-[#2b5a9e] font-medium'
                     : 'text-gray-600 hover:text-[#2b5a9e]'
                   }
                 `}
@@ -278,7 +299,7 @@ const BlogDetail = () => {
       <section className="relative min-h-[60vh] overflow-hidden">
         <NetworkBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <motion.button
             initial={{ opacity: 0, x: -20 }}
@@ -296,7 +317,7 @@ const BlogDetail = () => {
               className="space-y-8"
             >
               <div className="flex flex-wrap gap-4 items-center">
-                <motion.span 
+                <motion.span
                   whileHover={{ scale: 1.05 }}
                   className="px-6 py-3 rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] text-sm font-medium border border-[#2b5a9e]/20"
                 >
@@ -309,9 +330,9 @@ const BlogDetail = () => {
                   <span className="flex items-center gap-2">
                     <FaEye className="text-[#2b5a9e]" /> {blog.views} views
                   </span>
-                  <span className="flex items-center gap-2">
+                  {/* <span className="flex items-center gap-2">
                     <FaHeart className="text-[#d9764a]" /> {blog.likes} likes
-                  </span>
+                  </span> */}
                 </div>
               </div>
 
@@ -334,7 +355,7 @@ const BlogDetail = () => {
                     <p className="text-sm text-gray-500">{blog.readingTime || '5'} min read</p>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-4">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -375,7 +396,7 @@ const BlogDetail = () => {
       </section>
 
       {blog && (
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative"
@@ -392,7 +413,7 @@ const BlogDetail = () => {
                 className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl mb-12"
               />
             </div>
-            
+
             <div className="prose prose-lg max-w-none">
               <div className="relative space-y-6">
                 <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-[#2b5a9e]/20 via-[#d9764a]/20 to-transparent" />
@@ -424,7 +445,7 @@ const BlogDetail = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-50" />
               <div className="absolute inset-0 bg-grid-pattern opacity-5" />
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#2b5a9e] via-[#d9764a] to-[#2b5a9e] animate-gradient-x" />
-              
+
               {/* Content */}
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
@@ -445,14 +466,22 @@ const BlogDetail = () => {
                   {/* Social Share Options */}
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { icon: <FaTwitter className="text-xl" />, label: 'Twitter', color: '#1DA1F2', 
-                        url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.href)}` },
-                      { icon: <FaFacebook className="text-xl" />, label: 'Facebook', color: '#4267B2',
-                        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}` },
-                      { icon: <FaLinkedin className="text-xl" />, label: 'LinkedIn', color: '#0077B5',
-                        url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(blog.title)}` },
-                      { icon: <FaEnvelope className="text-xl" />, label: 'Email', color: '#EA4335',
-                        url: `mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(window.location.href)}` }
+                      {
+                        icon: <FaTwitter className="text-xl" />, label: 'Twitter', color: '#1DA1F2',
+                        url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.href)}`
+                      },
+                      {
+                        icon: <FaFacebook className="text-xl" />, label: 'Facebook', color: '#4267B2',
+                        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`
+                      },
+                      {
+                        icon: <FaLinkedin className="text-xl" />, label: 'LinkedIn', color: '#0077B5',
+                        url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(blog.title)}`
+                      },
+                      {
+                        icon: <FaEnvelope className="text-xl" />, label: 'Email', color: '#EA4335',
+                        url: `mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(window.location.href)}`
+                      }
                     ].map((platform) => (
                       <motion.button
                         key={platform.label}

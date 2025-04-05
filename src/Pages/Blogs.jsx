@@ -5,6 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 import NetworkBackground from '../components/NetworkBackground';
 import BaseUrl from '../API';
 import { FaEye, FaHeart, FaClock, FaCalendarAlt, FaCopy } from 'react-icons/fa';
+import axios from 'axios';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -50,6 +51,15 @@ const Blogs = () => {
     const value = e.target.value;
     setSearchQuery(value);
     setIsSearching(value.length > 0);
+  };
+
+  // Increment view count
+  const incrementViewCount = async (id) => {
+    try {
+      await axios.put(`${BaseUrl}/api/blogs/${id}/view`);
+    } catch (error) {
+      console.error("Failed to increase view count:", error);
+    }
   };
 
   const filteredBlogs = blogs.filter(blog => {
@@ -325,12 +335,15 @@ const Blogs = () => {
                             <span className="flex items-center gap-1">
                               <FaEye className="text-[#2b5a9e]" /> {blog.views}
                             </span>
-                            <span className="flex items-center gap-1">
+                            {/* <span className="flex items-center gap-1">
                               <FaHeart className="text-[#d9764a]" /> {blog.likes}
-                            </span>
+                            </span> */}
                           </div>
                           <motion.button
-                            onClick={() => navigate(`/blogs/${blog._id}`)}
+                            onClick={async () => {
+                              await incrementViewCount(blog._id);
+                              navigate(`/blogs/${blog._id}`)
+                            }} 
                             whileHover={{ scale: 1.05 }}
                             className="px-4 py-2 rounded-full text-sm bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] font-medium group-hover:from-[#2b5a9e] group-hover:to-[#d9764a] group-hover:text-white transition-all duration-300"
                           >
