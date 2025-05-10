@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowLeft, FaEye, FaHeart, FaCalendarAlt, FaBookmark, FaShare, FaTwitter, FaFacebook, FaLinkedin, FaCopy, FaEnvelope, FaCheck, FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaQuoteRight, FaRegClock } from 'react-icons/fa';
-import { MdOutlineQuestionAnswer } from 'react-icons/md';
+import { FaArrowLeft, FaEye, FaHeart, FaCalendarAlt, FaBookmark, FaShare, FaTwitter, FaFacebook, FaLinkedin, FaCopy, FaEnvelope, FaCheck } from 'react-icons/fa';
 import BaseUrl from '../API';
 import NetworkBackground from '../components/NetworkBackground';
 import axios from 'axios';
 import { useInView } from 'react-intersection-observer';
-import Lottie from 'react-lottie'; // You may need to install this package
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'; // You may need to install this package
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+
 
 const BlogDetail = () => {
   const { blogId } = useParams();
@@ -19,14 +17,7 @@ const BlogDetail = () => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [activeHeading, setActiveHeading] = useState(null);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [showFAQs, setShowFAQs] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(1); // Add this state for volume control
-  const audioRef = useRef(null);
-  const [progress, setProgress] = useState(0);
+
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -40,6 +31,8 @@ const BlogDetail = () => {
         .catch(err => console.error('View count failed', err));
     }
   }, [inView, blogId]);
+
+
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -61,92 +54,11 @@ const BlogDetail = () => {
       }
     };
 
+    
+
     fetchBlogDetail();
+
   }, [blogId]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.addEventListener('timeupdate', updateProgress);
-      audioRef.current.addEventListener('ended', () => setIsPlaying(false));
-
-      // console.log("Audio URL:", blog?.audio?.replace(/[`"]/g, ''));
-      // Set initial volume
-      audioRef.current.volume = volume;
-
-      return () => {
-        if (audioRef.current) {
-          audioRef.current.removeEventListener('timeupdate', updateProgress);
-          audioRef.current.removeEventListener('ended', () => setIsPlaying(false));
-        }
-      };
-    }
-  }, [blog]);
-
-
-  const updateProgress = () => {
-    if (audioRef.current) {
-      const value = (audioRef.current.currentTime / audioRef.current.duration) * 100;
-      setProgress(value || 0); // Add fallback to prevent NaN
-    }
-  };
-
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        // Add error handling for play attempt
-        const playPromise = audioRef.current.play();
-
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              // Playback started successfully
-            })
-            .catch(error => {
-              console.error('Playback failed:', error);
-              // Handle the error - maybe show a message to the user
-            });
-        }
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !audioRef.current.muted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  // Add this function to handle volume change
-  const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-      // If volume is set to 0, consider it as muted
-      if (newVolume === 0) {
-        setIsMuted(true);
-        audioRef.current.muted = true;
-      } else if (isMuted) {
-        setIsMuted(false);
-        audioRef.current.muted = false;
-      }
-    }
-  };
-
-  // Add this function to handle seeking in the audio
-  const handleSeek = (e) => {
-    const seekPosition = parseFloat(e.target.value);
-    setProgress(seekPosition);
-
-    if (audioRef.current && audioRef.current.duration) {
-      audioRef.current.currentTime = (seekPosition / 100) * audioRef.current.duration;
-    }
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -183,20 +95,9 @@ const BlogDetail = () => {
     });
   };
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    // Here you would typically make an API call to update the like count
-    // axios.post(`${BaseUrl}/api/blogs/${blogId}/like`)
-  };
-
-  const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-    // Here you would typically make an API call to save the bookmark
-    // axios.post(`${BaseUrl}/api/blogs/${blogId}/bookmark`)
-  };
-
   const renderContent = () => {
     if (!blog.content) return null;
+
 
     try {
       const contentArray = Array.isArray(blog.content) ? blog.content : [blog.content];
@@ -254,23 +155,18 @@ const BlogDetail = () => {
                 className="relative bg-gradient-to-r from-gray-50 to-transparent rounded-lg p-6 mb-6"
               >
                 <ul className="space-y-3">
-                  {block.items.map((item, i) => {
-                    // Clean up the item string by removing quotes and commas
-                    const cleanItem = item.replace(/[",]/g, '');
-
-                    return (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors duration-300"
-                      >
-                        <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a]" />
-                        {cleanItem}
-                      </motion.li>
-                    );
-                  })}
+                  {block.items.map((item, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors duration-300"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a]" />
+                      {item}
+                    </motion.li>
+                  ))}
                 </ul>
               </motion.div>
             );
@@ -282,9 +178,7 @@ const BlogDetail = () => {
                 {...baseAnimation}
                 className="relative my-8"
               >
-                <div className="absolute -left-4 top-0 text-6xl text-[#2b5a9e]/20">
-                  <FaQuoteRight />
-                </div>
+                <div className="absolute -left-4 top-0 text-6xl text-[#2b5a9e]/20">"</div>
                 <blockquote className="pl-8 py-4 italic text-gray-700 border-l-4 border-gradient-to-b from-[#2b5a9e] to-[#d9764a] bg-gradient-to-r from-gray-50 to-transparent rounded-lg">
                   {block.text}
                 </blockquote>
@@ -296,10 +190,10 @@ const BlogDetail = () => {
               <motion.div
                 key={index}
                 {...baseAnimation}
-                className="relative group my-4"
+                className="relative group my-8"
               >
                 <div className="relative overflow-hidden rounded-xl bg-[#1a1b26] shadow-2xl">
-                  <div className="top-0 left-0 right-0 h-10 bg-[#1a1b26] flex items-center justify-between px-4 border-b border-gray-800">
+                  <div className="absolute top-0 left-0 right-0 h-10 bg-[#1a1b26] flex items-center justify-between px-4 border-b border-gray-800">
                     <div className="flex gap-2">
                       <div className="w-3 h-3 rounded-full bg-red-500" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -318,15 +212,11 @@ const BlogDetail = () => {
                       {copiedIndex === index ? <FaCheck size={12} /> : <FaCopy size={12} />}
                     </motion.button>
                   </div>
-                  <SyntaxHighlighter
-                    language={block.language || "javascript"}
-                    style={atomDark}
-                    className="mt-0"
-                    showLineNumbers
-                    wrapLines
-                  >
-                    {block.text}
-                  </SyntaxHighlighter>
+                  <pre className="pt-12 p-4 overflow-x-auto">
+                    <code className="text-gray-100 font-mono text-sm">
+                      {block.text}
+                    </code>
+                  </pre>
                 </div>
               </motion.div>
             );
@@ -383,114 +273,12 @@ const BlogDetail = () => {
                 `}
               >
                 <div className="flex items-center gap-2">
-                  <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] ${activeHeading === index ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100 transition-opacity`} />
+                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span className="line-clamp-1">{heading.text}</span>
                 </div>
               </motion.button>
             ))}
           </nav>
-        </div>
-      </motion.div>
-    );
-  };
-
-  const FAQSection = ({ faqs }) => {
-    if (!faqs || faqs.length === 0) return null;
-
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mt-16 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-8 border border-white/20"
-      >
-        <h3 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#19234d] to-[#2b5a9e]">
-          Frequently Asked Questions
-        </h3>
-        <div className="space-y-6">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-gradient-to-r from-gray-50 to-transparent rounded-lg p-6"
-            >
-              <h4 className="text-lg font-semibold text-[#2b5a9e] mb-2 flex items-center gap-2">
-                <MdOutlineQuestionAnswer className="text-[#d9764a]" />
-                {faq.question}
-              </h4>
-              <p className="text-gray-700">{faq.answer}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    );
-  };
-
-  const AudioPlayer = ({ audioUrl }) => {
-    if (!audioUrl) return null;
-
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full mx-auto"
-      >
-        <div className="bg-white/90 backdrop-blur-lg rounded-full shadow-lg p-4 border border-white/20 flex items-center gap-4">
-          <audio
-            ref={audioRef}
-            src={audioUrl}
-            className="hidden"
-            preload="metadata"
-            onError={(e) => console.error("Audio error:", e)}
-          />
-
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={togglePlay}
-            className="p-3 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-white"
-          >
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </motion.button>
-
-          <div className="flex-1">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={progress}
-              onChange={handleSeek}
-              className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
-              style={{
-                background: `linear-gradient(to right, #2b5a9e 0%, #d9764a ${progress}%, #e5e7eb ${progress}%, #e5e7eb 100%)`
-              }}
-            />
-          </div>
-
-          <div className="flex items-center gap-2">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleMute}
-              className="p-2 rounded-full bg-gray-100 text-[#2b5a9e]"
-            >
-              {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-            </motion.button>
-
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={volume}
-              onChange={handleVolumeChange}
-              className="w-20 h-1.5 bg-gray-200 rounded-full appearance-none cursor-pointer"
-              style={{
-                background: `linear-gradient(to right, #2b5a9e 0%, #d9764a ${volume * 100}%, #e5e7eb ${volume * 100}%, #e5e7eb 100%)`
-              }}
-            />
-          </div>
         </div>
       </motion.div>
     );
@@ -510,9 +298,8 @@ const BlogDetail = () => {
   }
 
   return (
-    <main ref={ref} className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
-      {/* Hero Section with Animated Background */}
-      <section className="relative min-h-[70vh] overflow-hidden">
+    <main  ref={ref} className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
+      <section className="relative min-h-[60vh] overflow-hidden">
         <NetworkBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
 
@@ -532,7 +319,6 @@ const BlogDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-8"
             >
-              {/* Category and Meta Info */}
               <div className="flex flex-wrap gap-4 items-center">
                 <motion.span
                   whileHover={{ scale: 1.05 }}
@@ -547,50 +333,38 @@ const BlogDetail = () => {
                   <span className="flex items-center gap-2">
                     <FaEye className="text-[#2b5a9e]" /> {blog.views} views
                   </span>
-                  <span className="flex items-center gap-2">
-                    <FaRegClock className="text-[#d9764a]" /> {blog.readingTime} min read
-                  </span>
+                  {/* <span className="flex items-center gap-2">
+                    <FaHeart className="text-[#d9764a]" /> {blog.likes} likes
+                  </span> */}
                 </div>
               </div>
 
-              {/* Title with Gradient */}
               <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#19234d] to-[#2b5a9e]">
                 {blog.title}
               </h1>
 
-              {/* Author and Action Buttons */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] rounded-full blur-sm" />
                     <img
-                      src={blog.authorImage.replace(/`/g, '') || `https://ui-avatars.com/api/?name=${blog.authorName}`}
+                      src={blog.authorImage || `https://ui-avatars.com/api/?name=${blog.authorName}`}
                       alt={blog.authorName}
-                      className="relative w-14 h-14 rounded-full border-2 border-white object-cover"
+                      className="relative w-14 h-14 rounded-full border-2 border-white"
                     />
                   </div>
                   <div>
                     <p className="font-medium" style={{ color: '#19234d' }}>{blog.authorName}</p>
-                    <p className="text-sm text-gray-500">{blog.createdBy?.role || 'Author'}</p>
+                    <p className="text-sm text-gray-500">{blog.readingTime || '5'} min read</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleLike}
-                    className={`p-3 rounded-full ${isLiked ? 'bg-red-50' : 'bg-white'} shadow-lg hover:shadow-xl transition-all`}
+                    className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all"
                   >
-                    <FaHeart className={isLiked ? 'text-red-500' : 'text-[#d9764a]'} />
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleBookmark}
-                    className={`p-3 rounded-full ${isBookmarked ? 'bg-blue-50' : 'bg-white'} shadow-lg hover:shadow-xl transition-all`}
-                  >
-                    <FaBookmark className={isBookmarked ? 'text-[#2b5a9e]' : 'text-[#2b5a9e]/70'} />
+                    <FaBookmark className="text-[#2b5a9e]" />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -603,87 +377,54 @@ const BlogDetail = () => {
                 </div>
               </div>
 
-              {/* Tags */}
               {blog && (
                 <div className="flex flex-wrap gap-2 mb-3">
                   {blog.tags.map((tag, index) => {
                     // Remove brackets and quotes from tags
                     const cleanTag = tag.replace(/[\[\]"]/g, '');
                     return (
-                      <motion.span
+                      <span
                         key={index}
-                        whileHover={{ y: -2, scale: 1.05 }}
-                        className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e] hover:from-[#2b5a9e]/20 hover:to-[#d9764a]/20 transition-all duration-300"
+                        className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e]"
                       >
                         #{cleanTag}
-                      </motion.span>
+                      </span>
                     );
                   })}
                 </div>
               )}
-
-              {/* Excerpt */}
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-xl text-gray-700 leading-relaxed max-w-3xl"
-              >
-                {blog.excerpt}
-              </motion.p>
             </motion.div>
           )}
         </div>
       </section>
 
       {blog && (
-        <>
-          {/* Main Content Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-purple-50/50 rounded-3xl blur-2xl" />
-            <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
-              {/* Featured Image with Animation */}
-              <div className="relative mb-12">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/5 to-[#d9764a]/5 rounded-3xl blur-xl" />
-                <motion.img
-                  initial={{ scale: 0.95 }}
-                  animate={{ scale: 1 }}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.5 }}
-                  src={blog.featuredImage.replace(/`/g, '')}
-                  alt={blog.imageAltText || blog.title}
-                  className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl mb-12"
-                />
-              </div>
-
-              {/* Blog Content */}
-              <div className="prose prose-lg max-w-none">
-                <div className="relative space-y-6">
-                  <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-[#2b5a9e]/20 via-[#d9764a]/20 to-transparent" />
-                  {renderContent()}
-                </div>
-              </div>
-
-              {/* FAQs Section */}
-              {blog.faqs && blog.faqs.length > 0 && (
-                <FAQSection faqs={blog.faqs} />
-              )}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative"
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-purple-50/50 rounded-3xl blur-2xl" />
+          <div className="relative bg-white/80  backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#2b5a9e]/5 to-[#d9764a]/5 rounded-3xl blur-xl" />
+              <motion.img
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                src={blog.featuredImage}
+                alt={blog.title}
+                className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl mb-12"
+              />
             </div>
-          </motion.section>
 
-          {/* Table of Contents */}
-          {blog.content && <TableOfContents content={blog.content} />}
-
-          {/* Audio Player */}
-          {/* Fix the audio player by properly cleaning the URL and ensuring it's rendered */}
-          {blog && blog.audio && (
-            <AudioPlayer audioUrl={blog.audio.replace(/[`"]/g, '')} />
-          )}
-        </>
+            <div className="prose prose-lg max-w-none">
+              <div className="relative space-y-6">
+                <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-[#2b5a9e]/20 via-[#d9764a]/20 to-transparent" />
+                {renderContent()}
+              </div>
+            </div>
+          </div>
+        </motion.section>
       )}
 
       {/* Share Modal */}

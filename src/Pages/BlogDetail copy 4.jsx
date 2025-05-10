@@ -68,11 +68,10 @@ const BlogDetail = () => {
     if (audioRef.current) {
       audioRef.current.addEventListener('timeupdate', updateProgress);
       audioRef.current.addEventListener('ended', () => setIsPlaying(false));
-
-      // console.log("Audio URL:", blog?.audio?.replace(/[`"]/g, ''));
+      
       // Set initial volume
       audioRef.current.volume = volume;
-
+      
       return () => {
         if (audioRef.current) {
           audioRef.current.removeEventListener('timeupdate', updateProgress);
@@ -81,7 +80,6 @@ const BlogDetail = () => {
       };
     }
   }, [blog]);
-
 
   const updateProgress = () => {
     if (audioRef.current) {
@@ -97,7 +95,7 @@ const BlogDetail = () => {
       } else {
         // Add error handling for play attempt
         const playPromise = audioRef.current.play();
-
+        
         if (playPromise !== undefined) {
           playPromise
             .then(() => {
@@ -119,12 +117,12 @@ const BlogDetail = () => {
       setIsMuted(!isMuted);
     }
   };
-
+  
   // Add this function to handle volume change
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-
+    
     if (audioRef.current) {
       audioRef.current.volume = newVolume;
       // If volume is set to 0, consider it as muted
@@ -137,12 +135,12 @@ const BlogDetail = () => {
       }
     }
   };
-
+  
   // Add this function to handle seeking in the audio
   const handleSeek = (e) => {
     const seekPosition = parseFloat(e.target.value);
     setProgress(seekPosition);
-
+    
     if (audioRef.current && audioRef.current.duration) {
       audioRef.current.currentTime = (seekPosition / 100) * audioRef.current.duration;
     }
@@ -257,7 +255,7 @@ const BlogDetail = () => {
                   {block.items.map((item, i) => {
                     // Clean up the item string by removing quotes and commas
                     const cleanItem = item.replace(/[",]/g, '');
-
+                    
                     return (
                       <motion.li
                         key={i}
@@ -437,14 +435,14 @@ const BlogDetail = () => {
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full mx-auto"
       >
         <div className="bg-white/90 backdrop-blur-lg rounded-full shadow-lg p-4 border border-white/20 flex items-center gap-4">
-          <audio
-            ref={audioRef}
-            src={audioUrl}
-            className="hidden"
+          <audio 
+            ref={audioRef} 
+            src={audioUrl} 
+            className="hidden" 
             preload="metadata"
             onError={(e) => console.error("Audio error:", e)}
           />
-
+          
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -453,7 +451,7 @@ const BlogDetail = () => {
           >
             {isPlaying ? <FaPause /> : <FaPlay />}
           </motion.button>
-
+          
           <div className="flex-1">
             <input
               type="range"
@@ -467,7 +465,7 @@ const BlogDetail = () => {
               }}
             />
           </div>
-
+          
           <div className="flex items-center gap-2">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -477,7 +475,7 @@ const BlogDetail = () => {
             >
               {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </motion.button>
-
+            
             <input
               type="range"
               min="0"
@@ -679,10 +677,7 @@ const BlogDetail = () => {
           {blog.content && <TableOfContents content={blog.content} />}
 
           {/* Audio Player */}
-          {/* Fix the audio player by properly cleaning the URL and ensuring it's rendered */}
-          {blog && blog.audio && (
-            <AudioPlayer audioUrl={blog.audio.replace(/[`"]/g, '')} />
-          )}
+          {blog.audio && <AudioPlayer audioUrl={blog.audio.replace(/`/g, '')} />}
         </>
       )}
 
