@@ -25,13 +25,12 @@ const BlogDetail = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showFAQs, setShowFAQs] = useState(false);
-  
-  // Remove these audio player related states and ref
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState(1); // Add this state for volume control
   const audioRef = useRef(null);
   const [progress, setProgress] = useState(0);
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2, // Trigger when 20% of the content is visible
@@ -55,7 +54,6 @@ const BlogDetail = () => {
           return;
         }
         
-        // Use the correct API endpoint format
         const response = await fetch(`${BaseUrl}/api/blogs/${blogId}`);
         
         // Check if the response is ok
@@ -447,30 +445,70 @@ const BlogDetail = () => {
     );
   };
 
-  const AudioLink = ({ audioUrl }) => {
+  const AudioPlayer = ({ audioUrl }) => {
     if (!audioUrl) return null;
 
-    // Clean the URL by removing backticks and quotes
-    const cleanUrl = audioUrl.replace(/[`"]/g, '');
-    
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 max-w-sm w-full mx-auto"
+        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full mx-auto"
       >
         <div className="bg-white/90 backdrop-blur-lg rounded-full shadow-lg p-4 border border-white/20 flex items-center gap-4">
-          <a 
-            href={cleanUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-white font-medium transition-transform hover:scale-105"
+          <audio
+            ref={audioRef}
+            src={audioUrl}
+            className="hidden"
+            preload="metadata"
+            onError={(e) => console.error("Audio error:", e)}
+          />
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={togglePlay}
+            className="p-3 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-white"
           >
-            <FaPlay className="text-sm" /> Listen to Audio
-          </a>
-          <p className="text-gray-700 text-sm flex-1">
-            Open audio in a new tab
-          </p>
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </motion.button>
+
+          <div className="flex-1">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={progress}
+              onChange={handleSeek}
+              className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #2b5a9e 0%, #d9764a ${progress}%, #e5e7eb ${progress}%, #e5e7eb 100%)`
+              }}
+            />
+          </div>
+
+          <div className="flex items-center gap-2">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleMute}
+              className="p-2 rounded-full bg-gray-100 text-[#2b5a9e]"
+            >
+              {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+            </motion.button>
+
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={handleVolumeChange}
+              className="w-20 h-1.5 bg-gray-200 rounded-full appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #2b5a9e 0%, #d9764a ${volume * 100}%, #e5e7eb ${volume * 100}%, #e5e7eb 100%)`
+              }}
+            />
+          </div>
         </div>
       </motion.div>
     );
@@ -491,50 +529,12 @@ const BlogDetail = () => {
 
   return (
     <main ref={ref} className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
-      {/* Enhanced SEO Meta Tags */}
-      {blog && (
-        <Helmet>
-          {/* Primary Meta Tags */}
-          <title>{blog.seoMetadata?.metaTitle || blog.title}</title>
-          <meta name="title" content={blog.seoMetadata?.metaTitle || blog.title} />
-          <meta name="description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
-          <meta name="keywords" content={blog.seoMetadata?.keywords?.join(', ') || blog.category} />
-          
-          {/* Open Graph / Facebook */}
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:title" content={blog.seoMetadata?.metaTitle || blog.title} />
-          <meta property="og:description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
-          <meta property="og:image" content={blog.featuredImage} />
-          <meta property="article:published_time" content={blog.createdAt} />
-          <meta property="article:author" content={blog.authorName} />
-          <meta property="article:section" content={blog.category} />
-          
-          {/* Twitter */}
-          <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content={window.location.href} />
-          <meta property="twitter:title" content={blog.seoMetadata?.metaTitle || blog.title} />
-          <meta property="twitter:description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
-          <meta property="twitter:image" content={blog.featuredImage} />
-          
-          {/* Canonical URL */}
-          <link rel="canonical" href={window.location.href} />
-          
-          {/* Additional Meta Tags */}
-          <meta name="author" content={blog.authorName} />
-          <meta name="robots" content="index, follow" />
-          <meta name="language" content="English" />
-          <meta name="revisit-after" content="7 days" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        </Helmet>
-      )}
-      
       {/* Hero Section with Animated Background */}
-      <section className="relative min-h-[65vh] overflow-hidden">
+      <section className="relative min-h-[70vh] overflow-hidden">
         <NetworkBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8   mt-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -699,7 +699,7 @@ const BlogDetail = () => {
           {/* Audio Player */}
           {/* Fix the audio player by properly cleaning the URL and ensuring it's rendered */}
           {blog && blog.audio && (
-            <AudioLink audioUrl={blog.audio.replace(/[`"]/g, '')} />
+            <AudioPlayer audioUrl={blog.audio.replace(/[`"]/g, '')} />
           )}
         </>
       )}

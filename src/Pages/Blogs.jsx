@@ -74,7 +74,7 @@ const Blogs = () => {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
+      <section className="relative min-h-[50vh] overflow-hidden bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 backdrop-blur-lg">
         <NetworkBackground />
 
         {/* Background Elements */}
@@ -95,7 +95,7 @@ const Blogs = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="inline-flex items-center space-x-3 mb-8 glass-morphism px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl"
+              className="inline-flex items-center space-x-3 mb-8 glass-morphism px-8 py-4 mt-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl"
             >
               <span className="text-[#d9764a] font-semibold">Our Latest Insights</span>
             </motion.div>
@@ -285,14 +285,18 @@ const Blogs = () => {
                           {blog.title}
                         </h2>
                         <div className="flex flex-wrap gap-2 mb-3">
-                          {blog.tags.map((tag, index) => (
-                            <span
-                              key={index}
-                              className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e]"
-                            >
-                              #{tag}
-                            </span>
-                          ))}
+                          {blog.tags.map((tag, index) => {
+                            // Clean the tag by removing special characters
+                            const cleanTag = tag.replace(/[^\w\s-]/g, '');
+                            return (
+                              <span
+                                key={index}
+                                className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-[#2b5a9e]/10 to-[#d9764a]/10 text-[#2b5a9e]"
+                              >
+                                #{cleanTag}
+                              </span>
+                            );
+                          })}
                         </div>
                         <p className="text-gray-600 line-clamp-2">{blog.excerpt}</p>
                         {blog.status !== 'Published' && (
@@ -366,4 +370,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs; 
+export default Blogs;
