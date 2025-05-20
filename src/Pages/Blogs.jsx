@@ -246,7 +246,7 @@ const Blogs = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ delay: index * 0.1 }}
-                    onClick={() => navigate(`/blogs/${blog._id}`)}
+                    onClick={() => navigate(`/blogs/${blog.livePageUrl}`)}
                     className="group relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 cursor-pointer"
                   >
                     {/* Image Container */}

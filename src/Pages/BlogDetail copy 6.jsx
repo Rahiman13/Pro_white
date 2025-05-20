@@ -25,7 +25,7 @@ const BlogDetail = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showFAQs, setShowFAQs] = useState(false);
-
+  
   // Remove these audio player related states and ref
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -54,16 +54,16 @@ const BlogDetail = () => {
           setLoading(false);
           return;
         }
-
+        
         // First fetch all blogs to find the matching one
         const response = await fetch(`${BaseUrl}/api/blogs`);
-
+        
         if (!response.ok) {
           console.error(`Error fetching blogs: ${response.status} ${response.statusText}`);
           setLoading(false);
           return;
         }
-
+        
         const blogs = await response.json();
         // Find the blog with matching livePageUrl
         const matchedBlog = blogs.find(blog => blog.livePageUrl.replace(/[`"]/g, '') === livePageUrl);
@@ -392,7 +392,7 @@ const BlogDetail = () => {
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed absolute right-8 top-1/2 transform -translate-y-1/2 max-w-xs w-full hidden xl:block"
+        className="fixed right-8 top-1/2 transform -translate-y-1/2 max-w-xs w-full hidden xl:block"
       >
         <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-white/20">
           <h3 className="text-lg font-semibold mb-4 text-[#19234d]">Table of Contents</h3>
@@ -460,7 +460,7 @@ const BlogDetail = () => {
 
     // Clean the URL by removing backticks and quotes
     const cleanUrl = audioUrl.replace(/[`"]/g, '');
-
+    
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -468,9 +468,9 @@ const BlogDetail = () => {
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 max-w-sm w-full mx-auto"
       >
         <div className="bg-white/90 backdrop-blur-lg rounded-full shadow-lg p-4 border border-white/20 flex items-center gap-4">
-          <a
-            href={cleanUrl}
-            target="_blank"
+          <a 
+            href={cleanUrl} 
+            target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] text-white font-medium transition-transform hover:scale-105"
           >
@@ -507,7 +507,7 @@ const BlogDetail = () => {
           <meta name="title" content={blog.seoMetadata?.metaTitle || blog.title} />
           <meta name="description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
           <meta name="keywords" content={blog.seoMetadata?.keywords?.join(', ') || blog.category} />
-
+          
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="article" />
           <meta property="og:url" content={window.location.href} />
@@ -517,17 +517,17 @@ const BlogDetail = () => {
           <meta property="article:published_time" content={blog.createdAt} />
           <meta property="article:author" content={blog.authorName} />
           <meta property="article:section" content={blog.category} />
-
+          
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content={window.location.href} />
           <meta property="twitter:title" content={blog.seoMetadata?.metaTitle || blog.title} />
           <meta property="twitter:description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
           <meta property="twitter:image" content={blog.featuredImage} />
-
+          
           {/* Canonical URL */}
           <link rel="canonical" href={window.location.href} />
-
+          
           {/* Additional Meta Tags */}
           <meta name="author" content={blog.authorName} />
           <meta name="robots" content="index, follow" />
@@ -536,7 +536,7 @@ const BlogDetail = () => {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Helmet>
       )}
-
+      
       {/* Hero Section with Animated Background */}
       <section className="relative min-h-[65vh] overflow-hidden">
         <NetworkBackground />
@@ -699,11 +699,10 @@ const BlogDetail = () => {
                 <FAQSection faqs={blog.faqs} />
               )}
             </div>
-            {/* Table of Contents */}
-            {blog.content && <TableOfContents content={blog.content} />}
-
           </motion.section>
 
+          {/* Table of Contents */}
+          {blog.content && <TableOfContents content={blog.content} />}
 
           {/* Audio Player */}
           {/* Fix the audio player by properly cleaning the URL and ensuring it's rendered */}

@@ -71,7 +71,7 @@ const App = () => {
             {/* <Route path="/portfolio" element={<Portfolio />} /> */}
             <Route path="/careers" element={<Careers />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:blogId" element={<BlogDetail />} />
+            <Route path="/blogs/:livePageUrl" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/web-development" element={<WebDevelopment />} />
             <Route path="/services/app-development" element={<AppDevelopment />} />
