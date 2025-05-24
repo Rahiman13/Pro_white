@@ -371,77 +371,28 @@ const BlogDetail = () => {
 
   const TableOfContents = ({ content }) => {
     const headings = content.filter(block => block.type === 'heading');
-    const [isVisible, setIsVisible] = useState(false);
 
     if (headings.length < 2) return null;
-
-    useEffect(() => {
-      const handleScroll = () => {
-        const mainContent = document.querySelector('.main-content-section');
-        const footer = document.querySelector('footer');
-
-        if (mainContent && footer) {
-          const mainContentRect = mainContent.getBoundingClientRect();
-          const footerRect = footer.getBoundingClientRect();
-          const excerptSection = document.querySelector('.excerpt-section');
-          const excerptRect = excerptSection?.getBoundingClientRect();
-
-          // Check if we're within the main content section and not in the excerpt or footer
-          const isInMainContent = mainContentRect.top <= 0 && mainContentRect.bottom >= 0;
-          const isAboveFooter = footerRect.top > 0;
-          const isBelowExcerpt = !excerptRect || excerptRect.bottom < 0;
-
-          setIsVisible(isInMainContent && isAboveFooter && isBelowExcerpt);
-        }
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Initial check
-
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const scrollToHeading = (index) => {
       const element = document.getElementById(`heading-${index}`);
       if (element) {
-        // Get the element's position relative to the viewport
-        const rect = element.getBoundingClientRect();
+        const offset = 100; // Adjust this value based on your header height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-        // Calculate the absolute position from the top of the page
-        const absoluteTop = rect.top + window.pageYOffset;
-
-        // Add offset for any fixed headers (adjust the value as needed)
-        const offset = 100;
-
-        // Scroll to the element
         window.scrollTo({
-          top: absoluteTop - offset,
+          top: offsetPosition,
           behavior: 'smooth'
         });
-
-        // Add a temporary highlight effect
-        element.style.transition = 'background-color 0.5s ease';
-        element.style.backgroundColor = 'rgba(43, 90, 158, 0.1)';
-
-        // Remove the highlight after 2 seconds
-        setTimeout(() => {
-          element.style.backgroundColor = 'transparent';
-        }, 2000);
       }
     };
 
     return (
       <motion.div
         initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
-        transition={{ duration: 0.3 }}
-        className="fixed right-4 top-1/2 transform -translate-y-1/2 max-w-xs w-full hidden xl:block"
-        style={{
-          maxHeight: 'calc(100vh - 200px)',
-          width: '240px',
-          overflowY: 'auto',
-          pointerEvents: isVisible ? 'auto' : 'none'
-        }}
+        animate={{ opacity: 1, x: 0 }}
+        className="fixed absolute right-8 top-1/2 transform -translate-y-1/2 max-w-xs w-full hidden xl:block"
       >
         <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-white/20">
           <h3 className="text-lg font-semibold mb-4 text-[#19234d]">Table of Contents</h3>
@@ -451,10 +402,16 @@ const BlogDetail = () => {
                 key={index}
                 onClick={() => scrollToHeading(index)}
                 whileHover={{ x: 4 }}
-                className="block text-left w-full transition-colors duration-200 text-gray-600 hover:text-[#2b5a9e]"
+                className={`
+                  block text-left w-full transition-colors duration-200
+                  ${activeHeading === index
+                    ? 'text-[#2b5a9e] font-medium'
+                    : 'text-gray-600 hover:text-[#2b5a9e]'
+                  }
+                `}
               >
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2b5a9e] to-[#d9764a] ${activeHeading === index ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100 transition-opacity`} />
                   <span className="line-clamp-1">{heading.text}</span>
                 </div>
               </motion.button>
@@ -540,31 +497,21 @@ const BlogDetail = () => {
     );
   }
 
-
   return (
     <main ref={ref} className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
       {/* Enhanced SEO Meta Tags */}
       {blog && (
         <Helmet>
           {/* Primary Meta Tags */}
-          {/* <title>{blog.seoMetadata?.metaTitle || blog.title}</title> */}
-          {/* <meta name="title" content={blog.seoMetadata?.metaTitle || blog.title} />
+          <title>{blog.seoMetadata?.metaTitle || blog.title}</title>
+          <meta name="title" content={blog.seoMetadata?.metaTitle || blog.title} />
           <meta name="description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
-          <meta name="keywords" content={blog.seoMetadata?.keywords?.join(', ') || blog.category} /> */}
-
-          <title>{blog?.seoMetadata?.metaTitle || blog?.title || ''}</title>
-          <meta name="title" content={blog?.seoMetadata?.metaTitle || blog?.title || ''} />
-          <meta name="description" content={blog?.seoMetadata?.metaDescription || blog?.excerpt || ''} />
-          <meta name="keywords" content={blog?.seoMetadata?.keywords?.join(', ') || blog?.category || ''} />
-
+          <meta name="keywords" content={blog.seoMetadata?.keywords?.join(', ') || blog.category} />
 
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="article" />
           <meta property="og:url" content={window.location.href} />
-          <meta property="og:title" content={blog?.seoMetadata?.metaTitle || blog?.title || ''} />
-          {/* <meta property="og:type" content="article" />
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:title" content={blog.seoMetadata?.metaTitle || blog.title} /> */}
+          <meta property="og:title" content={blog.seoMetadata?.metaTitle || blog.title} />
           <meta property="og:description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
           <meta property="og:image" content={blog.featuredImage} />
           <meta property="article:published_time" content={blog.createdAt} />
@@ -588,11 +535,10 @@ const BlogDetail = () => {
           <meta name="revisit-after" content="7 days" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Helmet>
-
       )}
 
       {/* Hero Section with Animated Background */}
-      <section className="relative min-h-[65vh] overflow-hidden excerpt-section">
+      <section className="relative min-h-[65vh] overflow-hidden">
         <NetworkBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
 
@@ -722,7 +668,7 @@ const BlogDetail = () => {
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative main-content-section"
+            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-purple-50/50 rounded-3xl blur-2xl" />
             <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
@@ -734,8 +680,8 @@ const BlogDetail = () => {
                   animate={{ scale: 1 }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.5 }}
-                  src={blog?.featuredImage?.replace(/`/g, '') || ''}
-                  alt={blog?.imageAltText || blog?.title || ''}
+                  src={blog.featuredImage.replace(/`/g, '')}
+                  alt={blog.imageAltText || blog.title}
                   className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl mb-12"
                 />
               </div>
@@ -754,7 +700,7 @@ const BlogDetail = () => {
               )}
             </div>
             {/* Table of Contents */}
-            {/* {blog.content && <TableOfContents content={blog.content} />} */}
+            {blog.content && <TableOfContents content={blog.content} />}
 
           </motion.section>
 

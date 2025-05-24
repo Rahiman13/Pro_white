@@ -379,18 +379,18 @@ const BlogDetail = () => {
       const handleScroll = () => {
         const mainContent = document.querySelector('.main-content-section');
         const footer = document.querySelector('footer');
-
+        
         if (mainContent && footer) {
           const mainContentRect = mainContent.getBoundingClientRect();
           const footerRect = footer.getBoundingClientRect();
           const excerptSection = document.querySelector('.excerpt-section');
           const excerptRect = excerptSection?.getBoundingClientRect();
-
+          
           // Check if we're within the main content section and not in the excerpt or footer
           const isInMainContent = mainContentRect.top <= 0 && mainContentRect.bottom >= 0;
           const isAboveFooter = footerRect.top > 0;
           const isBelowExcerpt = !excerptRect || excerptRect.bottom < 0;
-
+          
           setIsVisible(isInMainContent && isAboveFooter && isBelowExcerpt);
         }
       };
@@ -406,13 +406,13 @@ const BlogDetail = () => {
       if (element) {
         // Get the element's position relative to the viewport
         const rect = element.getBoundingClientRect();
-
+        
         // Calculate the absolute position from the top of the page
         const absoluteTop = rect.top + window.pageYOffset;
-
+        
         // Add offset for any fixed headers (adjust the value as needed)
         const offset = 100;
-
+        
         // Scroll to the element
         window.scrollTo({
           top: absoluteTop - offset,
@@ -422,7 +422,7 @@ const BlogDetail = () => {
         // Add a temporary highlight effect
         element.style.transition = 'background-color 0.5s ease';
         element.style.backgroundColor = 'rgba(43, 90, 158, 0.1)';
-
+        
         // Remove the highlight after 2 seconds
         setTimeout(() => {
           element.style.backgroundColor = 'transparent';
@@ -540,31 +540,21 @@ const BlogDetail = () => {
     );
   }
 
-
   return (
     <main ref={ref} className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
       {/* Enhanced SEO Meta Tags */}
       {blog && (
         <Helmet>
           {/* Primary Meta Tags */}
-          {/* <title>{blog.seoMetadata?.metaTitle || blog.title}</title> */}
-          {/* <meta name="title" content={blog.seoMetadata?.metaTitle || blog.title} />
+          <title>{blog.seoMetadata?.metaTitle || blog.title}</title>
+          <meta name="title" content={blog.seoMetadata?.metaTitle || blog.title} />
           <meta name="description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
-          <meta name="keywords" content={blog.seoMetadata?.keywords?.join(', ') || blog.category} /> */}
-
-          <title>{blog?.seoMetadata?.metaTitle || blog?.title || ''}</title>
-          <meta name="title" content={blog?.seoMetadata?.metaTitle || blog?.title || ''} />
-          <meta name="description" content={blog?.seoMetadata?.metaDescription || blog?.excerpt || ''} />
-          <meta name="keywords" content={blog?.seoMetadata?.keywords?.join(', ') || blog?.category || ''} />
-
+          <meta name="keywords" content={blog.seoMetadata?.keywords?.join(', ') || blog.category} />
 
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="article" />
           <meta property="og:url" content={window.location.href} />
-          <meta property="og:title" content={blog?.seoMetadata?.metaTitle || blog?.title || ''} />
-          {/* <meta property="og:type" content="article" />
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:title" content={blog.seoMetadata?.metaTitle || blog.title} /> */}
+          <meta property="og:title" content={blog.seoMetadata?.metaTitle || blog.title} />
           <meta property="og:description" content={blog.seoMetadata?.metaDescription || blog.excerpt} />
           <meta property="og:image" content={blog.featuredImage} />
           <meta property="article:published_time" content={blog.createdAt} />
@@ -588,7 +578,6 @@ const BlogDetail = () => {
           <meta name="revisit-after" content="7 days" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Helmet>
-
       )}
 
       {/* Hero Section with Animated Background */}
@@ -734,8 +723,8 @@ const BlogDetail = () => {
                   animate={{ scale: 1 }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.5 }}
-                  src={blog?.featuredImage?.replace(/`/g, '') || ''}
-                  alt={blog?.imageAltText || blog?.title || ''}
+                  src={blog.featuredImage?.replace(/`/g, '') || ''}
+                  alt={blog.imageAltText || blog.title}
                   className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl mb-12"
                 />
               </div>
